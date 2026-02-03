@@ -1,0 +1,2512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5: Miscellaneous Series - Math Notes | Guess Paper</title>
+<!-- Google Fonts for Bismillah -->
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Tailwind CSS Browser Build v4 -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<!-- MathJax Configuration -->
+<script>
+MathJax = {
+tex: {
+inlineMath: [['\$','\$']],
+displayMath: [['\\[','\\]']],
+processEscapes: true
+},
+svg: { fontCache: 'global' }
+};
+</script>
+<!-- MathJax v3 -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+/* Theme Variables */
+:root {
+--bg-primary: #f0f4f8;
+--bg-card: #ffffff;
+--color-primary: #3498db;
+--color-accent: #2ecc71;
+--color-text: #2c3e50;
+--color-muted: #6c757d;
+--border-color: #dee2e6;
+--shadow: rgba(0,0,0,0.1);
+}
+[data-theme="sepia"] {
+--bg-primary: #f4f1e8;
+--bg-card: #fefcf5;
+--color-primary: #8b7355;
+--color-accent: #a1887f;
+--color-text: #3e2723;
+--color-muted: #795548;
+--border-color: #d7ccc8;
+--shadow: rgba(101, 67, 33, 0.15);
+}
+[data-theme="green"] {
+--bg-primary: #e8f5e9;
+--bg-card: #ffffff;
+--color-primary: #2e7d32;
+--color-accent: #66bb6a;
+--color-text: #1b5e20;
+--color-muted: #558b2f;
+--border-color: #d7ccc8;
+--shadow: rgba(46, 125, 50, 0.15);
+}
+[data-theme="yellow"] {
+--bg-primary: #fffde7;
+--bg-card: #ffffff;
+--color-primary: #f9a825;
+--color-accent: #ffd54f;
+--color-text: #f57f17;
+--color-muted: #fbc02d;
+--border-color: #fff9c4;
+--shadow: rgba(249, 168, 37, 0.2);
+}
+[data-theme="blackwhite"] {
+--bg-primary: #ffffff;
+--bg-card: #f8f9fa;
+--color-primary: #000000;
+--color-accent: #495057;
+--color-text: #000000;
+--color-muted: #495057;
+--border-color: #dee2e6;
+--shadow: rgba(0, 0, 0, 0.15);
+}
+[data-theme="dark"] {
+--bg-primary: #1a1a1a;
+--bg-card: #2d2d2d;
+--color-primary: #60a5fa;
+--color-accent: #34d399;
+--color-text: #e5e7eb;
+--color-muted: #9ca3af;
+--border-color: #404040;
+--shadow: rgba(0, 0, 0, 0.5);
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+background-color: var(--bg-primary);
+color: var(--color-text);
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+line-height: 1.6;
+transition: background-color 0.3s ease, color 0.3s ease;
+max-width: 100vw;
+overflow-x: hidden;
+position: relative;
+}
+/* Bismillah Header */
+.bismillah-header {
+background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+color: white;
+padding: 2rem 1rem;
+text-align: center;
+margin-bottom: 2rem;
+border-radius: 0 0 1rem 1rem;
+box-shadow: 0 4px 12px var(--shadow);
+width: 100%;
+max-width: 100vw;
+}
+.bismillah-arabic {
+font-family: 'Amiri', serif;
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+line-height: 1.3;
+word-wrap: break-word;
+}
+.bismillah-translation {
+font-size: 1.1rem;
+opacity: 0.9;
+max-width: 600px;
+margin: 0 auto;
+font-weight: 300;
+}
+.chapter-title {
+font-size: 2.5rem;
+font-weight: bold;
+color: var(--color-primary);
+text-align: center;
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+padding: 0 1rem;
+}
+.chapter-subtitle {
+font-size: 1.2rem;
+color: var(--color-muted);
+text-align: center;
+margin-bottom: 2rem;
+font-weight: 300;
+padding: 0 1rem;
+}
+.container {
+max-width: 56rem;
+margin: 0 auto;
+padding: 2rem 1rem;
+width: 100%;
+box-sizing: border-box;
+}
+/* Card Component */
+.card {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1.5rem;
+margin-bottom: 2rem;
+box-shadow: 0 4px 6px var(--shadow);
+transition: all 0.3s ease;
+width: 100%;
+box-sizing: border-box;
+overflow: visible;
+}
+/* Typography */
+.main-title {
+font-size: 2.25rem;
+font-weight: bold;
+color: var(--color-primary);
+text-align: center;
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+}
+.subtitle {
+font-size: 1.25rem;
+color: var(--color-muted);
+text-align: center;
+margin-bottom: 2rem;
+}
+.section-title {
+font-size: 1.875rem;
+font-weight: bold;
+color: var(--color-primary);
+margin-bottom: 1rem;
+word-wrap: break-word;
+}
+.subsection-title {
+font-size: 1.25rem;
+font-weight: 600;
+color: var(--color-primary);
+margin-bottom: 1rem;
+margin-top: 1.5rem;
+word-wrap: break-word;
+}
+/* Question Item */
+.question-item {
+margin-bottom: 1.5rem;
+border-left: 4px solid var(--color-primary);
+padding-left: 1rem;
+width: 100%;
+box-sizing: border-box;
+}
+
+/* Solution Toggle Button */
+.solution-toggle {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+background-color: transparent;
+border: 1px solid var(--color-primary);
+color: var(--color-primary);
+border-radius: 0.375rem;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+font-weight: 500;
+margin-top: 0.5rem;
+}
+.solution-toggle:hover {
+background-color: var(--color-primary);
+color: white;
+transform: translateY(-1px);
+box-shadow: 0 2px 4px var(--shadow);
+}
+.toggle-icon {
+transition: transform 0.2s ease;
+font-size: 0.75rem;
+}
+/* Solution Container - HORIZONTAL SCROLLABLE AS WHOLE */
+.solution {
+margin-top: 0.75rem;
+width: 100%;
+box-sizing: border-box;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.solution-content {
+padding: 1rem;
+background-color: rgba(0,0,0,0.02);
+border-left: 3px solid var(--color-primary);
+border-radius: 0.25rem;
+line-height: 1.8;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+opacity: 0;
+min-width: max-content;
+box-sizing: border-box;
+}
+.solution-content.hidden {
+max-height: 0;
+padding-top: 0;
+padding-bottom: 0;
+opacity: 0;
+}
+.solution-content.open {
+max-height: 500px;
+overflow-y: auto !important;
+overflow-x: visible !important;
+opacity: 1;
+-webkit-overflow-scrolling: touch;
+}
+
+/* MCQ Styles */
+.mcq-container {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1.25rem;
+margin-bottom: 1.5rem;
+transition: all 0.3s ease;
+width: 100%;
+box-sizing: border-box;
+overflow: hidden;
+}
+.mcq-question {
+font-size: 1rem;
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+width: 100%;
+box-sizing: border-box;
+word-wrap: break-word;
+}
+.mcq-number {
+color: var(--color-primary);
+margin-right: 0.5rem;
+}
+.mcq-options {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+margin-top: 0.75rem;
+width: 100%;
+}
+.mcq-option {
+padding: 0.75rem 1rem;
+border: 1px solid var(--border-color);
+border-radius: 0.375rem;
+cursor: pointer;
+transition: all 0.2s ease;
+background-color: var(--bg-card);
+display: flex;
+align-items: center;
+width: 100%;
+box-sizing: border-box;
+}
+.mcq-option:hover {
+background-color: rgba(0,0,0,0.03);
+border-color: var(--color-primary);
+transform: translateX(4px);
+}
+.mcq-option.correct {
+background-color: rgba(76,175,80,0.1);
+border-color: #4caf50;
+}
+.mcq-option.incorrect {
+background-color: rgba(244,67,54,0.1);
+border-color: #f44336;
+}
+.option-label {
+font-weight: 600;
+margin-right: 0.5rem;
+color: var(--color-primary);
+flex-shrink: 0;
+}
+.mcq-result {
+margin-left: auto;
+font-size: 1.25rem;
+}
+.show-correct-btn {
+margin-top: 0.75rem;
+padding: 0.5rem 1rem;
+background-color: var(--color-primary);
+color: white;
+border: none;
+border-radius: 0.375rem;
+cursor: pointer;
+font-size: 0.875rem;
+transition: all 0.2s ease;
+width: 100%;
+box-sizing: border-box;
+}
+.show-correct-btn:hover {
+opacity: 0.9;
+transform: translateY(-1px);
+box-shadow: 0 2px 4px var(--shadow);
+}
+.show-correct-btn.hidden {
+display: none;
+}
+
+/* Theme Toggle System */
+/* moved floating controls to left side */
+#themeToggle {
+position: fixed;
+bottom: 2rem;
+left: 2rem;
+width: 3.5rem;
+height: 3.5rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 1;
+visibility: visible;
+}
+#themeToggle.hidden {
+opacity: 0;
+visibility: hidden;
+}
+#themeToggle:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 16px var(--shadow);
+}
+#themePanel {
+position: fixed;
+bottom: 6rem;
+left: 2rem;
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1rem;
+box-shadow: 0 8px 24px var(--shadow);
+z-index: 1001;
+min-width: 200px;
+transition: all 0.2s ease;
+opacity: 1;
+visibility: visible;
+}
+#themePanel.hidden {
+display: none;
+opacity: 0;
+visibility: hidden;
+}
+.theme-panel-title {
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+font-size: 0.875rem;
+}
+.theme-btn {
+display: block;
+width: 100%;
+padding: 0.75rem 1rem;
+margin-bottom: 0.5rem;
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+background-color: var(--bg-card);
+color: var(--color-text);
+text-align: left;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+}
+.theme-btn:last-child {
+margin-bottom: 0;
+}
+.theme-btn:hover {
+background-color: rgba(0,0,0,0.05);
+transform: scale(1.05);
+border-color: var(--color-primary);
+}
+
+/* Back to Top Button - POSITIONED LEFT SIDE (mirrored) */
+#backToTop {
+position: fixed;
+bottom: 2rem;
+left: 6.5rem;
+width: 3rem;
+height: 3rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.25rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 999;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0;
+visibility: hidden;
+transform: translateY(20px);
+}
+#backToTop.visible {
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
+}
+#backToTop.hidden {
+opacity: 0 !important;
+visibility: hidden !important;
+}
+#backToTop:hover {
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* JUMP-TO NAVIGATION */
+#jumpToNav {
+position: fixed;
+top: 2rem;
+left: 2rem;
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1rem;
+box-shadow: 0 4px 12px var(--shadow);
+z-index: 1002;
+min-width: 200px;
+max-height: 70vh;
+overflow-y: auto;
+transition: all 0.3s ease;
+opacity: 1;
+visibility: visible;
+}
+#jumpToNav.hidden {
+transform: translateX(-100%);
+opacity: 0;
+visibility: hidden;
+}
+.jump-nav-title {
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+font-size: 1rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.jump-nav-close {
+background: none;
+border: none;
+color: var(--color-muted);
+cursor: pointer;
+font-size: 1.25rem;
+padding: 0;
+width: 24px;
+height: 24px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+}
+.jump-nav-close:hover {
+background-color: rgba(0,0,0,0.05);
+}
+.jump-nav-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.jump-nav-item {
+margin-bottom: 0.5rem;
+}
+.jump-nav-link {
+display: block;
+padding: 0.5rem 0.75rem;
+color: var(--color-text);
+text-decoration: none;
+border-radius: 0.375rem;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+}
+.jump-nav-link:hover {
+background-color: rgba(0,0,0,0.05);
+color: var(--color-primary);
+transform: translateX(4px);
+}
+#jumpToggle {
+position: fixed;
+top: 2rem;
+left: 2rem;
+width: 3.5rem;
+height: 3.5rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 999;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 1;
+visibility: visible;
+}
+#jumpToggle.hidden {
+opacity: 0;
+visibility: hidden;
+}
+#jumpToggle:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* Formula Table with HORIZONTAL SCROLLING - WHOLE TABLE SCROLLS */
+.formula-table {
+width: 100%;
+max-width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+display: block;
+margin-bottom: 1rem;
+border: 1px solid var(--border-color);
+border-radius: 0.375rem;
+}
+.formula-table table {
+width: max-content;
+min-width: 100%;
+border-collapse: collapse;
+margin: 0;
+}
+.formula-table thead {
+background-color: var(--color-primary);
+color: white;
+position: sticky;
+top: 0;
+z-index: 10;
+}
+.formula-table th,
+.formula-table td {
+padding: 0.75rem 1rem;
+text-align: left;
+border-bottom: 1px solid var(--border-color);
+white-space: nowrap;
+min-width: 200px;
+}
+.formula-table tbody tr:nth-child(even) {
+background-color: rgba(0,0,0,0.02);
+}
+.formula-table tbody tr:hover {
+background-color: rgba(0,0,0,0.04);
+}
+
+/* Definitions List */
+.definitions-list {
+list-style-type: disc;
+list-style-position: inside;
+line-height: 2;
+width: 100%;
+}
+.definitions-list li {
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+}
+.definitions-list strong {
+color: var(--color-primary);
+}
+
+/* Answer Grid */
+.answer-grid {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 0.75rem;
+width: 100%;
+}
+.answer-item {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+padding: 0.75rem;
+border-radius: 0.375rem;
+text-align: center;
+font-family: 'Courier New', monospace;
+font-weight: 600;
+word-break: break-all;
+}
+
+/* Reset Button */
+.reset-btn {
+padding: 0.5rem 1.5rem;
+background-color: var(--color-primary);
+color: white;
+border: none;
+border-radius: 0.5rem;
+cursor: pointer;
+font-weight: 600;
+transition: all 0.2s ease;
+margin-bottom: 1.5rem;
+display: inline-block;
+}
+.reset-btn:hover {
+transform: scale(1.05);
+opacity: 0.9;
+box-shadow: 0 2px 4px var(--shadow);
+}
+
+/* Print Note */
+.print-note {
+font-size: 0.875rem;
+color: var(--color-muted);
+margin-bottom: 1rem;
+}
+
+/* Utility Classes */
+.hidden {
+display: none !important;
+}
+.text-primary {
+color: var(--color-primary);
+}
+.text-muted {
+color: var(--color-muted);
+}
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+body {
+overflow-x: hidden;
+width: 100vw;
+}
+.bismillah-arabic {
+font-size: 2rem;
+}
+.chapter-title {
+font-size: 2rem;
+padding: 0 0.5rem;
+}
+.main-title {
+font-size: 2rem;
+}
+.section-title {
+font-size: 1.5rem;
+}
+.subsection-title {
+font-size: 1.125rem;
+}
+.formula-table {
+font-size: 0.875rem;
+}
+#themePanel {
+left: 1rem;
+bottom: 5rem;
+}
+#themeToggle {
+width: 3rem;
+height: 3rem;
+bottom: 1rem;
+left: 1rem;
+}
+#backToTop {
+left: 5rem;
+bottom: 1rem;
+width: 2.5rem;
+height: 2.5rem;
+}
+#jumpToNav {
+left: 1rem;
+top: 1rem;
+max-width: calc(100vw - 2rem);
+}
+/* MOBILE SCROLLING FOR SOLUTIONS */
+.solution-content.open {
+max-height: 400px;
+overflow: auto !important;
+-webkit-overflow-scrolling: touch !important;
+}
+.card {
+padding: 1rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.question-item {
+padding-left: 0.75rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.mcq-container {
+padding: 1rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.mcq-option {
+padding: 0.5rem 0.75rem;
+}
+}
+@media (max-width: 640px) {
+.bismillah-arabic {
+font-size: 1.75rem;
+}
+.chapter-title {
+font-size: 1.75rem;
+}
+.main-title {
+font-size: 1.75rem;
+}
+.answer-grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 0.5rem;
+}
+.answer-item {
+padding: 0.5rem;
+font-size: 0.875rem;
+}
+.formula-table table {
+min-width: 500px;
+}
+}
+@media (max-width: 480px) {
+.bismillah-arabic {
+font-size: 1.5rem;
+}
+.chapter-title {
+font-size: 1.5rem;
+}
+.section-title {
+font-size: 1.25rem;
+}
+.container {
+padding: 1rem 0.25rem;
+}
+.card {
+padding: 0.75rem;
+margin: 0 0.25rem 1rem 0.25rem;
+width: calc(100% - 0.5rem);
+}
+.formula-table table {
+min-width: 400px;
+}
+}
+
+/* Print Styles */
+@media print {
+.bismillah-header {
+background: white !important;
+color: black !important;
+box-shadow: none !important;
+}
+.bismillah-arabic {
+font-size: 1.5rem;
+color: black !important;
+}
+.solution-toggle,
+.show-correct-btn,
+.reset-btn,
+#themeToggle,
+#themePanel,
+#backToTop,
+#jumpToggle,
+#jumpToNav,
+.print-note {
+display: none !important;
+}
+.solution-content {
+display: block !important;
+max-height: none !important;
+padding: 1rem !important;
+opacity: 1 !important;
+overflow: visible !important;
+}
+.solution-content.hidden {
+display: block !important;
+max-height: none !important;
+opacity: 1 !important;
+}
+.mcq-container {
+page-break-inside: avoid;
+overflow: visible !important;
+}
+.question-item {
+page-break-inside: avoid;
+}
+h1, h2, h3 {
+page-break-after: avoid;
+}
+* {
+box-shadow: none !important;
+}
+.theme-btn {
+display: none !important;
+}
+.formula-table {
+overflow: visible !important;
+}
+.formula-table table {
+min-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<!-- BISMILLAH HEADER -->
+<div class="bismillah-header">
+<div class="bismillah-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+<div class="bismillah-translation">In the name of Allah, the Most Gracious, the Most Merciful</div>
+</div>
+
+<!-- JUMP-TO NAVIGATION -->
+<button id="jumpToggle">🔍</button>
+<div id="jumpToNav" class="hidden">
+<div class="jump-nav-title">
+<span>📚 Jump to Section</span>
+<button class="jump-nav-close">&times;</button>
+</div>
+<ul class="jump-nav-list">
+<li class="jump-nav-item"><a href="#definitions" class="jump-nav-link">📚 Core Definitions</a></li>
+<li class="jump-nav-item"><a href="#formulas" class="jump-nav-link">🧮 Essential Formulas</a></li>
+<li class="jump-nav-item"><a href="#questions" class="jump-nav-link">✍️ Guess-Paper Questions</a></li>
+<li class="jump-nav-item"><a href="#mcqs" class="jump-nav-link">❓ Multiple Choice Questions</a></li>
+<li class="jump-nav-item"><a href="#answerkey" class="jump-nav-link">🔑 MCQ Answer Key</a></li>
+</ul>
+</div>
+
+<!-- CHAPTER HEADER -->
+<div class="container">
+<h1 class="chapter-title">Chapter 5: Miscellaneous Series</h1>
+<p class="chapter-subtitle">Unit 5: Complete Solved Notes</p>
+</div>
+
+<!-- DEFINITIONS SECTION -->
+<div class="container" id="definitions">
+<h2 class="section-title">📚 Core Definitions</h2>
+<div class="card">
+<ul class="definitions-list">
+<li><strong>Sigma Notation ($\Sigma$):</strong> The sum of a series $x_1 + x_2 + \dots + x_n$ is denoted by $\sum_{i=1}^{n} x_i$.</li>
+<li><strong>Sum of First $n$ Natural Numbers ($\Sigma n$):</strong> $\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$.</li>
+<li><strong>Sum of Squares of First $n$ Natural Numbers ($\Sigma n^2$):</strong> $\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$.</li>
+<li><strong>Sum of Cubes of First $n$ Natural Numbers ($\Sigma n^3$):</strong> $\sum_{k=1}^{n} k^3 = \left[\frac{n(n+1)}{2}\right]^2$.</li>
+<li><strong>Arithmetico-Geometric Series:</strong> A series obtained by multiplying the corresponding terms of an A.P. and a G.P., e.g., $a + (a + d)r + (a + 2d)r^2 + \dots$.</li>
+<li><strong>Method of Differences:</strong> A method to find the sum of a series by expressing it as $f(r+1) - f(r)$ or $f(r) - f(r+1)$.</li>
+<li><strong>Partial Fractions:</strong> A technique to decompose rational expressions into simpler fractions to facilitate summation.</li>
+<li><strong>Infinite Series:</strong> A series with an infinite number of terms, convergent if $|r| < 1$ for geometric series.</li>
+</ul>
+</div>
+</div>
+
+<!-- FORMULAS SECTION -->
+<div class="container" id="formulas">
+<h2 class="section-title">🧮 Essential Formulas</h2>
+<div class="card">
+<!-- FORMULA TABLE WITH SCROLLING CONTAINER -->
+<div class="formula-table">
+<table>
+<thead>
+<tr>
+<th>Formula Name</th>
+<th>Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Sum of First $n$ Natural Numbers</td><td>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</td></tr>
+<tr><td>Sum of Squares of First $n$ Natural Numbers</td><td>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</td></tr>
+<tr><td>Sum of Cubes of First $n$ Natural Numbers</td><td>$\sum_{k=1}^{n} k^3 = \left[\frac{n(n+1)}{2}\right]^2$</td></tr>
+<tr><td>Sum of Arithmetico-Geometric Series</td><td>$S_n = \frac{a}{1 - r} + \frac{dr}{(1 - r)^2} - \frac{dr^n}{(1 - r)^2} - \frac{[a + (n - 1)d]r^n}{1 - r}$</td></tr>
+<tr><td>Partial Fraction Decomposition</td><td>$\frac{1}{(r+1)(r+2)} = \frac{1}{r+1} - \frac{1}{r+2}$</td></tr>
+<tr><td>Sum of Infinite Geometric Series</td><td>$S = \frac{a}{1 - r}$ for $|r| < 1$</td></tr>
+<tr><td>Method of Differences</td><td>$\sum_{r=1}^{n} [f(r+1) - f(r)] = f(n+1) - f(1)$</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- GUESS-PAPER QUESTIONS SECTION -->
+<div class="container" id="questions">
+<h2 class="section-title">✍️ Guess-Paper Questions (Solved)</h2>
+<button id="showAllBtn" class="solution-toggle mb-4">
+<span class="toggle-text">Show All Solutions</span>
+</button>
+
+<!-- Exercise 5.1 -->
+<h3 class="subsection-title">📝 Exercise 5.1</h3>
+
+<!-- Q1 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1.</span>
+<span>Sum the series $1^2 + 2^2 + 3^2 + \dots + 10^2$.</span>
+</div>
+<button onclick="toggleSolution('ex51-q1')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q1" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Using the formula for the sum of squares of first $n$ natural numbers:</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>For $n = 10$:</p>
+<p>$\sum_{k=1}^{10} k^2 = \frac{10(10+1)(2 \times 10 + 1)}{6} = \frac{10 \times 11 \times 21}{6} = 385$</p>
+<p>✅ Answer: $\boxed{385}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>Sum the series $1^3 + 2^3 + 3^3 + \dots + 15^3$.</span>
+</div>
+<button onclick="toggleSolution('ex51-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Using the formula for the sum of cubes of first $n$ natural numbers:</p>
+<p>$\sum_{k=1}^{n} k^3 = \left[\frac{n(n+1)}{2}\right]^2$</p>
+<p>For $n = 15$:</p>
+<p>$\sum_{k=1}^{15} k^3 = \left[\frac{15(15+1)}{2}\right]^2 = \left[\frac{15 \times 16}{2}\right]^2 = 120^2 = 14400$</p>
+<p>✅ Answer: $\boxed{14400}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q3 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3.</span>
+<span>Sum the series $1^2 + 3^2 + 5^2 + \dots$ up to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex51-q3')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q3" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The series is the sum of squares of first $n$ odd numbers.</p>
+<p>The $k$th odd number is $2k - 1$.</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{n} (2k - 1)^2 = \sum_{k=1}^{n} (4k^2 - 4k + 1) = 4 \sum_{k=1}^{n} k^2 - 4 \sum_{k=1}^{n} k + \sum_{k=1}^{n} 1$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>$\sum_{k=1}^{n} 1 = n$</p>
+<p>Thus:</p>
+<p>$\sum_{k=1}^{n} (2k - 1)^2 = 4 \left(\frac{n(n+1)(2n+1)}{6}\right) - 4 \left(\frac{n(n+1)}{2}\right) + n$</p>
+<p>Simplify:</p>
+<p>$= \frac{2n(n+1)(2n+1)}{3} - 2n(n+1) + n$</p>
+<p>$= \frac{2n(n+1)(2n+1) - 6n(n+1) + 3n}{3}$</p>
+<p>$= \frac{n[2(n+1)(2n+1) - 6(n+1) + 3]}{3}$</p>
+<p>$= \frac{n[4n^2 + 6n + 2 - 6n - 6 + 3]}{3}$</p>
+<p>$= \frac{n(4n^2 - 1)}{3}$</p>
+<p>✅ Answer: $\boxed{\frac{n(4n^2 - 1)}{3}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>Sum the series $2^2 + 4^2 + 6^2 + 8^2 + \dots$ up to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex51-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The series is the sum of squares of first $n$ even numbers.</p>
+<p>The $k$th even number is $2k$.</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{n} (2k)^2 = 4 \sum_{k=1}^{n} k^2 = 4 \left(\frac{n(n+1)(2n+1)}{6}\right) = \frac{2n(n+1)(2n+1)}{3}$</p>
+<p>✅ Answer: $\boxed{\frac{2n(n+1)(2n+1)}{3}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q5 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q5.</span>
+<span>Sum the series $1^3 + 3^3 + 5^3 + \dots$ up to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex51-q5')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q5" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The series is the sum of cubes of first $n$ odd numbers.</p>
+<p>The $k$th odd number is $2k - 1$.</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{n} (2k - 1)^3 = \sum_{k=1}^{n} (8k^3 - 12k^2 + 6k - 1)$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^3 = \left[\frac{n(n+1)}{2}\right]^2$</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>$\sum_{k=1}^{n} 1 = n$</p>
+<p>Thus:</p>
+<p>$\sum_{k=1}^{n} (2k - 1)^3 = 8 \left[\frac{n(n+1)}{2}\right]^2 - 12 \left(\frac{n(n+1)(2n+1)}{6}\right) + 6 \left(\frac{n(n+1)}{2}\right) - n$</p>
+<p>Simplify:</p>
+<p>$= 2n^2(n+1)^2 - 2n(n+1)(2n+1) + 3n(n+1) - n$</p>
+<p>$= n[2n(n+1)^2 - 2(n+1)(2n+1) + 3(n+1) - 1]$</p>
+<p>$= n[2n(n^2 + 2n + 1) - 2(2n^2 + 3n + 1) + 3n + 3 - 1]$</p>
+<p>$= n[2n^3 + 4n^2 + 2n - 4n^2 - 6n - 2 + 3n + 2]$</p>
+<p>$= n[2n^3 - n]$</p>
+<p>$= n^2(2n^2 - 1)$</p>
+<p>✅ Answer: $\boxed{n^2(2n^2 - 1)}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q6 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q6.</span>
+<span>Sum the series $2 \times 1^2 + 5 \times 2^2 + 8 \times 3^2 + \dots$ up to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex51-q6')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q6" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The general term of the series is $(3k - 1)k^2$.</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{n} (3k - 1)k^2 = 3 \sum_{k=1}^{n} k^3 - \sum_{k=1}^{n} k^2$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^3 = \left[\frac{n(n+1)}{2}\right]^2$</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>Thus:</p>
+<p>$\sum_{k=1}^{n} (3k - 1)k^2 = 3 \left[\frac{n(n+1)}{2}\right]^2 - \frac{n(n+1)(2n+1)}{6}$</p>
+<p>Simplify:</p>
+<p>$= \frac{3n^2(n+1)^2}{4} - \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$= \frac{n(n+1)}{12} [9n(n+1) - 2(2n+1)]$</p>
+<p>$= \frac{n(n+1)}{12} [9n^2 + 9n - 4n - 2]$</p>
+<p>$= \frac{n(n+1)(9n^2 + 5n - 2)}{12}$</p>
+<p>✅ Answer: $\boxed{\frac{n(n+1)(9n^2 + 5n - 2)}{12}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q7 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q7.</span>
+<span>Sum the series $1 + (1 + 2) + (1 + 2 + 3) + \dots$ up to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex51-q7')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q7" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The $k$th term of the series is $\sum_{i=1}^{k} i = \frac{k(k+1)}{2}$.</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{n} \frac{k(k+1)}{2} = \frac{1}{2} \sum_{k=1}^{n} (k^2 + k) = \frac{1}{2} \left(\sum_{k=1}^{n} k^2 + \sum_{k=1}^{n} k\right)$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>Thus:</p>
+<p>$\sum_{k=1}^{n} \frac{k(k+1)}{2} = \frac{1}{2} \left(\frac{n(n+1)(2n+1)}{6} + \frac{n(n+1)}{2}\right)$</p>
+<p>Simplify:</p>
+<p>$= \frac{n(n+1)}{4} \left(\frac{2n+1}{3} + 1\right)$</p>
+<p>$= \frac{n(n+1)}{4} \left(\frac{2n + 4}{3}\right)$</p>
+<p>$= \frac{n(n+1)(n + 2)}{6}$</p>
+<p>✅ Answer: $\boxed{\frac{n(n+1)(n+2)}{6}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q8 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q8.</span>
+<span>Sum the series $2 + (2 + 5) + (2 + 5 + 8) + \dots$ up to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex51-q8')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q8" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The $k$th term of the series is $2 + \sum_{i=1}^{k-1} (3i + 2) = 2 + \frac{(k-1)(3k + 4)}{2}$.</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{n} \left(2 + \frac{(k-1)(3k + 4)}{2}\right) = 2n + \frac{1}{2} \sum_{k=1}^{n} (3k^2 + k - 4)$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>Thus:</p>
+<p>$\sum_{k=1}^{n} \left(2 + \frac{(k-1)(3k + 4)}{2}\right) = 2n + \frac{1}{2} \left(3 \sum_{k=1}^{n} k^2 + \sum_{k=1}^{n} k - 4n\right)$</p>
+<p>Simplify:</p>
+<p>$= 2n + \frac{1}{2} \left(3 \cdot \frac{n(n+1)(2n+1)}{6} + \frac{n(n+1)}{2} - 4n\right)$</p>
+<p>$= 2n + \frac{1}{2} \left(\frac{n(n+1)(2n+1)}{2} + \frac{n(n+1)}{2} - 4n\right)$</p>
+<p>$= 2n + \frac{n(n+1)(2n+2)}{4} - 2n$</p>
+<p>$= \frac{n(n+1)(n+1)}{2}$</p>
+<p>$= \frac{n(n+1)^2}{2}$</p>
+<p>✅ Answer: $\boxed{\frac{n(n+1)^2}{2}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q9 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q9.</span>
+<span>Find the sum of $n$ terms of the series whose $n$th term is:<br>(i) $3n^2 + n + 1$<br>(ii) $n^2 + 4n + 1$<br>(iii) $n^3 + 3n^2 + 2n + 1$</span>
+</div>
+<button onclick="toggleSolution('ex51-q9')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q9" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) For $a_n = 3n^2 + n + 1$:</p>
+<p>$\sum_{k=1}^{n} a_k = 3 \sum_{k=1}^{n} k^2 + \sum_{k=1}^{n} k + \sum_{k=1}^{n} 1$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>$\sum_{k=1}^{n} 1 = n$</p>
+<p>Thus:</p>
+<p>$\sum_{k=1}^{n} a_k = 3 \cdot \frac{n(n+1)(2n+1)}{6} + \frac{n(n+1)}{2} + n$</p>
+<p>Simplify:</p>
+<p>$= \frac{n(n+1)(2n+1)}{2} + \frac{n(n+1)}{2} + n$</p>
+<p>$= \frac{n(n+1)(2n+2)}{2} + n$</p>
+<p>$= n(n+1)(n+1) + n$</p>
+<p>$= n(n+1)^2 + n$</p>
+<p>$= n[(n+1)^2 + 1]$</p>
+<p>✅ Answer: $\boxed{n[(n+1)^2 + 1]}$</p>
+<p>(ii) For $a_n = n^2 + 4n + 1$:</p>
+<p>$\sum_{k=1}^{n} a_k = \sum_{k=1}^{n} k^2 + 4 \sum_{k=1}^{n} k + \sum_{k=1}^{n} 1$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>$\sum_{k=1}^{n} 1 = n$</p>
+<p>Thus:</p>
+<p>$\sum_{k=1}^{n} a_k = \frac{n(n+1)(2n+1)}{6} + 4 \cdot \frac{n(n+1)}{2} + n$</p>
+<p>Simplify:</p>
+<p>$= \frac{n(n+1)(2n+1)}{6} + 2n(n+1) + n$</p>
+<p>$= \frac{n(n+1)(2n+1) + 12n(n+1) + 6n}{6}$</p>
+<p>$= \frac{n[2n^2 + 3n + 1 + 12n + 12 + 6]}{6}$</p>
+<p>$= \frac{n(2n^2 + 15n + 19)}{6}$</p>
+<p>✅ Answer: $\boxed{\frac{n(2n^2 + 15n + 19)}{6}}$</p>
+<p>(iii) For $a_n = n^3 + 3n^2 + 2n + 1$:</p>
+<p>$\sum_{k=1}^{n} a_k = \sum_{k=1}^{n} k^3 + 3 \sum_{k=1}^{n} k^2 + 2 \sum_{k=1}^{n} k + \sum_{k=1}^{n} 1$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^3 = \left[\frac{n(n+1)}{2}\right]^2$</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>$\sum_{k=1}^{n} 1 = n$</p>
+<p>Thus:</p>
+<p>$\sum_{k=1}^{n} a_k = \left[\frac{n(n+1)}{2}\right]^2 + 3 \cdot \frac{n(n+1)(2n+1)}{6} + 2 \cdot \frac{n(n+1)}{2} + n$</p>
+<p>Simplify:</p>
+<p>$= \frac{n^2(n+1)^2}{4} + \frac{n(n+1)(2n+1)}{2} + n(n+1) + n$</p>
+<p>$= \frac{n^2(n+1)^2}{4} + \frac{n(n+1)(2n+1 + 4)}{2} + n$</p>
+<p>$= \frac{n^2(n+1)^2}{4} + \frac{n(n+1)(2n+5)}{2} + n$</p>
+<p>✅ Answer: $\boxed{\frac{n^2(n+1)^2}{4} + \frac{n(n+1)(2n+5)}{2} + n}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q10 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q10.</span>
+<span>(i) Find the sum of first forty six natural numbers starting from 10.<br>(ii) Find the sum of last 12 terms of the series: $1 + 2 + 3 + \dots + 39$.</span>
+</div>
+<button onclick="toggleSolution('ex51-q10')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q10" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) The sum of first forty six natural numbers starting from 10:</p>
+<p>$\sum_{k=10}^{55} k = \sum_{k=1}^{55} k - \sum_{k=1}^{9} k$</p>
+<p>Using the formula:</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>Thus:</p>
+<p>$\sum_{k=10}^{55} k = \frac{55 \times 56}{2} - \frac{9 \times 10}{2} = 1540 - 45 = 1495$</p>
+<p>✅ Answer: $\boxed{1495}$</p>
+<p>(ii) The sum of last 12 terms of the series $1 + 2 + 3 + \dots + 39$:</p>
+<p>$\sum_{k=28}^{39} k = \sum_{k=1}^{39} k - \sum_{k=1}^{27} k$</p>
+<p>Using the formula:</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>Thus:</p>
+<p>$\sum_{k=28}^{39} k = \frac{39 \times 40}{2} - \frac{27 \times 28}{2} = 780 - 378 = 402$</p>
+<p>✅ Answer: $\boxed{402}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q11 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q11.</span>
+<span>Find the sum of $9^{th}$ to $21^{st}$ terms of the series of squares of first $n$ natural numbers.</span>
+</div>
+<button onclick="toggleSolution('ex51-q11')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q11" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The sum of $9^{th}$ to $21^{st}$ terms of the series of squares:</p>
+<p>$\sum_{k=9}^{21} k^2 = \sum_{k=1}^{21} k^2 - \sum_{k=1}^{8} k^2$</p>
+<p>Using the formula:</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>Thus:</p>
+<p>$\sum_{k=9}^{21} k^2 = \frac{21 \times 22 \times 43}{6} - \frac{8 \times 9 \times 17}{6} = 3311 - 204 = 3107$</p>
+<p>✅ Answer: $\boxed{3107}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q12 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q12.</span>
+<span>Find the sum of last 12 terms of the series of cubes of first 30 natural numbers.</span>
+</div>
+<button onclick="toggleSolution('ex51-q12')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex51-q12" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The sum of last 12 terms of the series of cubes:</p>
+<p>$\sum_{k=19}^{30} k^3 = \sum_{k=1}^{30} k^3 - \sum_{k=1}^{18} k^3$</p>
+<p>Using the formula:</p>
+<p>$\sum_{k=1}^{n} k^3 = \left[\frac{n(n+1)}{2}\right]^2$</p>
+<p>Thus:</p>
+<p>$\sum_{k=19}^{30} k^3 = \left[\frac{30 \times 31}{2}\right]^2 - \left[\frac{18 \times 19}{2}\right]^2 = 210225 - 29241 = 180984$</p>
+<p>✅ Answer: $\boxed{180984}$</p>
+</div>
+</div>
+</div>
+
+<!-- Exercise 5.2 -->
+<h3 class="subsection-title">📝 Exercise 5.2</h3>
+
+<!-- Q1 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1.</span>
+<span>Sum the series $1 \cdot 2 + 2 \cdot 2^2 + 3 \cdot 2^3 + 4 \cdot 2^4 + \dots$ to 50 terms.</span>
+</div>
+<button onclick="toggleSolution('ex52-q1')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex52-q1" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The series is an arithmetico-geometric series with $a = 1$, $d = 1$, and $r = 2$.</p>
+<p>Using the formula for the sum of $n$ terms of an arithmetico-geometric series:</p>
+<p>$S_n = \frac{a}{1 - r} + \frac{dr}{(1 - r)^2} - \frac{dr^n}{(1 - r)^2} - \frac{[a + (n - 1)d]r^n}{1 - r}$</p>
+<p>For $n = 50$:</p>
+<p>$S_{50} = \frac{1}{1 - 2} + \frac{1 \cdot 2}{(1 - 2)^2} - \frac{1 \cdot 2 \cdot 2^{50}}{(1 - 2)^2} - \frac{[1 + 49 \cdot 1]2^{50}}{1 - 2}$</p>
+<p>Simplify:</p>
+<p>$S_{50} = -1 + \frac{2}{1} - \frac{2^{51}}{1} + 50 \cdot 2^{50}$</p>
+<p>$S_{50} = -1 + 2 - 2^{51} + 50 \cdot 2^{50}$</p>
+<p>$S_{50} = 1 - 2^{51} + 25 \cdot 2^{51}$</p>
+<p>$S_{50} = 1 + 24 \cdot 2^{51}$</p>
+<p>✅ Answer: $\boxed{1 + 24 \cdot 2^{51}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>Sum the series $1 + 2.5 + 3.5^2 + 4.5^3 + \dots$ to 30 terms.</span>
+</div>
+<button onclick="toggleSolution('ex52-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex52-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The series is an arithmetico-geometric series with $a = 1$, $d = 1$, and $r = 5$.</p>
+<p>Using the formula for the sum of $n$ terms of an arithmetico-geometric series:</p>
+<p>$S_n = \frac{a}{1 - r} + \frac{dr}{(1 - r)^2} - \frac{dr^n}{(1 - r)^2} - \frac{[a + (n - 1)d]r^n}{1 - r}$</p>
+<p>For $n = 30$:</p>
+<p>$S_{30} = \frac{1}{1 - 5} + \frac{1 \cdot 5}{(1 - 5)^2} - \frac{1 \cdot 5 \cdot 5^{30}}{(1 - 5)^2} - \frac{[1 + 29 \cdot 1]5^{30}}{1 - 5}$</p>
+<p>Simplify:</p>
+<p>$S_{30} = -\frac{1}{4} + \frac{5}{16} - \frac{5^{31}}{16} + \frac{30 \cdot 5^{30}}{4}$</p>
+<p>$S_{30} = -\frac{1}{4} + \frac{5}{16} - \frac{5^{31}}{16} + \frac{15 \cdot 5^{30}}{2}$</p>
+<p>✅ Answer: $\boxed{-\frac{1}{4} + \frac{5}{16} - \frac{5^{31}}{16} + \frac{15 \cdot 5^{30}}{2}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q6 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q6.</span>
+<span>Find the sum to infinity of the series: $1 + \frac{4}{3} + \frac{9}{3^2} + \frac{16}{3^3} + \frac{25}{3^4} + \dots$</span>
+</div>
+<button onclick="toggleSolution('ex52-q6')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex52-q6" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The series is an infinite arithmetico-geometric series with $a = 1$, $d = 2$, and $r = \frac{1}{3}$.</p>
+<p>Using the formula for the sum of an infinite arithmetico-geometric series:</p>
+<p>$S = \frac{a}{1 - r} + \frac{dr}{(1 - r)^2}$</p>
+<p>Thus:</p>
+<p>$S = \frac{1}{1 - \frac{1}{3}} + \frac{2 \cdot \frac{1}{3}}{(1 - \frac{1}{3})^2} = \frac{1}{\frac{2}{3}} + \frac{\frac{2}{3}}{\left(\frac{2}{3}\right)^2} = \frac{3}{2} + \frac{\frac{2}{3}}{\frac{4}{9}} = \frac{3}{2} + \frac{3}{2} = 3$</p>
+<p>✅ Answer: $\boxed{3}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q7 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q7.</span>
+<span>Find the sum to infinity of the series: $1 + 9a + 25a^2 + 49a^3 + \dots$ where $|a| < 1$.</span>
+</div>
+<button onclick="toggleSolution('ex52-q7')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex52-q7" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The series is an infinite arithmetico-geometric series with $a = 1$, $d = 8$, and $r = a$.</p>
+<p>Using the formula for the sum of an infinite arithmetico-geometric series:</p>
+<p>$S = \frac{a}{1 - r} + \frac{dr}{(1 - r)^2}$</p>
+<p>Thus:</p>
+<p>$S = \frac{1}{1 - a} + \frac{8a}{(1 - a)^2}$</p>
+<p>✅ Answer: $\boxed{\frac{1}{1 - a} + \frac{8a}{(1 - a)^2}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q10 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q10.</span>
+<span>Find the sum to infinity of the series: $1 + \frac{5}{3} + \frac{12}{3^2} + \frac{22}{3^3} + \frac{35}{3^4} + \dots$</span>
+</div>
+<button onclick="toggleSolution('ex52-q10')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex52-q10" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The series is an infinite arithmetico-geometric series with $a = 1$, $d = 3$, and $r = \frac{1}{3}$.</p>
+<p>Using the formula for the sum of an infinite arithmetico-geometric series:</p>
+<p>$S = \frac{a}{1 - r} + \frac{dr}{(1 - r)^2}$</p>
+<p>Thus:</p>
+<p>$S = \frac{1}{1 - \frac{1}{3}} + \frac{3 \cdot \frac{1}{3}}{(1 - \frac{1}{3})^2} = \frac{1}{\frac{2}{3}} + \frac{1}{\left(\frac{2}{3}\right)^2} = \frac{3}{2} + \frac{9}{4} = \frac{6}{4} + \frac{9}{4} = \frac{15}{4}$</p>
+<p>✅ Answer: $\boxed{\frac{15}{4}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Exercise 5.3 -->
+<h3 class="subsection-title">📝 Exercise 5.3</h3>
+
+<!-- Q1 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1.</span>
+<span>Find the sum of the series: $3 + 6 + 12 + 21 + 33 + \dots$ to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex53-q1')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex53-q1" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The differences of consecutive terms are in A.P.: $3, 6, 9, 12, \dots$</p>
+<p>Using the method of differences:</p>
+<p>Let $S_n = 3 + 6 + 12 + 21 + 33 + \dots + a_n$</p>
+<p>Then, $S_n = \pm 3 \pm 6 \pm 12 \pm 21 \pm \dots \pm a_n$</p>
+<p>Subtracting:</p>
+<p>$0 = 3 + \{3 + 6 + 9 + \dots \text{ to } (n-1) \text{ terms}\} - a_n$</p>
+<p>Thus:</p>
+<p>$a_n = 3 + \frac{(n-1)}{2} [2 \times 3 + (n-2) \times 3] = 3 + \frac{3(n-1)(n)}{2}$</p>
+<p>Now, the sum:</p>
+<p>$S_n = \sum_{k=1}^{n} a_k = \sum_{k=1}^{n} \left(3 + \frac{3(k-1)k}{2}\right) = 3n + \frac{3}{2} \sum_{k=1}^{n} (k^2 - k)$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>Thus:</p>
+<p>$S_n = 3n + \frac{3}{2} \left(\frac{n(n+1)(2n+1)}{6} - \frac{n(n+1)}{2}\right)$</p>
+<p>Simplify:</p>
+<p>$= 3n + \frac{3}{2} \left(\frac{n(n+1)(2n+1) - 3n(n+1)}{6}\right)$</p>
+<p>$= 3n + \frac{n(n+1)(2n-2)}{4}$</p>
+<p>$= 3n + \frac{n(n+1)(n-1)}{2}$</p>
+<p>✅ Answer: $\boxed{3n + \frac{n(n+1)(n-1)}{2}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>Find the sum of the series: $5 + 10 + 17 + 26 + 37 + \dots$ to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex53-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex53-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The differences of consecutive terms are in A.P.: $5, 7, 9, 11, \dots$</p>
+<p>Using the method of differences:</p>
+<p>Let $S_n = 5 + 10 + 17 + 26 + 37 + \dots + a_n$</p>
+<p>Then, $S_n = \pm 5 \pm 10 \pm 17 \pm 26 \pm \dots \pm a_n$</p>
+<p>Subtracting:</p>
+<p>$0 = 5 + \{5 + 7 + 9 + \dots \text{ to } (n-1) \text{ terms}\} - a_n$</p>
+<p>Thus:</p>
+<p>$a_n = 5 + \frac{(n-1)}{2} [2 \times 5 + (n-2) \times 2] = 5 + \frac{(n-1)(2n + 6)}{2} = 5 + (n-1)(n+3)$</p>
+<p>Now, the sum:</p>
+<p>$S_n = \sum_{k=1}^{n} a_k = \sum_{k=1}^{n} [5 + (k-1)(k+3)] = 5n + \sum_{k=1}^{n} (k^2 + 2k - 3)$</p>
+<p>Using the formulas:</p>
+<p>$\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}$</p>
+<p>$\sum_{k=1}^{n} k = \frac{n(n+1)}{2}$</p>
+<p>Thus:</p>
+<p>$S_n = 5n + \frac{n(n+1)(2n+1)}{6} + 2 \cdot \frac{n(n+1)}{2} - 3n$</p>
+<p>Simplify:</p>
+<p>$= 5n + \frac{n(n+1)(2n+1)}{6} + n(n+1) - 3n$</p>
+<p>$= 2n + \frac{n(n+1)(2n+1 + 6)}{6}$</p>
+<p>$= 2n + \frac{n(n+1)(2n+7)}{6}$</p>
+<p>✅ Answer: $\boxed{2n + \frac{n(n+1)(2n+7)}{6}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>Find the sum of the series: $3 + 6 + 15 + 42 + 123 + \dots$ to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex53-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex53-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The differences of consecutive terms are in G.P.: $3, 9, 27, 81, \dots$</p>
+<p>Using the method of differences:</p>
+<p>Let $S_n = 3 + 6 + 15 + 42 + 123 + \dots + a_n$</p>
+<p>Then, $S_n = \pm 3 \pm 6 \pm 15 \pm 42 \pm \dots \pm a_n$</p>
+<p>Subtracting:</p>
+<p>$0 = 3 + \{3 + 9 + 27 + \dots \text{ to } (n-1) \text{ terms}\} - a_n$</p>
+<p>Thus:</p>
+<p>$a_n = 3 + \frac{3(3^{n-1} - 1)}{3 - 1} = 3 + \frac{3^{n} - 3}{2}$</p>
+<p>Now, the sum:</p>
+<p>$S_n = \sum_{k=1}^{n} a_k = \sum_{k=1}^{n} \left(3 + \frac{3^{k} - 3}{2}\right) = 3n + \frac{1}{2} \sum_{k=1}^{n} 3^{k} - \frac{3n}{2}$</p>
+<p>Using the formula for the sum of a geometric series:</p>
+<p>$\sum_{k=1}^{n} 3^{k} = \frac{3(3^{n} - 1)}{3 - 1} = \frac{3^{n+1} - 3}{2}$</p>
+<p>Thus:</p>
+<p>$S_n = 3n + \frac{1}{2} \cdot \frac{3^{n+1} - 3}{2} - \frac{3n}{2} = \frac{3n}{2} + \frac{3^{n+1} - 3}{4}$</p>
+<p>✅ Answer: $\boxed{\frac{3n}{2} + \frac{3^{n+1} - 3}{4}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Exercise 5.4 -->
+<h3 class="subsection-title">📝 Exercise 5.4</h3>
+
+<!-- Q1 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1.</span>
+<span>Find the sum of the series: $\frac{1}{1 \cdot 3} + \frac{1}{3 \cdot 5} + \frac{1}{5 \cdot 7} + \dots$ to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex54-q1')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex54-q1" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Using partial fractions:</p>
+<p>$\frac{1}{(2k-1)(2k+1)} = \frac{1}{2} \left(\frac{1}{2k-1} - \frac{1}{2k+1}\right)$</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{n} \frac{1}{(2k-1)(2k+1)} = \frac{1}{2} \sum_{k=1}^{n} \left(\frac{1}{2k-1} - \frac{1}{2k+1}\right)$</p>
+<p>This is a telescoping series:</p>
+<p>$\frac{1}{2} \left(\frac{1}{1} - \frac{1}{3} + \frac{1}{3} - \frac{1}{5} + \dots + \frac{1}{2n-1} - \frac{1}{2n+1}\right) = \frac{1}{2} \left(1 - \frac{1}{2n+1}\right)$</p>
+<p>Simplify:</p>
+<p>$= \frac{1}{2} \cdot \frac{2n}{2n+1} = \frac{n}{2n+1}$</p>
+<p>✅ Answer: $\boxed{\frac{n}{2n+1}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>Find the sum of the series: $\frac{1}{1 \cdot 5} + \frac{1}{5 \cdot 9} + \frac{1}{9 \cdot 13} + \dots$ to $n$ terms.</span>
+</div>
+<button onclick="toggleSolution('ex54-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex54-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Using partial fractions:</p>
+<p>$\frac{1}{(4k-3)(4k+1)} = \frac{1}{4} \left(\frac{1}{4k-3} - \frac{1}{4k+1}\right)$</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{n} \frac{1}{(4k-3)(4k+1)} = \frac{1}{4} \sum_{k=1}^{n} \left(\frac{1}{4k-3} - \frac{1}{4k+1}\right)$</p>
+<p>This is a telescoping series:</p>
+<p>$\frac{1}{4} \left(\frac{1}{1} - \frac{1}{5} + \frac{1}{5} - \frac{1}{9} + \dots + \frac{1}{4n-3} - \frac{1}{4n+1}\right) = \frac{1}{4} \left(1 - \frac{1}{4n+1}\right)$</p>
+<p>Simplify:</p>
+<p>$= \frac{1}{4} \cdot \frac{4n}{4n+1} = \frac{n}{4n+1}$</p>
+<p>✅ Answer: $\boxed{\frac{n}{4n+1}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q3 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3.</span>
+<span>Find the sum of the series: $\frac{1}{1 \cdot 5 \cdot 9} + \frac{1}{5 \cdot 9 \cdot 13} + \frac{1}{9 \cdot 13 \cdot 17} + \dots$ to infinity.</span>
+</div>
+<button onclick="toggleSolution('ex54-q3')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex54-q3" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Using partial fractions:</p>
+<p>$\frac{1}{(4k-3)(4k+1)(4k+5)} = \frac{1}{16} \left(\frac{1}{(4k-3)(4k+1)} - \frac{1}{(4k+1)(4k+5)}\right)$</p>
+<p>Further decompose:</p>
+<p>$\frac{1}{(4k-3)(4k+1)} = \frac{1}{4} \left(\frac{1}{4k-3} - \frac{1}{4k+1}\right)$</p>
+<p>$\frac{1}{(4k+1)(4k+5)} = \frac{1}{4} \left(\frac{1}{4k+1} - \frac{1}{4k+5}\right)$</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{\infty} \frac{1}{(4k-3)(4k+1)(4k+5)} = \frac{1}{16} \sum_{k=1}^{\infty} \left(\frac{1}{4k-3} - \frac{1}{4k+5}\right)$</p>
+<p>This is a telescoping series:</p>
+<p>$\frac{1}{16} \left(\frac{1}{1} - \frac{1}{9} + \frac{1}{5} - \frac{1}{13} + \dots\right)$</p>
+<p>The sum converges to:</p>
+<p>$\frac{1}{16} \left(\frac{1}{1} + \frac{1}{5}\right) = \frac{1}{16} \cdot \frac{6}{5} = \frac{3}{40}$</p>
+<p>✅ Answer: $\boxed{\frac{3}{40}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q5 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q5.</span>
+<span>Find the sum of the series: $\sum_{k=1}^{\infty} \frac{1}{4k^2 - 1}$.</span>
+</div>
+<button onclick="toggleSolution('ex54-q5')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex54-q5" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Using partial fractions:</p>
+<p>$\frac{1}{4k^2 - 1} = \frac{1}{(2k-1)(2k+1)} = \frac{1}{2} \left(\frac{1}{2k-1} - \frac{1}{2k+1}\right)$</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{\infty} \frac{1}{4k^2 - 1} = \frac{1}{2} \sum_{k=1}^{\infty} \left(\frac{1}{2k-1} - \frac{1}{2k+1}\right)$</p>
+<p>This is a telescoping series:</p>
+<p>$\frac{1}{2} \left(\frac{1}{1} - \frac{1}{3} + \frac{1}{3} - \frac{1}{5} + \dots\right) = \frac{1}{2} \cdot \frac{1}{1} = \frac{1}{2}$</p>
+<p>✅ Answer: $\boxed{\frac{1}{2}}$</p>
+</div>
+</div>
+</div>
+
+<!-- Q7 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q7.</span>
+<span>Find the sum of the series: $\sum_{k=2}^{\infty} \frac{1}{(k^2 - k)}$.</span>
+</div>
+<button onclick="toggleSolution('ex54-q7')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex54-q7" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Using partial fractions:</p>
+<p>$\frac{1}{k^2 - k} = \frac{1}{k(k-1)} = \frac{1}{k-1} - \frac{1}{k}$</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=2}^{\infty} \frac{1}{k^2 - k} = \sum_{k=2}^{\infty} \left(\frac{1}{k-1} - \frac{1}{k}\right)$</p>
+<p>This is a telescoping series:</p>
+<p>$\left(\frac{1}{1} - \frac{1}{2} + \frac{1}{2} - \frac{1}{3} + \dots\right) = 1$</p>
+<p>✅ Answer: $\boxed{1}$</p>
+</div>
+</div>
+</div>
+
+<!-- Review Exercise 5 -->
+<h3 class="subsection-title">📝 Review Exercise 5</h3>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>Sum the following series up to $n$ terms: $2 \times 1^2 + 4 \times 2^2 + 6 \times 3^2 + \dots$</span>
+</div>
+<button onclick="toggleSolution('rev-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="rev-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The general term of the series is $2k \times k^2 = 2k^3$.</p>
+<p>Thus, the sum is:</p>
+<p>$\sum_{k=1}^{n} 2k^3 = 2 \sum_{k=1}^{n} k^3 = 2 \left[\frac{n(n+1)}{2}\right]^2 = \frac{n^2(n+1)^2}{2}$</p>
+<p>✅ Answer: $\boxed{\frac{n^2(n+1)^2}{2}}$</p>
+</div>
+</div>
+</div>
+
+<!-- MCQs SECTION -->
+<div class="container" id="mcqs">
+<h2 class="section-title">❓ Multiple Choice Questions (Interactive)</h2>
+<div class="print-note">
+💡 <em>For printing: MCQs will show correct answers automatically</em>
+</div>
+<button onclick="resetMCQs()" class="reset-btn">🔄 Reset All MCQs</button>
+
+<!-- MCQ 1 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">1.</span>
+<span>If $a_n = 5 - 3n + 2n^2$, then $a_{2n} = \text{-----------}$</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="1" data-option="A">
+<span class="option-label">(a)</span> $5 - 6n + 2n^2$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="B">
+<span class="option-label">(b)</span> $5 - 6n + 4n^2$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="C">
+<span class="option-label">(c)</span> $5 + 6n + 4n^2$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="D">
+<span class="option-label">(d)</span> $5 - 6n + 8n^2$
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(1)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 2 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">2.</span>
+<span>If $a_{n-2} = 3n - 11$, then $a_n = \text{-----------}$</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="2" data-option="A">
+<span class="option-label">(a)</span> $3n + 5$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="B">
+<span class="option-label">(b)</span> $3n - 5$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="C">
+<span class="option-label">(c)</span> $3n - 9$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="D">
+<span class="option-label">(d)</span> $3n - 13$
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(2)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 3 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">3.</span>
+<span>$\sum_{1}^{50} n = \text{-----------}$</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="3" data-option="A">
+<span class="option-label">(a)</span> 1274
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="B">
+<span class="option-label">(b)</span> 1275
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="C">
+<span class="option-label">(c)</span> 1280
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="D">
+<span class="option-label">(d)</span> 1285
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(3)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 4 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">4.</span>
+<span>$\frac{1}{n(n+1)} = \text{-----------}$</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="4" data-option="A">
+<span class="option-label">(a)</span> $\frac{1}{n} + \frac{1}{n+1}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="B">
+<span class="option-label">(b)</span> $\frac{1}{n} - \frac{1}{n+1}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="C">
+<span class="option-label">(c)</span> $\frac{2}{n} + \frac{1}{n+1}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="D">
+<span class="option-label">(d)</span> $\frac{1}{n} - \frac{3}{n+1}$
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(4)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 5 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">5.</span>
+<span>The $n^{th}$ term of $\frac{1}{2}, \frac{1}{5}, \frac{1}{8}, \dots$ is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="5" data-option="A">
+<span class="option-label">(a)</span> $\frac{1}{3n-1}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="B">
+<span class="option-label">(b)</span> $3n - 1$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="C">
+<span class="option-label">(c)</span> $2n + 1$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="D">
+<span class="option-label">(d)</span> $\frac{1}{3n+1}$
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(5)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 6 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">6.</span>
+<span>$\Sigma n$ is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="6" data-option="A">
+<span class="option-label">(a)</span> $\frac{n(n+1)}{2}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="B">
+<span class="option-label">(b)</span> $\frac{n(n+1)(2n+1)}{6}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="C">
+<span class="option-label">(c)</span> $\frac{n^2(n+1)^2}{2}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="D">
+<span class="option-label">(d)</span> $n^2$
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(6)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 7 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">7.</span>
+<span>$\Sigma n^2$ is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="7" data-option="A">
+<span class="option-label">(a)</span> $\frac{n(n+1)}{2}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="B">
+<span class="option-label">(b)</span> $\frac{n(n+1)(2n+1)}{6}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="C">
+<span class="option-label">(c)</span> $\frac{n^2(n+1)^2}{2}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="D">
+<span class="option-label">(d)</span> $n^2$
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(7)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 8 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">8.</span>
+<span>$\Sigma n^3$ is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="8" data-option="A">
+<span class="option-label">(a)</span> $\frac{n(n+1)}{2}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="B">
+<span class="option-label">(b)</span> $\frac{n(n+1)(2n+1)}{6}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="C">
+<span class="option-label">(c)</span> $\frac{n^2(n+1)^2}{4}$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="D">
+<span class="option-label">(d)</span> $\frac{n(n+1)^2}{4}$
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(8)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 9 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">9.</span>
+<span>If $S_n = (n + 1)^2$, then $S_{2n}$ is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="9" data-option="A">
+<span class="option-label">(a)</span> $2n + 1$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="B">
+<span class="option-label">(b)</span> $4n^2 + 4n + 1$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="C">
+<span class="option-label">(c)</span> $(2n - 1)^2$
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="D">
+<span class="option-label">(d)</span> Cannot be determined
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(9)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 10 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">10.</span>
+<span>$\sum_{n=3}^{20} n^0 = \text{-----------}$</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="10" data-option="A">
+<span class="option-label">(a)</span> 1
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="B">
+<span class="option-label">(b)</span> 19
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="C">
+<span class="option-label">(c)</span> 20
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="D">
+<span class="option-label">(d)</span> 18
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(10)">
+💡 Show Correct Answer
+</button>
+</div>
+
+</div>
+
+<!-- ANSWER KEY SECTION -->
+<div class="container" id="answerkey">
+<h2 class="section-title">🔑 MCQ Answer Key</h2>
+<div class="card">
+<div class="answer-grid">
+<div class="answer-item">1. D</div>
+<div class="answer-item">2. B</div>
+<div class="answer-item">3. B</div>
+<div class="answer-item">4. B</div>
+<div class="answer-item">5. A</div>
+<div class="answer-item">6. A</div>
+<div class="answer-item">7. B</div>
+<div class="answer-item">8. C</div>
+<div class="answer-item">9. B</div>
+<div class="answer-item">10. D</div>
+</div>
+</div>
+</div>
+
+<!-- THEME TOGGLE -->
+<button id="themeToggle">🎨</button>
+
+<!-- BACK TO TOP (MOVED TO LEFT SIDE) -->
+<button id="backToTop" title="Back to top">↑</button>
+
+<!-- THEME PANEL -->
+<div id="themePanel" class="hidden">
+<div class="theme-panel-title">🎨 Choose Theme</div>
+<button class="theme-btn" onclick="applyTheme('blue')">💙 Blue</button>
+<button class="theme-btn" onclick="applyTheme('sepia')">📜 Sepia</button>
+<button class="theme-btn" onclick="applyTheme('green')">🌿 Green</button>
+<button class="theme-btn" onclick="applyTheme('yellow')">⚡ Yellow Neon</button>
+<button class="theme-btn" onclick="applyTheme('blackwhite')">⚫ Black & White</button>
+<button class="theme-btn" onclick="applyTheme('dark')">🌙 Dark Mode</button>
+</div>
+
+<script>
+// Theme Definitions
+const themes = {
+blue: {
+bgPrimary: '#f0f4f8',
+bgCard: '#ffffff',
+colorPrimary: '#3498db',
+colorAccent: '#2ecc71',
+colorText: '#2c3e50',
+colorMuted: '#6c757d',
+borderColor: '#dee2e6',
+shadow: 'rgba(0, 0, 0, 0.1)'
+},
+sepia: {
+bgPrimary: '#f4f1e8',
+bgCard: '#fefcf5',
+colorPrimary: '#8b7355',
+colorAccent: '#a1887f',
+colorText: '#3e2723',
+colorMuted: '#795548',
+borderColor: '#d7ccc8',
+shadow: 'rgba(101, 67, 33, 0.15)'
+},
+green: {
+bgPrimary: '#e8f5e9',
+bgCard: '#ffffff',
+colorPrimary: '#2e7d32',
+colorAccent: '#66bb6a',
+colorText: '#1b5e20',
+colorMuted: '#558b2f',
+borderColor: '#d7ccc8',
+shadow: 'rgba(46, 125, 50, 0.15)'
+},
+yellow: {
+bgPrimary: '#fffde7',
+bgCard: '#ffffff',
+colorPrimary: '#f9a825',
+colorAccent: '#ffd54f',
+colorText: '#f57f17',
+colorMuted: '#fbc02d',
+borderColor: '#fff9c4',
+shadow: 'rgba(249, 168, 37, 0.2)'
+},
+blackwhite: {
+bgPrimary: '#ffffff',
+bgCard: '#f8f9fa',
+colorPrimary: '#000000',
+colorAccent: '#495057',
+colorText: '#000000',
+colorMuted: '#495057',
+borderColor: '#dee2e6',
+shadow: 'rgba(0, 0, 0, 0.15)'
+},
+dark: {
+bgPrimary: '#1a1a1a',
+bgCard: '#2d2d2d',
+colorPrimary: '#60a5fa',
+colorAccent: '#34d399',
+colorText: '#e5e7eb',
+colorMuted: '#9ca3af',
+borderColor: '#404040',
+shadow: 'rgba(0, 0, 0, 0.5)'
+}
+};
+
+// Inactivity Timer Variables
+let inactivityTimer;
+const INACTIVITY_TIMEOUT = 3000; // 3 seconds
+
+// Reset Inactivity Timer
+function resetInactivityTimer() {
+clearTimeout(inactivityTimer);
+showFloatingButtons();
+inactivityTimer = setTimeout(() => {
+hideFloatingButtons();
+}, INACTIVITY_TIMEOUT);
+}
+
+// Show Floating Buttons
+function showFloatingButtons() {
+const themeToggle = document.getElementById('themeToggle');
+const backToTop = document.getElementById('backToTop');
+const jumpToggle = document.getElementById('jumpToggle');
+if (themeToggle) {
+themeToggle.classList.remove('hidden');
+}
+if (backToTop && backToTop.classList.contains('visible')) {
+backToTop.classList.remove('hidden');
+}
+if (jumpToggle) {
+jumpToggle.classList.remove('hidden');
+}
+}
+
+// Hide Floating Buttons
+function hideFloatingButtons() {
+const themeToggle = document.getElementById('themeToggle');
+const backToTop = document.getElementById('backToTop');
+const themePanel = document.getElementById('themePanel');
+const jumpToggle = document.getElementById('jumpToggle');
+if (themeToggle) {
+themeToggle.classList.add('hidden');
+}
+if (backToTop) {
+backToTop.classList.add('hidden');
+}
+if (themePanel) {
+themePanel.classList.add('hidden');
+}
+if (jumpToggle) {
+jumpToggle.classList.add('hidden');
+}
+}
+
+// Setup Activity Listeners
+function setupActivityListeners() {
+const activityEvents = ['mousemove', 'mousedown', 'keypress', 'scroll', 'touchstart', 'click', 'touchmove'];
+activityEvents.forEach(eventName => {
+document.addEventListener(eventName, resetInactivityTimer);
+});
+resetInactivityTimer();
+}
+
+// Apply Theme Function
+function applyTheme(themeName) {
+const theme = themes[themeName];
+if (!theme) return;
+const root = document.documentElement;
+root.style.setProperty('--bg-primary', theme.bgPrimary);
+root.style.setProperty('--bg-card', theme.bgCard);
+root.style.setProperty('--color-primary', theme.colorPrimary);
+root.style.setProperty('--color-accent', theme.colorAccent);
+root.style.setProperty('--color-text', theme.colorText);
+root.style.setProperty('--color-muted', theme.colorMuted);
+root.style.setProperty('--border-color', theme.borderColor);
+root.style.setProperty('--shadow', theme.shadow);
+document.documentElement.setAttribute('data-theme', themeName);
+// Update floating button colors to match theme
+updateButtonColors(theme);
+localStorage.setItem('mathNotesTheme', themeName);
+const panel = document.getElementById('themePanel');
+if (panel) panel.classList.add('hidden');
+resetInactivityTimer();
+}
+
+// Function to update button colors
+function updateButtonColors(theme) {
+const toggleBtn = document.getElementById('themeToggle');
+const backToTopBtn = document.getElementById('backToTop');
+const jumpToggleBtn = document.getElementById('jumpToggle');
+if (toggleBtn) {
+toggleBtn.style.backgroundColor = theme.colorPrimary;
+toggleBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+if (backToTopBtn) {
+backToTopBtn.style.backgroundColor = theme.colorPrimary;
+backToTopBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+if (jumpToggleBtn) {
+jumpToggleBtn.style.backgroundColor = theme.colorPrimary;
+jumpToggleBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+}
+
+// Toggle Jump Navigation
+function toggleJumpNav() {
+const nav = document.getElementById('jumpToNav');
+if (!nav) return;
+if (nav.classList.contains('hidden')) {
+nav.classList.remove('hidden');
+nav.style.display = 'block';
+setTimeout(() => {
+nav.style.transform = 'translateX(0)';
+nav.style.opacity = '1';
+nav.style.visibility = 'visible';
+}, 10);
+} else {
+nav.style.transform = 'translateX(-100%)';
+nav.style.opacity = '0';
+nav.style.visibility = 'hidden';
+setTimeout(() => {
+nav.classList.add('hidden');
+}, 300);
+}
+resetInactivityTimer();
+}
+
+// Close Jump Navigation
+function closeJumpNav() {
+const nav = document.getElementById('jumpToNav');
+if (!nav) return;
+nav.style.transform = 'translateX(-100%)';
+nav.style.opacity = '0';
+nav.style.visibility = 'hidden';
+setTimeout(() => {
+nav.classList.add('hidden');
+}, 300);
+resetInactivityTimer();
+}
+
+// Toggle Solution Function
+function toggleSolution(id) {
+const solutionContent = document.getElementById(id);
+if (!solutionContent) return;
+const button = event.currentTarget;
+const icon = button.querySelector('.toggle-icon');
+const text = button.querySelector('.toggle-text');
+if (solutionContent.classList.contains('hidden')) {
+solutionContent.classList.remove('hidden');
+solutionContent.classList.add('open');
+if (icon) icon.textContent = '▼';
+if (text) text.textContent = 'Hide Solution';
+} else {
+solutionContent.classList.add('hidden');
+solutionContent.classList.remove('open');
+if (icon) icon.textContent = '▶';
+if (text) text.textContent = 'Show Solution';
+}
+if (typeof MathJax !== 'undefined') {
+setTimeout(() => {
+MathJax.typesetPromise([solutionContent]).catch((err) => console.log(err));
+}, 100);
+}
+resetInactivityTimer();
+}
+
+// Correct Answers for MCQs
+const correctAnswers = {
+1: 'D',
+2: 'B',
+3: 'B',
+4: 'B',
+5: 'A',
+6: 'A',
+7: 'B',
+8: 'C',
+9: 'B',
+10: 'D'
+};
+
+// MCQ Answer Checking
+function checkAnswer(qNum, selected, optionElement) {
+const container = optionElement.closest('.mcq-container');
+const allOptions = container.querySelectorAll('.mcq-option');
+const showBtn = container.querySelector('.show-correct-btn');
+const correct = correctAnswers[qNum];
+allOptions.forEach(opt => {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '';
+opt.classList.remove('correct', 'incorrect');
+});
+if (selected === correct) {
+const resultSpan = optionElement.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '✅';
+optionElement.classList.add('correct');
+if (showBtn) showBtn.classList.add('hidden');
+} else {
+const resultSpan = optionElement.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '❌';
+optionElement.classList.add('incorrect');
+if (showBtn) showBtn.classList.remove('hidden');
+}
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise([container]).catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Show Correct Answer
+function showCorrect(qNum) {
+const correct = correctAnswers[qNum];
+const containers = document.querySelectorAll('.mcq-container');
+containers.forEach(container => {
+const options = container.querySelectorAll('.mcq-option');
+options.forEach(opt => {
+if (opt.dataset.question == qNum && opt.dataset.option === correct) {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '✅ (Correct Answer)';
+opt.classList.add('correct');
+opt.classList.remove('incorrect');
+}
+});
+});
+const showBtn = document.querySelector(`.mcq-container [data-question="${qNum}"]`)?.closest('.mcq-container')?.querySelector('.show-correct-btn');
+if (showBtn) showBtn.classList.add('hidden');
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => consolelog(err));
+}
+resetInactivityTimer();
+}
+
+// Reset All MCQs
+function resetMCQs() {
+document.querySelectorAll('.mcq-option').forEach(opt => {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '';
+opt.classList.remove('correct', 'incorrect');
+});
+document.querySelectorAll('.show-correct-btn').forEach(btn => {
+btn.classList.add('hidden');
+});
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Back to Top Functionality
+function handleBackToTop() {
+const backToTopBtn = document.getElementById('backToTop');
+if (!backToTopBtn) return;
+window.addEventListener('scroll', () => {
+if (window.scrollY > 300) {
+backToTopBtn.classList.add('visible');
+backToTopBtn.classList.remove('hidden');
+} else {
+backToTopBtn.classList.remove('visible');
+}
+});
+backToTopBtn.addEventListener('click', () => {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+resetInactivityTimer();
+});
+}
+
+// Initialize on Page Load
+document.addEventListener('DOMContentLoaded', function() {
+// Load saved theme
+const savedTheme = localStorage.getItem('mathNotesTheme') || 'blue';
+applyTheme(savedTheme);
+
+// Setup inactivity timer
+setupActivityListeners();
+
+// Force initial button colors (in case applyTheme doesn't trigger properly)
+setTimeout(() => {
+const theme = themes[savedTheme];
+updateButtonColors(theme);
+}, 100);
+
+// Show All Solutions Button
+const showAllBtn = document.getElementById("showAllBtn");
+if (showAllBtn) {
+showAllBtn.addEventListener("click", () => {
+const solutions = document.querySelectorAll(".solution-content");
+const toggles = document.querySelectorAll(".solution-toggle");
+const shouldOpen = showAllBtn.innerText.includes("Show");
+solutions.forEach(sol => {
+sol.classList.toggle("hidden", !shouldOpen);
+sol.classList.toggle("open", shouldOpen);
+});
+toggles.forEach(btn => {
+const text = btn.querySelector(".toggle-text");
+const icon = btn.querySelector(".toggle-icon");
+if (text && icon) {
+text.innerText = shouldOpen ? "Hide Solution" : "Show Solution";
+icon.innerText = shouldOpen ? "▼" : "▶";
+}
+});
+showAllBtn.innerText = shouldOpen ? "Hide All Solutions" : "Show All Solutions";
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+});
+}
+
+// MCQ Event Listeners
+document.querySelectorAll('.mcq-option').forEach(option => {
+option.addEventListener('click', function() {
+const question = this.dataset.question;
+const selected = this.dataset.option;
+checkAnswer(question, selected, this);
+});
+});
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+themeToggle.addEventListener('click', function(e) {
+e.stopPropagation();
+const panel = document.getElementById('themePanel');
+if (panel) {
+panel.classList.toggle('hidden');
+}
+resetInactivityTimer();
+});
+}
+
+// Jump Navigation Toggle
+const jumpToggle = document.getElementById('jumpToggle');
+if (jumpToggle) {
+jumpToggle.addEventListener('click', function(e) {
+e.stopPropagation();
+toggleJumpNav();
+});
+}
+
+// Close Jump Navigation
+const closeJumpBtn = document.querySelector('.jump-nav-close');
+if (closeJumpBtn) {
+closeJumpBtn.addEventListener('click', function(e) {
+e.stopPropagation();
+closeJumpNav();
+});
+}
+
+// Close panels when clicking outside
+document.addEventListener('click', function(e) {
+const panel = document.getElementById('themePanel');
+const toggle = document.getElementById('themeToggle');
+const nav = document.getElementById('jumpToNav');
+const jumpBtn = document.getElementById('jumpToggle');
+if (panel && toggle && !panel.contains(e.target) && !toggle.contains(e.target)) {
+panel.classList.add('hidden');
+}
+if (nav && jumpBtn && !nav.contains(e.target) && !jumpBtn.contains(e.target)) {
+closeJumpNav();
+}
+});
+
+// Jump Navigation Links
+document.querySelectorAll('.jump-nav-link').forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 20,
+behavior: 'smooth'
+});
+closeJumpNav();
+}
+resetInactivityTimer();
+});
+});
+
+// Initialize Back to Top
+handleBackToTop();
+
+// Print handling
+window.addEventListener('beforeprint', function() {
+document.querySelectorAll('.solution-content').forEach(s => {
+s.classList.remove('hidden');
+s.classList.add('open');
+});
+});
+
+// Ensure everything fits on mobile
+function ensureMobileFit() {
+if (window.innerWidth <= 768) {
+// Ensure all elements have proper width constraints
+document.querySelectorAll('.card, .question-item, .mcq-container').forEach(el => {
+el.style.maxWidth = '100%';
+el.style.overflow = 'hidden';
+});
+}
+}
+
+// Call on load and resize
+ensureMobileFit();
+window.addEventListener('resize', ensureMobileFit);
+});
+
+// Prevent default touch behavior that might cause issues
+document.addEventListener('touchstart', function(e) {
+if (e.touches.length > 1) {
+e.preventDefault();
+}
+}, { passive: false });
+</script>
+</body>
+</html>
+
