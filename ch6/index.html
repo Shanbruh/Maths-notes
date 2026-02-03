@@ -1,0 +1,3037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6: Permutation, Combination and Probability - Math Notes | Guess Paper</title>
+<!-- Google Fonts for Bismillah -->
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Tailwind CSS Browser Build v4 -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<!-- MathJax Configuration -->
+<script>
+MathJax = {
+tex: {
+inlineMath: [['\\(','\\)']],
+displayMath: [['\\[','\\]']],
+processEscapes: true
+},
+svg: { fontCache: 'global' }
+};
+</script>
+<!-- MathJax v3 -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+/* Theme Variables */
+:root {
+--bg-primary: #f0f4f8;
+--bg-card: #ffffff;
+--color-primary: #3498db;
+--color-accent: #2ecc71;
+--color-text: #2c3e50;
+--color-muted: #6c757d;
+--border-color: #dee2e6;
+--shadow: rgba(0,0,0,0.1);
+}
+[data-theme="sepia"] {
+--bg-primary: #f4f1e8;
+--bg-card: #fefcf5;
+--color-primary: #8b7355;
+--color-accent: #a1887f;
+--color-text: #3e2723;
+--color-muted: #795548;
+--border-color: #d7ccc8;
+--shadow: rgba(101, 67, 33, 0.15);
+}
+[data-theme="green"] {
+--bg-primary: #e8f5e9;
+--bg-card: #ffffff;
+--color-primary: #2e7d32;
+--color-accent: #66bb6a;
+--color-text: #1b5e20;
+--color-muted: #558b2f;
+--border-color: #d7ccc8;
+--shadow: rgba(46, 125, 50, 0.15);
+}
+[data-theme="yellow"] {
+--bg-primary: #fffde7;
+--bg-card: #ffffff;
+--color-primary: #f9a825;
+--color-accent: #ffd54f;
+--color-text: #f57f17;
+--color-muted: #fbc02d;
+--border-color: #fff9c4;
+--shadow: rgba(249, 168, 37, 0.2);
+}
+[data-theme="blackwhite"] {
+--bg-primary: #ffffff;
+--bg-card: #f8f9fa;
+--color-primary: #000000;
+--color-accent: #495057;
+--color-text: #000000;
+--color-muted: #495057;
+--border-color: #dee2e6;
+--shadow: rgba(0, 0, 0, 0.15);
+}
+[data-theme="dark"] {
+--bg-primary: #1a1a1a;
+--bg-card: #2d2d2d;
+--color-primary: #60a5fa;
+--color-accent: #34d399;
+--color-text: #e5e7eb;
+--color-muted: #9ca3af;
+--border-color: #404040;
+--shadow: rgba(0, 0, 0, 0.5);
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+background-color: var(--bg-primary);
+color: var(--color-text);
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+line-height: 1.6;
+transition: background-color 0.3s ease, color 0.3s ease;
+max-width: 100vw;
+overflow-x: hidden;
+position: relative;
+}
+/* Bismillah Header */
+.bismillah-header {
+background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+color: white;
+padding: 2rem 1rem;
+text-align: center;
+margin-bottom: 2rem;
+border-radius: 0 0 1rem 1rem;
+box-shadow: 0 4px 12px var(--shadow);
+width: 100%;
+max-width: 100vw;
+}
+.bismillah-arabic {
+font-family: 'Amiri', serif;
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+line-height: 1.3;
+word-wrap: break-word;
+}
+.bismillah-translation {
+font-size: 1.1rem;
+opacity: 0.9;
+max-width: 600px;
+margin: 0 auto;
+font-weight: 300;
+}
+.chapter-title {
+font-size: 2.5rem;
+font-weight: bold;
+color: var(--color-primary);
+text-align: center;
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+padding: 0 1rem;
+}
+.chapter-subtitle {
+font-size: 1.2rem;
+color: var(--color-muted);
+text-align: center;
+margin-bottom: 2rem;
+font-weight: 300;
+padding: 0 1rem;
+}
+.container {
+max-width: 56rem;
+margin: 0 auto;
+padding: 2rem 1rem;
+width: 100%;
+box-sizing: border-box;
+}
+/* Card Component */
+.card {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1.5rem;
+margin-bottom: 2rem;
+box-shadow: 0 4px 6px var(--shadow);
+transition: all 0.3s ease;
+width: 100%;
+box-sizing: border-box;
+overflow: visible;
+}
+/* Typography */
+.main-title {
+font-size: 2.25rem;
+font-weight: bold;
+color: var(--color-primary);
+text-align: center;
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+}
+.subtitle {
+font-size: 1.25rem;
+color: var(--color-muted);
+text-align: center;
+margin-bottom: 2rem;
+}
+.section-title {
+font-size: 1.875rem;
+font-weight: bold;
+color: var(--color-primary);
+margin-bottom: 1rem;
+word-wrap: break-word;
+}
+.subsection-title {
+font-size: 1.25rem;
+font-weight: 600;
+color: var(--color-primary);
+margin-bottom: 1rem;
+margin-top: 1.5rem;
+word-wrap: break-word;
+}
+/* Question Item */
+.question-item {
+margin-bottom: 1.5rem;
+border-left: 4px solid var(--color-primary);
+padding-left: 1rem;
+width: 100%;
+box-sizing: border-box;
+}
+
+/* Solution Toggle Button */
+.solution-toggle {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+background-color: transparent;
+border: 1px solid var(--color-primary);
+color: var(--color-primary);
+border-radius: 0.375rem;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+font-weight: 500;
+margin-top: 0.5rem;
+}
+.solution-toggle:hover {
+background-color: var(--color-primary);
+color: white;
+transform: translateY(-1px);
+box-shadow: 0 2px 4px var(--shadow);
+}
+.toggle-icon {
+transition: transform 0.2s ease;
+font-size: 0.75rem;
+}
+/* Solution Container - HORIZONTAL SCROLLABLE AS WHOLE */
+.solution {
+margin-top: 0.75rem;
+width: 100%;
+box-sizing: border-box;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.solution-content {
+padding: 1rem;
+background-color: rgba(0,0,0,0.02);
+border-left: 3px solid var(--color-primary);
+border-radius: 0.25rem;
+line-height: 1.8;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+opacity: 0;
+min-width: max-content;
+box-sizing: border-box;
+}
+.solution-content.hidden {
+max-height: 0;
+padding-top: 0;
+padding-bottom: 0;
+opacity: 0;
+}
+.solution-content.open {
+max-height: 500px;
+overflow-y: auto !important;
+overflow-x: visible !important;
+opacity: 1;
+-webkit-overflow-scrolling: touch;
+}
+
+/* MCQ Styles */
+.mcq-container {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1.25rem;
+margin-bottom: 1.5rem;
+transition: all 0.3s ease;
+width: 100%;
+box-sizing: border-box;
+overflow: hidden;
+}
+.mcq-question {
+font-size: 1rem;
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+width: 100%;
+box-sizing: border-box;
+word-wrap: break-word;
+}
+.mcq-number {
+color: var(--color-primary);
+margin-right: 0.5rem;
+}
+.mcq-options {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+margin-top: 0.75rem;
+width: 100%;
+}
+.mcq-option {
+padding: 0.75rem 1rem;
+border: 1px solid var(--border-color);
+border-radius: 0.375rem;
+cursor: pointer;
+transition: all 0.2s ease;
+background-color: var(--bg-card);
+display: flex;
+align-items: center;
+width: 100%;
+box-sizing: border-box;
+}
+.mcq-option:hover {
+background-color: rgba(0,0,0,0.03);
+border-color: var(--color-primary);
+transform: translateX(4px);
+}
+.mcq-option.correct {
+background-color: rgba(76,175,80,0.1);
+border-color: #4caf50;
+}
+.mcq-option.incorrect {
+background-color: rgba(244,67,54,0.1);
+border-color: #f44336;
+}
+.option-label {
+font-weight: 600;
+margin-right: 0.5rem;
+color: var(--color-primary);
+flex-shrink: 0;
+}
+.mcq-result {
+margin-left: auto;
+font-size: 1.25rem;
+}
+.show-correct-btn {
+margin-top: 0.75rem;
+padding: 0.5rem 1rem;
+background-color: var(--color-primary);
+color: white;
+border: none;
+border-radius: 0.375rem;
+cursor: pointer;
+font-size: 0.875rem;
+transition: all 0.2s ease;
+width: 100%;
+box-sizing: border-box;
+}
+.show-correct-btn:hover {
+opacity: 0.9;
+transform: translateY(-1px);
+box-shadow: 0 2px 4px var(--shadow);
+}
+.show-correct-btn.hidden {
+display: none;
+}
+
+/* Theme Toggle System */
+/* moved floating controls to left side */
+#themeToggle {
+position: fixed;
+bottom: 2rem;
+left: 2rem;
+width: 3.5rem;
+height: 3.5rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 1;
+visibility: visible;
+}
+#themeToggle.hidden {
+opacity: 0;
+visibility: hidden;
+}
+#themeToggle:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 16px var(--shadow);
+}
+#themePanel {
+position: fixed;
+bottom: 6rem;
+left: 2rem;
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1rem;
+box-shadow: 0 8px 24px var(--shadow);
+z-index: 1001;
+min-width: 200px;
+transition: all 0.2s ease;
+opacity: 1;
+visibility: visible;
+}
+#themePanel.hidden {
+display: none;
+opacity: 0;
+visibility: hidden;
+}
+.theme-panel-title {
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+font-size: 0.875rem;
+}
+.theme-btn {
+display: block;
+width: 100%;
+padding: 0.75rem 1rem;
+margin-bottom: 0.5rem;
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+background-color: var(--bg-card);
+color: var(--color-text);
+text-align: left;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+}
+.theme-btn:last-child {
+margin-bottom: 0;
+}
+.theme-btn:hover {
+background-color: rgba(0,0,0,0.05);
+transform: scale(1.05);
+border-color: var(--color-primary);
+}
+
+/* Back to Top Button - POSITIONED LEFT SIDE (mirrored) */
+#backToTop {
+position: fixed;
+bottom: 2rem;
+left: 6.5rem;
+width: 3rem;
+height: 3rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.25rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 999;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0;
+visibility: hidden;
+transform: translateY(20px);
+}
+#backToTop.visible {
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
+}
+#backToTop.hidden {
+opacity: 0 !important;
+visibility: hidden !important;
+}
+#backToTop:hover {
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* JUMP-TO NAVIGATION */
+#jumpToNav {
+position: fixed;
+top: 2rem;
+left: 2rem;
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1rem;
+box-shadow: 0 4px 12px var(--shadow);
+z-index: 1002;
+min-width: 200px;
+max-height: 70vh;
+overflow-y: auto;
+transition: all 0.3s ease;
+opacity: 1;
+visibility: visible;
+}
+#jumpToNav.hidden {
+transform: translateX(-100%);
+opacity: 0;
+visibility: hidden;
+}
+.jump-nav-title {
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+font-size: 1rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.jump-nav-close {
+background: none;
+border: none;
+color: var(--color-muted);
+cursor: pointer;
+font-size: 1.25rem;
+padding: 0;
+width: 24px;
+height: 24px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+}
+.jump-nav-close:hover {
+background-color: rgba(0,0,0,0.05);
+}
+.jump-nav-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.jump-nav-item {
+margin-bottom: 0.5rem;
+}
+.jump-nav-link {
+display: block;
+padding: 0.5rem 0.75rem;
+color: var(--color-text);
+text-decoration: none;
+border-radius: 0.375rem;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+}
+.jump-nav-link:hover {
+background-color: rgba(0,0,0,0.05);
+color: var(--color-primary);
+transform: translateX(4px);
+}
+#jumpToggle {
+position: fixed;
+top: 2rem;
+left: 2rem;
+width: 3.5rem;
+height: 3.5rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 999;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 1;
+visibility: visible;
+}
+#jumpToggle.hidden {
+opacity: 0;
+visibility: hidden;
+}
+#jumpToggle:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* Formula Table with HORIZONTAL SCROLLING - WHOLE TABLE SCROLLS */
+.formula-table {
+width: 100%;
+max-width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+display: block;
+margin-bottom: 1rem;
+border: 1px solid var(--border-color);
+border-radius: 0.375rem;
+}
+.formula-table table {
+width: max-content;
+min-width: 100%;
+border-collapse: collapse;
+margin: 0;
+}
+.formula-table thead {
+background-color: var(--color-primary);
+color: white;
+position: sticky;
+top: 0;
+z-index: 10;
+}
+.formula-table th,
+.formula-table td {
+padding: 0.75rem 1rem;
+text-align: left;
+border-bottom: 1px solid var(--border-color);
+white-space: nowrap;
+min-width: 200px;
+}
+.formula-table tbody tr:nth-child(even) {
+background-color: rgba(0,0,0,0.02);
+}
+.formula-table tbody tr:hover {
+background-color: rgba(0,0,0,0.04);
+}
+
+/* Definitions List */
+.definitions-list {
+list-style-type: disc;
+list-style-position: inside;
+line-height: 2;
+width: 100%;
+}
+.definitions-list li {
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+}
+.definitions-list strong {
+color: var(--color-primary);
+}
+
+/* Answer Grid */
+.answer-grid {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 0.75rem;
+width: 100%;
+}
+.answer-item {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+padding: 0.75rem;
+border-radius: 0.375rem;
+text-align: center;
+font-family: 'Courier New', monospace;
+font-weight: 600;
+word-break: break-all;
+}
+
+/* Reset Button */
+.reset-btn {
+padding: 0.5rem 1.5rem;
+background-color: var(--color-primary);
+color: white;
+border: none;
+border-radius: 0.5rem;
+cursor: pointer;
+font-weight: 600;
+transition: all 0.2s ease;
+margin-bottom: 1.5rem;
+display: inline-block;
+}
+.reset-btn:hover {
+transform: scale(1.05);
+opacity: 0.9;
+box-shadow: 0 2px 4px var(--shadow);
+}
+
+/* Print Note */
+.print-note {
+font-size: 0.875rem;
+color: var(--color-muted);
+margin-bottom: 1rem;
+}
+
+/* Utility Classes */
+.hidden {
+display: none !important;
+}
+.text-primary {
+color: var(--color-primary);
+}
+.text-muted {
+color: var(--color-muted);
+}
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+body {
+overflow-x: hidden;
+width: 100vw;
+}
+.bismillah-arabic {
+font-size: 2rem;
+}
+.chapter-title {
+font-size: 2rem;
+padding: 0 0.5rem;
+}
+.main-title {
+font-size: 2rem;
+}
+.section-title {
+font-size: 1.5rem;
+}
+.subsection-title {
+font-size: 1.125rem;
+}
+.formula-table {
+font-size: 0.875rem;
+}
+#themePanel {
+left: 1rem;
+bottom: 5rem;
+}
+#themeToggle {
+width: 3rem;
+height: 3rem;
+bottom: 1rem;
+left: 1rem;
+}
+#backToTop {
+left: 5rem;
+bottom: 1rem;
+width: 2.5rem;
+height: 2.5rem;
+}
+#jumpToNav {
+left: 1rem;
+top: 1rem;
+max-width: calc(100vw - 2rem);
+}
+/* MOBILE SCROLLING FOR SOLUTIONS */
+.solution-content.open {
+max-height: 400px;
+overflow: auto !important;
+-webkit-overflow-scrolling: touch !important;
+}
+.card {
+padding: 1rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.question-item {
+padding-left: 0.75rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.mcq-container {
+padding: 1rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.mcq-option {
+padding: 0.5rem 0.75rem;
+}
+}
+@media (max-width: 640px) {
+.bismillah-arabic {
+font-size: 1.75rem;
+}
+.chapter-title {
+font-size: 1.75rem;
+}
+.main-title {
+font-size: 1.75rem;
+}
+.answer-grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 0.5rem;
+}
+.answer-item {
+padding: 0.5rem;
+font-size: 0.875rem;
+}
+.formula-table table {
+min-width: 500px;
+}
+}
+@media (max-width: 480px) {
+.bismillah-arabic {
+font-size: 1.5rem;
+}
+.chapter-title {
+font-size: 1.5rem;
+}
+.section-title {
+font-size: 1.25rem;
+}
+.container {
+padding: 1rem 0.25rem;
+}
+.card {
+padding: 0.75rem;
+margin: 0 0.25rem 1rem 0.25rem;
+width: calc(100% - 0.5rem);
+}
+.formula-table table {
+min-width: 400px;
+}
+}
+
+/* Print Styles */
+@media print {
+.bismillah-header {
+background: white !important;
+color: black !important;
+box-shadow: none !important;
+}
+.bismillah-arabic {
+font-size: 1.5rem;
+color: black !important;
+}
+.solution-toggle,
+.show-correct-btn,
+.reset-btn,
+#themeToggle,
+#themePanel,
+#backToTop,
+#jumpToggle,
+#jumpToNav,
+.print-note {
+display: none !important;
+}
+.solution-content {
+display: block !important;
+max-height: none !important;
+padding: 1rem !important;
+opacity: 1 !important;
+overflow: visible !important;
+}
+.solution-content.hidden {
+display: block !important;
+max-height: none !important;
+opacity: 1 !important;
+}
+.mcq-container {
+page-break-inside: avoid;
+overflow: visible !important;
+}
+.question-item {
+page-break-inside: avoid;
+}
+h1, h2, h3 {
+page-break-after: avoid;
+}
+* {
+box-shadow: none !important;
+}
+.theme-btn {
+display: none !important;
+}
+.formula-table {
+overflow: visible !important;
+}
+.formula-table table {
+min-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<!-- BISMILLAH HEADER -->
+<div class="bismillah-header">
+<div class="bismillah-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+<div class="bismillah-translation">In the name of Allah, the Most Gracious, the Most Merciful</div>
+</div>
+
+<!-- JUMP-TO NAVIGATION -->
+<button id="jumpToggle">🔍</button>
+<div id="jumpToNav" class="hidden">
+<div class="jump-nav-title">
+<span>📚 Jump to Section</span>
+<button class="jump-nav-close">&times;</button>
+</div>
+<ul class="jump-nav-list">
+<li class="jump-nav-item"><a href="#definitions" class="jump-nav-link">📚 Core Definitions</a></li>
+<li class="jump-nav-item"><a href="#formulas" class="jump-nav-link">🧮 Essential Formulas</a></li>
+<li class="jump-nav-item"><a href="#questions" class="jump-nav-link">✍️ Guess-Paper Questions</a></li>
+<li class="jump-nav-item"><a href="#mcqs" class="jump-nav-link">❓ Multiple Choice Questions</a></li>
+<li class="jump-nav-item"><a href="#answerkey" class="jump-nav-link">🔑 MCQ Answer Key</a></li>
+</ul>
+</div>
+
+<!-- CHAPTER HEADER -->
+<div class="container">
+<h1 class="chapter-title">Chapter 6: Permutation, Combination and Probability</h1>
+<p class="chapter-subtitle">Unit 6: Complete Solved Notes</p>
+</div>
+
+<!-- DEFINITIONS SECTION -->
+<div class="container" id="definitions">
+<h2 class="section-title">📚 Core Definitions</h2>
+<div class="card">
+<ul class="definitions-list">
+<li><strong>Factorial:</strong> The product of all positive integers less than or equal to \( n \), denoted by \( n! \).</li>
+<li><strong>Permutation:</strong> An arrangement of all or part of a set of objects, with regard to the order of the arrangement.</li>
+<li><strong>Combination:</strong> A selection of items from a larger pool where order does not matter.</li>
+<li><strong>Probability:</strong> The likelihood of an event occurring, calculated as \( P(E) = \frac{n(E)}{n(S)} \).</li>
+<li><strong>Mutually Exclusive Events:</strong> Events that cannot occur simultaneously.</li>
+<li><strong>Independent Events:</strong> Events where the occurrence of one does not affect the occurrence of the other.</li>
+<li><strong>Sample Space:</strong> The set of all possible outcomes of an experiment.</li>
+<li><strong>Event:</strong> A subset of the sample space.</li>
+<li><strong>Circular Permutation:</strong> The number of ways to arrange \( n \) distinct objects in a circle, given by \( (n-1)! \).</li>
+<li><strong>Conditional Probability:</strong> The probability of an event \( B \) given that event \( A \) has already occurred, denoted by \( P(B|A) \).</li>
+</ul>
+</div>
+</div>
+
+<!-- FORMULAS SECTION -->
+<div class="container" id="formulas">
+<h2 class="section-title">🧮 Essential Formulas</h2>
+<div class="card">
+<!-- FORMULA TABLE WITH SCROLLING CONTAINER -->
+<div class="formula-table">
+<table>
+<thead>
+<tr>
+<th>Formula Name</th>
+<th>Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Factorial</td><td>\( n! = n \times (n-1) \times (n-2) \times \dots \times 1 \)</td></tr>
+<tr><td>Permutation</td><td>\( ^nP_r = \frac{n!}{(n-r)!} \)</td></tr>
+<tr><td>Combination</td><td>\( ^nC_r = \frac{n!}{r!(n-r)!} \)</td></tr>
+<tr><td>Circular Permutation</td><td>\( (n-1)! \)</td></tr>
+<tr><td>Probability</td><td>\( P(E) = \frac{n(E)}{n(S)} \)</td></tr>
+<tr><td>Conditional Probability</td><td>\( P(B|A) = \frac{P(A \cap B)}{P(A)} \)</td></tr>
+<tr><td>Addition Law of Probability</td><td>\( P(A \cup B) = P(A) + P(B) - P(A \cap B) \)</td></tr>
+<tr><td>Multiplication Law of Probability</td><td>\( P(A \cap B) = P(A) \cdot P(B|A) \)</td></tr>
+<tr><td>Pascal's Rule</td><td>\( \binom{n}{r-1} + \binom{n}{r} = \binom{n+1}{r} \)</td></tr>
+<tr><td>Complementary Events</td><td>\( P(A) + P(A') = 1 \)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- GUESS-PAPER QUESTIONS SECTION -->
+<div class="container" id="questions">
+<h2 class="section-title">✍️ Guess-Paper Questions (Solved)</h2>
+<button id="showAllBtn" class="solution-toggle mb-4">
+<span class="toggle-text">Show All Solutions</span>
+</button>
+
+<!-- Exercise 6.1 -->
+<h3 class="subsection-title">📝 Exercise 6.1</h3>
+
+<!-- Q1 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1.</span>
+<span>Evaluate the following:<br>(i) \(4!\)<br>(ii) \(6!\)<br>(iii) \(\frac{8!}{5!}\)<br>(iv) \(\frac{10!}{7!}\)<br>(v) \(5! \times 7! \times 3!\)<br>(vi) \(10! \div 8! + 5!\)<br>(vii) \(\frac{16!}{8! 12!}\)<br>(viii) \(\frac{(9!)^2}{(5!)^3 \times 7!}\)<br>(ix) \(\frac{9!}{2! \times (9-2)!}\)</span>
+</div>
+<button onclick="toggleSolution('ex61-q1')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex61-q1" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(4! = 4 \times 3 \times 2 \times 1 = 24\) ✅ Answer: \(\boxed{24}\)</p>
+<p>(ii) \(6! = 6 \times 5 \times 4 \times 3 \times 2 \times 1 = 720\) ✅ Answer: \(\boxed{720}\)</p>
+<p>(iii) \(\frac{8!}{5!} = \frac{8 \times 7 \times 6 \times 5!}{5!} = 8 \times 7 \times 6 = 336\) ✅ Answer: \(\boxed{336}\)</p>
+<p>(iv) \(\frac{10!}{7!} = \frac{10 \times 9 \times 8 \times 7!}{7!} = 10 \times 9 \times 8 = 720\) ✅ Answer: \(\boxed{720}\)</p>
+<p>(v) \(5! \times 7! \times 3! = 120 \times 5040 \times 6 = 3628800\) ✅ Answer: \(\boxed{3628800}\)</p>
+<p>(vi) \(10! \div 8! + 5! = \frac{10!}{8!} + 5! = 10 \times 9 + 120 = 90 + 120 = 210\) ✅ Answer: \(\boxed{210}\)</p>
+<p>(vii) \(\frac{16!}{8! 12!} = \frac{16 \times 15 \times 14 \times 13 \times 12!}{8! \times 12!} = \frac{16 \times 15 \times 14 \times 13}{8!} = 1820\) ✅ Answer: \(\boxed{1820}\)</p>
+<p>(viii) \(\frac{(9!)^2}{(5!)^3 \times 7!} = \frac{(362880)^2}{(120)^3 \times 5040} = \frac{131681894400}{1728000 \times 5040} = 1512\) ✅ Answer: \(\boxed{1512}\)</p>
+<p>(ix) \(\frac{9!}{2! \times (9-2)!} = \frac{9!}{2! \times 7!} = \frac{9 \times 8 \times 7!}{2 \times 7!} = \frac{9 \times 8}{2} = 36\) ✅ Answer: \(\boxed{36}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>Write the following in factorial form:<br>(i) \(6 \cdot 5 \cdot 4\)<br>(ii) \(12 \cdot 11 \cdot 10\)<br>(iii) \(\frac{n(n+1)(n+2)}{6 \cdot 5}\)<br>(iv) \(20 \cdot 19 \cdot 18 \cdot 17\)</span>
+</div>
+<button onclick="toggleSolution('ex61-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex61-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(6 \cdot 5 \cdot 4 = \frac{6!}{3!}\) ✅ Answer: \(\boxed{\frac{6!}{3!}}\)</p>
+<p>(ii) \(12 \cdot 11 \cdot 10 = \frac{12!}{9!}\) ✅ Answer: \(\boxed{\frac{12!}{9!}}\)</p>
+<p>(iii) \(\frac{n(n+1)(n+2)}{6 \cdot 5} = \frac{(n+2)!}{(n-1)! \cdot 6 \cdot 5}\) ✅ Answer: \(\boxed{\frac{(n+2)!}{30(n-1)!}}\)</p>
+<p>(iv) \(20 \cdot 19 \cdot 18 \cdot 17 = \frac{20!}{16!}\) ✅ Answer: \(\boxed{\frac{20!}{16!}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q3 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3.</span>
+<span>Express the following as a single fraction:<br>(i) \(\frac{(n+1)!}{(r+1)!} + \frac{n!}{r!}\)<br>(ii) \(\frac{(n+1)!}{r!} + \frac{n!}{(r+1)!}\)</span>
+</div>
+<button onclick="toggleSolution('ex61-q3')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex61-q3" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(\frac{(n+1)!}{(r+1)!} + \frac{n!}{r!} = \frac{(n+1) \cdot n!}{(r+1) \cdot r!} + \frac{n!}{r!} = \frac{n!}{r!} \left(\frac{n+1}{r+1} + 1\right) = \frac{n!}{r!} \left(\frac{n+1 + r+1}{r+1}\right) = \frac{n! (n + r + 2)}{r! (r+1)}\) ✅ Answer: \(\boxed{\frac{n! (n + r + 2)}{r! (r+1)}}\)</p>
+<p>(ii) \(\frac{(n+1)!}{r!} + \frac{n!}{(r+1)!} = \frac{(n+1) \cdot n!}{r!} + \frac{n!}{(r+1) \cdot r!} = \frac{n!}{r!} \left(n+1 + \frac{1}{r+1}\right) = \frac{n!}{r!} \left(\frac{(n+1)(r+1) + 1}{r+1}\right) = \frac{n! \left[(n+1)(r+1) + 1\right]}{r! (r+1)}\) ✅ Answer: \(\boxed{\frac{n! \left[(n+1)(r+1) + 1\right]}{r! (r+1)}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Exercise 6.2 -->
+<h3 class="subsection-title">📝 Exercise 6.2</h3>
+
+<!-- Q1 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1.</span>
+<span>Evaluate the following:<br>(i) \(^{20}P_3\)<br>(ii) \(^{16}P_4\)<br>(iii) \(^{12}P_5\)<br>(iv) \(\binom{8}{3, 2}\)<br>(v) \(\binom{9}{2, 3, 4}\)</span>
+</div>
+<button onclick="toggleSolution('ex62-q1')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q1" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(^{20}P_3 = \frac{20!}{(20-3)!} = \frac{20!}{17!} = 20 \times 19 \times 18 = 6840\) ✅ Answer: \(\boxed{6840}\)</p>
+<p>(ii) \(^{16}P_4 = \frac{16!}{(16-4)!} = \frac{16!}{12!} = 16 \times 15 \times 14 \times 13 = 43680\) ✅ Answer: \(\boxed{43680}\)</p>
+<p>(iii) \(^{12}P_5 = \frac{12!}{(12-5)!} = \frac{12!}{7!} = 12 \times 11 \times 10 \times 9 \times 8 = 95040\) ✅ Answer: \(\boxed{95040}\)</p>
+<p>(iv) \(\binom{8}{3, 2} = \frac{8!}{3! 2! 3!} = \frac{40320}{6 \times 2 \times 6} = 560\) ✅ Answer: \(\boxed{560}\)</p>
+<p>(v) \(\binom{9}{2, 3, 4} = \frac{9!}{2! 3! 4!} = \frac{362880}{2 \times 6 \times 24} = 1260\) ✅ Answer: \(\boxed{1260}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>Find the value of \( n \) in each of the following:<br>(i) \(^nP_2 = 30\)<br>(ii) \(^nP_3 = 60\)<br>(iii) \(^8P_n = 8 \cdot 7 \cdot 6\)<br>(iv) \(^{11}P_n = 11 \cdot 10 \cdot 9\)<br>(v) \(^{n+2}P_4 \div ^{n+1}P_3 = 5 : 1\)<br>(vi) \(^np_4 : ^{n-1}p_3 = 9 : 1\)</span>
+</div>
+<button onclick="toggleSolution('ex62-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(^nP_2 = 30 \Rightarrow \frac{n!}{(n-2)!} = 30 \Rightarrow n(n-1) = 30 \Rightarrow n^2 - n - 30 = 0 \Rightarrow (n-6)(n+5) = 0 \Rightarrow n = 6\) ✅ Answer: \(\boxed{6}\)</p>
+<p>(ii) \(^nP_3 = 60 \Rightarrow \frac{n!}{(n-3)!} = 60 \Rightarrow n(n-1)(n-2) = 60 \Rightarrow n^3 - 3n^2 + 2n - 60 = 0 \Rightarrow n = 5\) ✅ Answer: \(\boxed{5}\)</p>
+<p>(iii) \(^8P_n = 8 \cdot 7 \cdot 6 \Rightarrow \frac{8!}{(8-n)!} = 336 \Rightarrow n = 3\) ✅ Answer: \(\boxed{3}\)</p>
+<p>(iv) \(^{11}P_n = 11 \cdot 10 \cdot 9 \Rightarrow \frac{11!}{(11-n)!} = 990 \Rightarrow n = 3\) ✅ Answer: \(\boxed{3}\)</p>
+<p>(v) \(^{n+2}P_4 \div ^{n+1}P_3 = 5 : 1 \Rightarrow \frac{(n+2)!}{(n-2)!} \div \frac{(n+1)!}{(n-2)!} = 5 \Rightarrow \frac{(n+2)(n+1)n(n-1)}{(n+1)n(n-1)} = 5 \Rightarrow n+2 = 5 \Rightarrow n = 3\) ✅ Answer: \(\boxed{3}\)</p>
+<p>(vi) \(^np_4 : ^{n-1}p_3 = 9 : 1 \Rightarrow \frac{n!}{(n-4)!} \div \frac{(n-1)!}{(n-4)!} = 9 \Rightarrow n = 9\) ✅ Answer: \(\boxed{9}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q3 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3.</span>
+<span>In how many ways different batting orders are possible for a cricket team consisting of 11 players.</span>
+</div>
+<button onclick="toggleSolution('ex62-q3')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q3" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The number of ways to arrange 11 players in a batting order is \( 11! = 39916800 \). ✅ Answer: \(\boxed{39916800}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>In how many ways can two English books, three Chemistry books and four Physics books be arranged on a shelf so that all the books of same subject are together?</span>
+</div>
+<button onclick="toggleSolution('ex62-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Treat each subject's books as a single unit. There are 3 units (English, Chemistry, Physics) which can be arranged in \( 3! \) ways. The English books can be arranged in \( 2! \) ways, Chemistry books in \( 3! \) ways, and Physics books in \( 4! \) ways. Thus, the total number of arrangements is \( 3! \times 2! \times 3! \times 4! = 6 \times 2 \times 6 \times 24 = 1728 \). ✅ Answer: \(\boxed{1728}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q5 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q5.</span>
+<span>How many different arrangement can be formed of the word "MATRIX" using all letters? Also find the number of arrangements if each of them start with "R".</span>
+</div>
+<button onclick="toggleSolution('ex62-q5')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q5" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) The word "MATRIX" has 6 distinct letters. The number of arrangements is \( 6! = 720 \). ✅ Answer: \(\boxed{720}\)</p>
+<p>(ii) If the arrangement starts with "R", the remaining 5 letters can be arranged in \( 5! = 120 \) ways. ✅ Answer: \(\boxed{120}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q6 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q6.</span>
+<span>How many signals can be given by 8 flags of different colours when 5 of them are used at a time?</span>
+</div>
+<button onclick="toggleSolution('ex62-q6')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q6" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The number of signals is \( ^8P_5 = \frac{8!}{(8-5)!} = 8 \times 7 \times 6 \times 5 \times 4 = 6720 \). ✅ Answer: \(\boxed{6720}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q7 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q7.</span>
+<span>A fair coin is tossed three times. How many outcomes are possible? Find by fundamental principle and illustrate using tree diagram.</span>
+</div>
+<button onclick="toggleSolution('ex62-q7')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q7" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Each toss has 2 outcomes (Head or Tail). For three tosses, the total number of outcomes is \( 2 \times 2 \times 2 = 8 \). ✅ Answer: \(\boxed{8}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q8 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q8.</span>
+<span>How many 5-digit numbers can be formed, without repeating any digit:<br>(i) 5,6,7,8,9<br>(ii) 1,2,3,5,7,9<br>(iii) 2,4,6,8,0</span>
+</div>
+<button onclick="toggleSolution('ex62-q8')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q8" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \( ^5P_5 = 5! = 120 \) ✅ Answer: \(\boxed{120}\)</p>
+<p>(ii) \( ^6P_5 = \frac{6!}{(6-5)!} = 720 \) ✅ Answer: \(\boxed{720}\)</p>
+<p>(iii) The first digit cannot be 0. The number of ways is \( ^4P_4 \times 4 = 4! \times 4 = 96 \) ✅ Answer: \(\boxed{96}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q9 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q9.</span>
+<span>Prove that:<br>(i) \(^nP_r = ^{n-1}P_r + r \cdot ^{n-1}P_{r-1}\)<br>(ii) \(^nP_r = n \cdot ^{n-1}P_{r-1}\)</span>
+</div>
+<button onclick="toggleSolution('ex62-q9')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q9" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(^nP_r = \frac{n!}{(n-r)!} = \frac{n \cdot (n-1)!}{(n-r)!} = \frac{(n-1)!}{(n-r)!} + \frac{(n-1)!}{(n-r)!} \cdot (n-r) = ^{n-1}P_r + r \cdot ^{n-1}P_{r-1}\) ✅ Answer: \(\boxed{^nP_r = ^{n-1}P_r + r \cdot ^{n-1}P_{r-1}}\)</p>
+<p>(ii) \(^nP_r = \frac{n!}{(n-r)!} = n \cdot \frac{(n-1)!}{(n-r)!} = n \cdot ^{n-1}P_{r-1}\) ✅ Answer: \(\boxed{^nP_r = n \cdot ^{n-1}P_{r-1}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q10 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q10.</span>
+<span>How many arrangements can be formed using all the letters of the following words.<br>(i) STATISTICS<br>(ii) PLANE<br>(iii) OBJECT<br>(iv) FASTENS<br>(v) MATHEMATICS<br>(vi) ASSISTANCE</span>
+</div>
+<button onclick="toggleSolution('ex62-q10')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q10" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) STATISTICS: \(\frac{10!}{3! 3! 2!} = 50400\) ✅ Answer: \(\boxed{50400}\)</p>
+<p>(ii) PLANE: \(5! = 120\) ✅ Answer: \(\boxed{120}\)</p>
+<p>(iii) OBJECT: \(6! = 720\) ✅ Answer: \(\boxed{720}\)</p>
+<p>(iv) FASTENS: \(7! = 5040\) ✅ Answer: \(\boxed{5040}\)</p>
+<p>(v) MATHEMATICS: \(\frac{11!}{2! 2! 2!} = 4989600\) ✅ Answer: \(\boxed{4989600}\)</p>
+<p>(vi) ASSISTANCE: \(\frac{10!}{3! 2! 2!} = 151200\) ✅ Answer: \(\boxed{151200}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q11 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q11.</span>
+<span>How many 8-digit numbers can be formed from the digits 2,2,2,3,3,3,5,6? How many among these are greater than 60,000,000?</span>
+</div>
+<button onclick="toggleSolution('ex62-q11')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q11" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) The number of 8-digit numbers is \(\frac{8!}{3! 3!} = 1120\). ✅ Answer: \(\boxed{1120}\)</p>
+<p>(ii) For numbers greater than 60,000,000, the first digit must be 6. The remaining digits can be arranged in \(\frac{7!}{3! 3!} = 140\) ways. ✅ Answer: \(\boxed{140}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q12 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q12.</span>
+<span>How many distinct permutations of letters of the word "ESSENTIAL" are possible? How many will have the two S's (i) together (ii) separate.</span>
+</div>
+<button onclick="toggleSolution('ex62-q12')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q12" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) The number of distinct permutations is \(\frac{9!}{2! 2!} = 90720\). ✅ Answer: \(\boxed{90720}\)</p>
+<p>(ii) Treat the two S's as a single entity. The number of permutations is \(\frac{8!}{2!} = 20160\). ✅ Answer: \(\boxed{20160}\)</p>
+<p>(iii) The number of permutations where the two S's are separate is \(90720 - 20160 = 70560\). ✅ Answer: \(\boxed{70560}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q13 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q13.</span>
+<span>In how many ways, can 8 persons be seated around a round table?</span>
+</div>
+<button onclick="toggleSolution('ex62-q13')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q13" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The number of circular permutations is \((8-1)! = 5040\). ✅ Answer: \(\boxed{5040}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q14 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q14.</span>
+<span>In how many ways, 7 keys be arranged in a circular key ring?</span>
+</div>
+<button onclick="toggleSolution('ex62-q14')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q14" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The number of circular permutations is \(\frac{(7-1)!}{2} = 360\). ✅ Answer: \(\boxed{360}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q15 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q15.</span>
+<span>How many 3-digit numbers can be formed by using each one of the digits 2,3,5,7,9 only once?</span>
+</div>
+<button onclick="toggleSolution('ex62-q15')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q15" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The number of 3-digit numbers is \(^5P_3 = 60\). ✅ Answer: \(\boxed{60}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q16 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q16.</span>
+<span>How many numbers greater than 23,000 can be formed from the digits 1,2,3,5,6 if digits may repeat?</span>
+</div>
+<button onclick="toggleSolution('ex62-q16')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q16" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The first digit must be 3, 5, or 6. The number of ways is \(3 \times 5 \times 5 \times 5 \times 5 = 1875\). ✅ Answer: \(\boxed{1875}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q17 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q17.</span>
+<span>Find the number of 5-digit numbers that can be formed from the digits 1,2,4,6,8 (when no digit is repeated), but<br>(i) the digits 2 and 8 are next to each other.<br>(ii) the digits 2 and 8 are not next to each other.</span>
+</div>
+<button onclick="toggleSolution('ex62-q17')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q17" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) Treat 2 and 8 as a single entity. The number of ways is \(2 \times 4! = 48\). ✅ Answer: \(\boxed{48}\)</p>
+<p>(ii) The number of ways is \(5! - 48 = 72\). ✅ Answer: \(\boxed{72}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q18 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q18.</span>
+<span>How many 6-digit numbers can be formed without repeating any digit from the digits 0,1,2,3,4,5? In how many of them will 0 be at the tens place?</span>
+</div>
+<button onclick="toggleSolution('ex62-q18')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q18" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) The number of 6-digit numbers is \(5 \times 5 \times 4 \times 3 \times 2 \times 1 = 600\). ✅ Answer: \(\boxed{600}\)</p>
+<p>(ii) The number of ways where 0 is at the tens place is \(4 \times 4 \times 1 \times 3 \times 2 \times 1 = 96\). ✅ Answer: \(\boxed{96}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q19 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q19.</span>
+<span>How many 5-digit multiplies of 5 can be formed from the digits 2,3,5,7,9 when digits may repeat?</span>
+</div>
+<button onclick="toggleSolution('ex62-q19')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex62-q19" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The last digit must be 5. The number of ways is \(4 \times 5 \times 5 \times 5 \times 1 = 500\). ✅ Answer: \(\boxed{500}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Exercise 6.3 -->
+<h3 class="subsection-title">📝 Exercise 6.3</h3>
+
+<!-- Q1 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1.</span>
+<span>Evaluate the following:<br>(i) \(^{12}C_{10}\)<br>(ii) \(^{12}C_3\)<br>(iii) \(\binom{20}{17}\)<br>(iv) \(\binom{7}{4}\)</span>
+</div>
+<button onclick="toggleSolution('ex63-q1')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q1" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(^{12}C_{10} = \frac{12!}{10! 2!} = 66\) ✅ Answer: \(\boxed{66}\)</p>
+<p>(ii) \(^{12}C_3 = \frac{12!}{3! 9!} = 220\) ✅ Answer: \(\boxed{220}\)</p>
+<p>(iii) \(\binom{20}{17} = \frac{20!}{17! 3!} = 1140\) ✅ Answer: \(\boxed{1140}\)</p>
+<p>(iv) \(\binom{7}{4} = \frac{7!}{4! 3!} = 35\) ✅ Answer: \(\boxed{35}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>Find the value of \( n \) when:<br>(i) \(^nC_2 = 21\)<br>(ii) \(^nC_3 = 4\)<br>(iii) \(^{n}C_{12} = ^nC_6\)<br>(iv) \(^nC_{15} = \frac{17 \times 16}{2!}\)<br>(v) \(^nC_5 = ^nC_4\)<br>(vi) \(^nC_{10} = \frac{12 \times 11}{2!}\)</span>
+</div>
+<button onclick="toggleSolution('ex63-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(^nC_2 = 21 \Rightarrow \frac{n!}{2!(n-2)!} = 21 \Rightarrow n(n-1) = 42 \Rightarrow n = 7\) ✅ Answer: \(\boxed{7}\)</p>
+<p>(ii) \(^nC_3 = 4 \Rightarrow \frac{n!}{3!(n-3)!} = 4 \Rightarrow n = 4\) ✅ Answer: \(\boxed{4}\)</p>
+<p>(iii) \(^{n}C_{12} = ^nC_6 \Rightarrow n = 18\) ✅ Answer: \(\boxed{18}\)</p>
+<p>(iv) \(^nC_{15} = \frac{17 \times 16}{2!} \Rightarrow n = 17\) ✅ Answer: \(\boxed{17}\)</p>
+<p>(v) \(^nC_5 = ^nC_4 \Rightarrow n = 9\) ✅ Answer: \(\boxed{9}\)</p>
+<p>(vi) \(^nC_{10} = \frac{12 \times 11}{2!} \Rightarrow n = 12\) ✅ Answer: \(\boxed{12}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q3 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3.</span>
+<span>Find the values of \( n \) and \( r \), when:<br>(i) \(^nP_r = 210\) and \(^nC_r = 35\)<br>(ii) \(^{n-1}C_{r-1} : ^nC_r : ^{n+1}C_{r+1} = 3 : 6 : 11\)</span>
+</div>
+<button onclick="toggleSolution('ex63-q3')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q3" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(^nP_r = 210 \Rightarrow \frac{n!}{(n-r)!} = 210\) and \(^nC_r = 35 \Rightarrow \frac{n!}{r!(n-r)!} = 35\). Solving, \(n = 7\) and \(r = 2\). ✅ Answer: \(\boxed{n = 7, r = 2}\)</p>
+<p>(ii) \(^{n-1}C_{r-1} : ^nC_r : ^{n+1}C_{r+1} = 3 : 6 : 11\). Solving, \(n = 7\) and \(r = 3\). ✅ Answer: \(\boxed{n = 7, r = 3}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>If<br>(i) \(^{12}C_r = ^{12}C_{r+4}\) then find \(^6C_r\).<br>(ii) \(^{n}C_{12} = ^nC_{10}\) then find \(^{25}C_n\).</span>
+</div>
+<button onclick="toggleSolution('ex63-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(^{12}C_r = ^{12}C_{r+4} \Rightarrow r = 4\). Thus, \(^6C_r = ^6C_4 = 15\). ✅ Answer: \(\boxed{15}\)</p>
+<p>(ii) \(^{n}C_{12} = ^nC_{10} \Rightarrow n = 22\). Thus, \(^{25}C_n = ^{25}C_{22} = 2300\). ✅ Answer: \(\boxed{2300}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q5 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q5.</span>
+<span>The members of a club are 12 boys and 8 girls. In how many ways,<br>(i) a committee of 5 members be formed?<br>(ii) a committee of 4 boys and 3 girls be formed?</span>
+</div>
+<button onclick="toggleSolution('ex63-q5')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q5" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(^{20}C_5 = 15504\). ✅ Answer: \(\boxed{15504}\)</p>
+<p>(ii) \(^{12}C_4 \times ^8C_3 = 495 \times 56 = 27720\). ✅ Answer: \(\boxed{27720}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q6 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q6.</span>
+<span>A box contains 7 red balls and 6 black balls. In how many ways can 5 balls be selected such that exactly 3 are red?</span>
+</div>
+<button onclick="toggleSolution('ex63-q6')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q6" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The number of ways is \(^7C_3 \times ^6C_2 = 35 \times 15 = 525\). ✅ Answer: \(\boxed{525}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q7 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q7.</span>
+<span>How many (a) diagonals and (b) triangles can be drawn in a plane by joining the vertices of the polygon having:<br>(i) 6 sides<br>(ii) 8 sides<br>(iii) 10 sides</span>
+</div>
+<button onclick="toggleSolution('ex63-q7')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q7" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(a) (i) \(^6C_2 - 6 = 9\). ✅ Answer: \(\boxed{9}\)</p>
+<p>(a) (ii) \(^8C_2 - 8 = 20\). ✅ Answer: \(\boxed{20}\)</p>
+<p>(a) (iii) \(^{10}C_2 - 10 = 35\). ✅ Answer: \(\boxed{35}\)</p>
+<p>(b) (i) \(^6C_3 = 20\). ✅ Answer: \(\boxed{20}\)</p>
+<p>(b) (ii) \(^8C_3 = 56\). ✅ Answer: \(\boxed{56}\)</p>
+<p>(b) (iii) \(^{10}C_3 = 120\). ✅ Answer: \(\boxed{120}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q8 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q8.</span>
+<span>Show that: \(^9C_6 + ^9C_5 = ^{10}C_6\).</span>
+</div>
+<button onclick="toggleSolution('ex63-q8')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q8" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Using Pascal's rule, \(^9C_6 + ^9C_5 = ^{10}C_6\). ✅ Answer: \(\boxed{^{10}C_6}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q9 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q9.</span>
+<span>There are 11 men and 9 women members of a club. How many committees of 8 members can be formed, having:<br>(i) exactly five men<br>(ii) at most five women<br>(iii) at least five women.</span>
+</div>
+<button onclick="toggleSolution('ex63-q9')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q9" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(^{11}C_5 \times ^9C_3 = 462 \times 84 = 38808\). ✅ Answer: \(\boxed{38808}\)</p>
+<p>(ii) \(^{20}C_8 - (^{11}C_8 + ^{11}C_7 \times ^9C_1 + ^{11}C_6 \times ^9C_2) = 125970 - (165 + 3960 + 33590) = 88255\). ✅ Answer: \(\boxed{88255}\)</p>
+<p>(iii) \(^{11}C_3 \times ^9C_5 + ^{11}C_2 \times ^9C_6 + ^{11}C_1 \times ^9C_7 + ^{11}C_0 \times ^9C_8 = 16170 + 10395 + 3960 + 84 = 30609\). ✅ Answer: \(\boxed{30609}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q10 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q10.</span>
+<span>Find the number of combinations of the letters of the word "Question" taken 5 at a time.</span>
+</div>
+<button onclick="toggleSolution('ex63-q10')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q10" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The number of combinations is \(^8C_5 = 56\). ✅ Answer: \(\boxed{56}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q11 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q11.</span>
+<span>How many words can be formed by 3 vowels and 4 consonants out of 5 vowels and 7 consonants.</span>
+</div>
+<button onclick="toggleSolution('ex63-q11')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex63-q11" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>The number of ways is \(^5C_3 \times ^7C_4 \times 7! = 10 \times 35 \times 5040 = 1764000\). ✅ Answer: \(\boxed{1764000}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Exercise 6.4 -->
+<h3 class="subsection-title">📝 Exercise 6.4</h3>
+
+<!-- Q1 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1.</span>
+<span>Two fair coins are tossed. Find the probability of getting:<br>(i) Same faces<br>(ii) All heads<br>(iii) At most one head<br>(iv) At least two tail<br>(v) At least one tail</span>
+</div>
+<button onclick="toggleSolution('ex64-q1')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q1" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{same faces}) = \frac{2}{4} = \frac{1}{2}\). ✅ Answer: \(\boxed{\frac{1}{2}}\)</p>
+<p>(ii) \(P(\text{all heads}) = \frac{1}{4}\). ✅ Answer: \(\boxed{\frac{1}{4}}\)</p>
+<p>(iii) \(P(\text{at most one head}) = \frac{3}{4}\). ✅ Answer: \(\boxed{\frac{3}{4}}\)</p>
+<p>(iv) \(P(\text{at least two tail}) = \frac{3}{4}\). ✅ Answer: \(\boxed{\frac{3}{4}}\)</p>
+<p>(v) \(P(\text{at least one tail}) = \frac{3}{4}\). ✅ Answer: \(\boxed{\frac{3}{4}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>Two dice, one red and the other green, are rolled simultaneously. The numbers of dots on the tops are added. Find the probability of getting a sum of:<br>(i) 8<br>(ii) 10<br>(iii) 12</span>
+</div>
+<button onclick="toggleSolution('ex64-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{sum of 8}) = \frac{5}{36}\). ✅ Answer: \(\boxed{\frac{5}{36}}\)</p>
+<p>(ii) \(P(\text{sum of 10}) = \frac{3}{36} = \frac{1}{12}\). ✅ Answer: \(\boxed{\frac{1}{12}}\)</p>
+<p>(iii) \(P(\text{sum of 12}) = \frac{1}{36}\). ✅ Answer: \(\boxed{\frac{1}{36}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q3 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3.</span>
+<span>A bag contains 40 balls out of which 5 are green, 15 are red and the remaining are black. A ball is drawn out of the bag. Find the probability of getting:<br>(i) The ball is green<br>(ii) The ball is black<br>(iii) The ball is not green</span>
+</div>
+<button onclick="toggleSolution('ex64-q3')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q3" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{green}) = \frac{5}{40} = \frac{1}{8}\). ✅ Answer: \(\boxed{\frac{1}{8}}\)</p>
+<p>(ii) \(P(\text{black}) = \frac{20}{40} = \frac{1}{2}\). ✅ Answer: \(\boxed{\frac{1}{2}}\)</p>
+<p>(iii) \(P(\text{not green}) = \frac{35}{40} = \frac{7}{8}\). ✅ Answer: \(\boxed{\frac{7}{8}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>A card drawn from a well shuffled deck of cards, find the probability of:<br>(i) getting a King<br>(ii) getting a club<br>(iii) getting a face card</span>
+</div>
+<button onclick="toggleSolution('ex64-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{King}) = \frac{4}{52} = \frac{1}{13}\). ✅ Answer: \(\boxed{\frac{1}{13}}\)</p>
+<p>(ii) \(P(\text{club}) = \frac{13}{52} = \frac{1}{4}\). ✅ Answer: \(\boxed{\frac{1}{4}}\)</p>
+<p>(iii) \(P(\text{face card}) = \frac{12}{52} = \frac{3}{13}\). ✅ Answer: \(\boxed{\frac{3}{13}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q5 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q5.</span>
+<span>A die is rolled. Find the probability using Venn diagram of getting:<br>(i) an even number<br>(ii) a number greater than 4<br>(iii) a number which is even and greater than 4.</span>
+</div>
+<button onclick="toggleSolution('ex64-q5')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q5" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{even number}) = \frac{3}{6} = \frac{1}{2}\). ✅ Answer: \(\boxed{\frac{1}{2}}\)</p>
+<p>(ii) \(P(\text{number greater than 4}) = \frac{2}{6} = \frac{1}{3}\). ✅ Answer: \(\boxed{\frac{1}{3}}\)</p>
+<p>(iii) \(P(\text{even and greater than 4}) = \frac{1}{6}\). ✅ Answer: \(\boxed{\frac{1}{6}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q6 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q6.</span>
+<span>In a three child family, by using tree diagram. Find the probability of having:<br>(i) three boys<br>(ii) exactly two boys<br>(iii) at least one girl</span>
+</div>
+<button onclick="toggleSolution('ex64-q6')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q6" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{three boys}) = \frac{1}{8}\). ✅ Answer: \(\boxed{\frac{1}{8}}\)</p>
+<p>(ii) \(P(\text{exactly two boys}) = \frac{3}{8}\). ✅ Answer: \(\boxed{\frac{3}{8}}\)</p>
+<p>(iii) \(P(\text{at least one girl}) = \frac{7}{8}\). ✅ Answer: \(\boxed{\frac{7}{8}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q7 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q7.</span>
+<span>In a single throw of two fair dice, find the probability that the product of the numbers on the dice is:<br>(i) between 2 and 10 (both inclusive)<br>(ii) divisible by 5</span>
+</div>
+<button onclick="toggleSolution('ex64-q7')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q7" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{product between 2 and 10}) = \frac{21}{36} = \frac{7}{12}\). ✅ Answer: \(\boxed{\frac{7}{12}}\)</p>
+<p>(ii) \(P(\text{product divisible by 5}) = \frac{7}{36}\). ✅ Answer: \(\boxed{\frac{7}{36}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q8 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q8.</span>
+<span>A marble is drawn at random from a box containing 20 red, 10 white, 25 orange and 15 blue marbles. Find the probability that it is:<br>(i) orange or red<br>(ii) not blue or red<br>(iii) red, white or blue</span>
+</div>
+<button onclick="toggleSolution('ex64-q8')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q8" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{orange or red}) = \frac{45}{70} = \frac{9}{14}\). ✅ Answer: \(\boxed{\frac{9}{14}}\)</p>
+<p>(ii) \(P(\text{not blue or red}) = \frac{35}{70} = \frac{1}{2}\). ✅ Answer: \(\boxed{\frac{1}{2}}\)</p>
+<p>(iii) \(P(\text{red, white or blue}) = \frac{50}{70} = \frac{5}{7}\). ✅ Answer: \(\boxed{\frac{5}{7}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q9 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q9.</span>
+<span>The king, queen and jack of clubs are removed from a deck of 52 playing cards and then shuffled. A card is drawn from the remaining cards. Find the probability of getting:<br>(i) a heart<br>(ii) a queen<br>(iii) a club<br>(iv) '9' of red color</span>
+</div>
+<button onclick="toggleSolution('ex64-q9')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q9" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{heart}) = \frac{13}{49}\). ✅ Answer: \(\boxed{\frac{13}{49}}\)</p>
+<p>(ii) \(P(\text{queen}) = \frac{3}{49}\). ✅ Answer: \(\boxed{\frac{3}{49}}\)</p>
+<p>(iii) \(P(\text{club}) = \frac{10}{49}\). ✅ Answer: \(\boxed{\frac{10}{49}}\)</p>
+<p>(iv) \(P(\text{'9' of red color}) = \frac{2}{49}\). ✅ Answer: \(\boxed{\frac{2}{49}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q10 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q10.</span>
+<span>A pair of fair dice is thrown. If the two numbers appearing are different, find the probability that (i) the sum is 10, (ii) the sum is six or less.</span>
+</div>
+<button onclick="toggleSolution('ex64-q10')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q10" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(\text{sum is 10}) = \frac{3}{30} = \frac{1}{10}\). ✅ Answer: \(\boxed{\frac{1}{10}}\)</p>
+<p>(ii) \(P(\text{sum is six or less}) = \frac{5}{30} = \frac{1}{6}\). ✅ Answer: \(\boxed{\frac{1}{6}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q11 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q11.</span>
+<span>Given that \(P(A) = 0.3, P(B) = 0.7, P(A \cap B) = 0.21\) then find:<br>(i) \(P(A/B)\)<br>(ii) \(P(B/A)\)</span>
+</div>
+<button onclick="toggleSolution('ex64-q11')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q11" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>(i) \(P(A/B) = \frac{P(A \cap B)}{P(B)} = \frac{0.21}{0.7} = 0.3\). ✅ Answer: \(\boxed{0.3}\)</p>
+<p>(ii) \(P(B/A) = \frac{P(A \cap B)}{P(A)} = \frac{0.21}{0.3} = 0.7\). ✅ Answer: \(\boxed{0.7}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q12 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q12.</span>
+<span>If one card is selected at random from a deck of 52 playing cards, what is the probability that the card is a club or a face or both?</span>
+</div>
+<button onclick="toggleSolution('ex64-q12')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q12" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>\(P(\text{club or face or both}) = \frac{13 + 12 - 3}{52} = \frac{22}{52} = \frac{11}{26}\). ✅ Answer: \(\boxed{\frac{11}{26}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q13 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q13.</span>
+<span>From two events \(A\) and \(B, P(A) = 0.5, P(B) = 0.2, P(A \cup B) = 0.4\) then find \(P(A \cap B)\)?</span>
+</div>
+<button onclick="toggleSolution('ex64-q13')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q13" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>\(P(A \cap B) = P(A) + P(B) - P(A \cup B) = 0.5 + 0.2 - 0.4 = 0.3\). ✅ Answer: \(\boxed{0.3}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q14 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q14.</span>
+<span>A natural number is chosen out of first 35 natural numbers. What is the probability that the chosen number is divisible by 8 or 9?</span>
+</div>
+<button onclick="toggleSolution('ex64-q14')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q14" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>\(P(\text{divisible by 8 or 9}) = \frac{4 + 3 - 0}{35} = \frac{7}{35} = \frac{1}{5}\). ✅ Answer: \(\boxed{\frac{1}{5}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q15 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q15.</span>
+<span>A bag contains 15 black, 25 red and 10 white balls. A ball is drawn at random. Find the probability that it is either red or white?</span>
+</div>
+<button onclick="toggleSolution('ex64-q15')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q15" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>\(P(\text{red or white}) = \frac{25 + 10}{50} = \frac{35}{50} = \frac{7}{10}\). ✅ Answer: \(\boxed{\frac{7}{10}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q16 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q16.</span>
+<span>Two events \(A\) and \(B\) are such that \(P(A) = \frac{1}{4}, P(A/B) = \frac{1}{2}, P(B/A) = \frac{2}{3}\). Find \(P(A \cap B)\) and \(P(B)\)?</span>
+</div>
+<button onclick="toggleSolution('ex64-q16')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q16" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>\(P(A \cap B) = P(A) \cdot P(B/A) = \frac{1}{4} \cdot \frac{2}{3} = \frac{1}{6}\). ✅ Answer: \(\boxed{\frac{1}{6}}\)</p>
+<p>\(P(B) = \frac{P(A \cap B)}{P(A/B)} = \frac{\frac{1}{6}}{\frac{1}{2}} = \frac{1}{3}\). ✅ Answer: \(\boxed{\frac{1}{3}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q17 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q17.</span>
+<span>A fair die is thrown twice. Find the probability that an even number of dots appear in first and the number of dots in the second throw is less than 4?</span>
+</div>
+<button onclick="toggleSolution('ex64-q17')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q17" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>\(P(\text{even in first and less than 4 in second}) = \frac{3}{6} \cdot \frac{3}{6} = \frac{1}{4}\). ✅ Answer: \(\boxed{\frac{1}{4}}\)</p>
+</div>
+</div>
+</div>
+
+<!-- Q18 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q18.</span>
+<span>Three missiles are fired at a target. If the probability of hitting the target are 0.5, 0.3 and 0.6 respectively, and if the missiles are fired independently, what is the probability that all the missiles hit the target?</span>
+</div>
+<button onclick="toggleSolution('ex64-q18')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex64-q18" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>\(P(\text{all hit}) = 0.5 \times 0.3 \times 0.6 = 0.09\). ✅ Answer: \(\boxed{0.09}\)</p>
+</div>
+</div>
+</div>
+
+<!-- MCQs SECTION -->
+<div class="container" id="mcqs">
+<h2 class="section-title">❓ Multiple Choice Questions (Interactive)</h2>
+<div class="print-note">
+💡 <em>For printing: MCQs will show correct answers automatically</em>
+</div>
+<button onclick="resetMCQs()" class="reset-btn">🔄 Reset All MCQs</button>
+
+<!-- MCQ 1 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">1.</span>
+<span>If \( n = 0 \), then \(\frac{(n+1)!}{n!} = \_\_\_\_\_\_\_\_\)</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="1" data-option="A">
+<span class="option-label">(a)</span> 0
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="B">
+<span class="option-label">(b)</span> 1
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="C">
+<span class="option-label">(c)</span> \( n \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="D">
+<span class="option-label">(d)</span> \( \infty \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(1)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 2 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">2.</span>
+<span>Probability of getting 7 in throwing a dice is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="2" data-option="A">
+<span class="option-label">(a)</span> 0
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="B">
+<span class="option-label">(b)</span> 1
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="C">
+<span class="option-label">(c)</span> -1
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="D">
+<span class="option-label">(d)</span> Not defined
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(2)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 3 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">3.</span>
+<span>The factorial form of \( 12 \cdot 11 \cdot 10 \cdot \) is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="3" data-option="A">
+<span class="option-label">(a)</span> \( \frac{12!}{9!} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="B">
+<span class="option-label">(b)</span> 12!
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="C">
+<span class="option-label">(c)</span> \( \left(\frac{12}{9}\right)! \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="D">
+<span class="option-label">(d)</span> \( (12!) \cdot (9!) \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(3)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 4 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">4.</span>
+<span>If two independent events \( A \) and \( B \) occur in \( p \) and \( q \) ways respectively, then number of ways that both events can occur is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="4" data-option="A">
+<span class="option-label">(a)</span> \( p + q \) ways
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="B">
+<span class="option-label">(b)</span> \( p \cdot q \) ways
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="C">
+<span class="option-label">(c)</span> \( (pq)^r \) ways
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="D">
+<span class="option-label">(d)</span> \( rp + qr \) ways
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(4)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 5 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">5.</span>
+<span>An arrangement of \( n \) objects according to some definite order is called:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="5" data-option="A">
+<span class="option-label">(a)</span> Combination
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="B">
+<span class="option-label">(b)</span> Permutation
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="C">
+<span class="option-label">(c)</span> Factorial
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="D">
+<span class="option-label">(d)</span> none of these
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(5)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 6 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">6.</span>
+<span>An arrangement of \( n \) objects without any order is called:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="6" data-option="A">
+<span class="option-label">(a)</span> Combination
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="B">
+<span class="option-label">(b)</span> Permutation
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="C">
+<span class="option-label">(c)</span> Factorial
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="D">
+<span class="option-label">(d)</span> none of these
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(6)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 7 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">7.</span>
+<span>The number of permutation of the letters of the word COMMITTEE is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="7" data-option="A">
+<span class="option-label">(a)</span> \(\binom{9}{2, 2, 2}\)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="B">
+<span class="option-label">(b)</span> \(\binom{9}{1, 2, 2}\)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="C">
+<span class="option-label">(c)</span> \(\binom{9}{2, 2, 1}\)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="D">
+<span class="option-label">(d)</span> \(\binom{9}{2, 3, 1}\)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(7)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 8 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">8.</span>
+<span>8.7.6 is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="8" data-option="A">
+<span class="option-label">(a)</span> \(^8P_3\)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="B">
+<span class="option-label">(b)</span> \(^8C_3\)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="C">
+<span class="option-label">(c)</span> \(^8P_5\)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="D">
+<span class="option-label">(d)</span> \(^8C_5\)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(8)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 9 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">9.</span>
+<span>If \( r = n \), then \(^nP_r\) is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="9" data-option="A">
+<span class="option-label">(a)</span> \( r! \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="B">
+<span class="option-label">(b)</span> \( (n-r)! \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="C">
+<span class="option-label">(c)</span> 1
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="D">
+<span class="option-label">(d)</span> 0
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(9)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 10 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">10.</span>
+<span>The number of ways that a necklace of \( n \) beads of different colours be made is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="10" data-option="A">
+<span class="option-label">(a)</span> \( (n-1)! \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="B">
+<span class="option-label">(b)</span> \( \frac{n!}{2} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="C">
+<span class="option-label">(c)</span> \( \frac{n!-1}{2} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="D">
+<span class="option-label">(d)</span> \( \frac{(n-1)!}{2} \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(10)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 11 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">11.</span>
+<span>Any subset of a sample space is called:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="11" data-option="A">
+<span class="option-label">(a)</span> Sample space
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="11" data-option="B">
+<span class="option-label">(b)</span> an event
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="11" data-option="C">
+<span class="option-label">(c)</span> a Trial
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="11" data-option="D">
+<span class="option-label">(d)</span> Random variable
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(11)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 12 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">12.</span>
+<span>For two events \( A \) and \( B \) if \( A \cap B = \emptyset \), then events \( A \) and \( B \) are called:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="12" data-option="A">
+<span class="option-label">(a)</span> Mutually exclusive
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="12" data-option="B">
+<span class="option-label">(b)</span> Not mutually exclusive
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="12" data-option="C">
+<span class="option-label">(c)</span> Overlapping
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="12" data-option="D">
+<span class="option-label">(d)</span> Dependent events
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(12)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 13 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">13.</span>
+<span>If a dice is rolled and coin is tossed, all possible outcome are:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="13" data-option="A">
+<span class="option-label">(a)</span> 6
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="13" data-option="B">
+<span class="option-label">(b)</span> 12
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="13" data-option="C">
+<span class="option-label">(c)</span> 18
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="13" data-option="D">
+<span class="option-label">(d)</span> 24
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(13)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 14 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">14.</span>
+<span>If two events \( A \) and \( B \) have equal chance of occurrence, then the events are:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="14" data-option="A">
+<span class="option-label">(a)</span> Equally likely
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="14" data-option="B">
+<span class="option-label">(b)</span> Not equally likely
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="14" data-option="C">
+<span class="option-label">(c)</span> Dependent
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="14" data-option="D">
+<span class="option-label">(d)</span> Not mutually exclusive
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(14)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 15 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">15.</span>
+<span>If \( E \) be an event of a sample space \( S \), then:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="15" data-option="A">
+<span class="option-label">(a)</span> \( P(E) = \frac{n(S)}{n(E)} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="15" data-option="B">
+<span class="option-label">(b)</span> \( 0 \leq P(E) \leq 1 \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="15" data-option="C">
+<span class="option-label">(c)</span> \( 0 < P(E) < 1 \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="15" data-option="D">
+<span class="option-label">(d)</span> all of these
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(15)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 16 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">16.</span>
+<span>The probability of getting the tail in a single toss of a coin is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="16" data-option="A">
+<span class="option-label">(a)</span> \( \frac{1}{3} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="16" data-option="B">
+<span class="option-label">(b)</span> \( \frac{2}{3} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="16" data-option="C">
+<span class="option-label">(c)</span> \( \frac{1}{2} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="16" data-option="D">
+<span class="option-label">(d)</span> \( \frac{1}{4} \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(16)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 17 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">17.</span>
+<span>Three dice are rolled simultaneously, then \( n(S) \) is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="17" data-option="A">
+<span class="option-label">(a)</span> 36
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="17" data-option="B">
+<span class="option-label">(b)</span> 18
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="17" data-option="C">
+<span class="option-label">(c)</span> 216
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="17" data-option="D">
+<span class="option-label">(d)</span> 6
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(17)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 18 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">18.</span>
+<span>Two teams \( A \) and \( B \) are playing a match, the probability that team \( A \) does not lose is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="18" data-option="A">
+<span class="option-label">(a)</span> \( \frac{1}{3} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="18" data-option="B">
+<span class="option-label">(b)</span> \( \frac{2}{3} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="18" data-option="C">
+<span class="option-label">(c)</span> \( \frac{1}{2} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="18" data-option="D">
+<span class="option-label">(d)</span> 0
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(18)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 19 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">19.</span>
+<span>If \( ^nC_6 = ^nC_{12} \), then \( n \) equals:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="19" data-option="A">
+<span class="option-label">(a)</span> 18
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="19" data-option="B">
+<span class="option-label">(b)</span> 12
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="19" data-option="C">
+<span class="option-label">(c)</span> 6
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="19" data-option="D">
+<span class="option-label">(d)</span> 20
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(19)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- ANSWER KEY SECTION -->
+<div class="container" id="answerkey">
+<h2 class="section-title">🔑 MCQ Answer Key</h2>
+<div class="card">
+<div class="answer-grid">
+<div class="answer-item">1. B</div>
+<div class="answer-item">2. D</div>
+<div class="answer-item">3. A</div>
+<div class="answer-item">4. B</div>
+<div class="answer-item">5. B</div>
+<div class="answer-item">6. A</div>
+<div class="answer-item">7. A</div>
+<div class="answer-item">8. A</div>
+<div class="answer-item">9. A</div>
+<div class="answer-item">10. D</div>
+<div class="answer-item">11. B</div>
+<div class="answer-item">12. A</div>
+<div class="answer-item">13. B</div>
+<div class="answer-item">14. A</div>
+<div class="answer-item">15. B</div>
+<div class="answer-item">16. C</div>
+<div class="answer-item">17. C</div>
+<div class="answer-item">18. B</div>
+<div class="answer-item">19. A</div>
+</div>
+</div>
+</div>
+
+<!-- THEME TOGGLE -->
+<button id="themeToggle">🎨</button>
+
+<!-- BACK TO TOP (MOVED TO LEFT SIDE) -->
+<button id="backToTop" title="Back to top">↑</button>
+
+<!-- THEME PANEL -->
+<div id="themePanel" class="hidden">
+<div class="theme-panel-title">🎨 Choose Theme</div>
+<button class="theme-btn" onclick="applyTheme('blue')">💙 Blue</button>
+<button class="theme-btn" onclick="applyTheme('sepia')">📜 Sepia</button>
+<button class="theme-btn" onclick="applyTheme('green')">🌿 Green</button>
+<button class="theme-btn" onclick="applyTheme('yellow')">⚡ Yellow Neon</button>
+<button class="theme-btn" onclick="applyTheme('blackwhite')">⚫ Black & White</button>
+<button class="theme-btn" onclick="applyTheme('dark')">🌙 Dark Mode</button>
+</div>
+
+<script>
+// Theme Definitions
+const themes = {
+blue: {
+bgPrimary: '#f0f4f8',
+bgCard: '#ffffff',
+colorPrimary: '#3498db',
+colorAccent: '#2ecc71',
+colorText: '#2c3e50',
+colorMuted: '#6c757d',
+borderColor: '#dee2e6',
+shadow: 'rgba(0, 0, 0, 0.1)'
+},
+sepia: {
+bgPrimary: '#f4f1e8',
+bgCard: '#fefcf5',
+colorPrimary: '#8b7355',
+colorAccent: '#a1887f',
+colorText: '#3e2723',
+colorMuted: '#795548',
+borderColor: '#d7ccc8',
+shadow: 'rgba(101, 67, 33, 0.15)'
+},
+green: {
+bgPrimary: '#e8f5e9',
+bgCard: '#ffffff',
+colorPrimary: '#2e7d32',
+colorAccent: '#66bb6a',
+colorText: '#1b5e20',
+colorMuted: '#558b2f',
+borderColor: '#d7ccc8',
+shadow: 'rgba(46, 125, 50, 0.15)'
+},
+yellow: {
+bgPrimary: '#fffde7',
+bgCard: '#ffffff',
+colorPrimary: '#f9a825',
+colorAccent: '#ffd54f',
+colorText: '#f57f17',
+colorMuted: '#fbc02d',
+borderColor: '#fff9c4',
+shadow: 'rgba(249, 168, 37, 0.2)'
+},
+blackwhite: {
+bgPrimary: '#ffffff',
+bgCard: '#f8f9fa',
+colorPrimary: '#000000',
+colorAccent: '#495057',
+colorText: '#000000',
+colorMuted: '#495057',
+borderColor: '#dee2e6',
+shadow: 'rgba(0, 0, 0, 0.15)'
+},
+dark: {
+bgPrimary: '#1a1a1a',
+bgCard: '#2d2d2d',
+colorPrimary: '#60a5fa',
+colorAccent: '#34d399',
+colorText: '#e5e7eb',
+colorMuted: '#9ca3af',
+borderColor: '#404040',
+shadow: 'rgba(0, 0, 0, 0.5)'
+}
+};
+
+// Inactivity Timer Variables
+let inactivityTimer;
+const INACTIVITY_TIMEOUT = 3000; // 3 seconds
+
+// Reset Inactivity Timer
+function resetInactivityTimer() {
+clearTimeout(inactivityTimer);
+showFloatingButtons();
+inactivityTimer = setTimeout(() => {
+hideFloatingButtons();
+}, INACTIVITY_TIMEOUT);
+}
+
+// Show Floating Buttons
+function showFloatingButtons() {
+const themeToggle = document.getElementById('themeToggle');
+const backToTop = document.getElementById('backToTop');
+const jumpToggle = document.getElementById('jumpToggle');
+if (themeToggle) {
+themeToggle.classList.remove('hidden');
+}
+if (backToTop && backToTop.classList.contains('visible')) {
+backToTop.classList.remove('hidden');
+}
+if (jumpToggle) {
+jumpToggle.classList.remove('hidden');
+}
+}
+
+// Hide Floating Buttons
+function hideFloatingButtons() {
+const themeToggle = document.getElementById('themeToggle');
+const backToTop = document.getElementById('backToTop');
+const themePanel = document.getElementById('themePanel');
+const jumpToggle = document.getElementById('jumpToggle');
+if (themeToggle) {
+themeToggle.classList.add('hidden');
+}
+if (backToTop) {
+backToTop.classList.add('hidden');
+}
+if (themePanel) {
+themePanel.classList.add('hidden');
+}
+if (jumpToggle) {
+jumpToggle.classList.add('hidden');
+}
+}
+
+// Setup Activity Listeners
+function setupActivityListeners() {
+const activityEvents = ['mousemove', 'mousedown', 'keypress', 'scroll', 'touchstart', 'click', 'touchmove'];
+activityEvents.forEach(eventName => {
+document.addEventListener(eventName, resetInactivityTimer);
+});
+resetInactivityTimer();
+}
+
+// Apply Theme Function
+function applyTheme(themeName) {
+const theme = themes[themeName];
+if (!theme) return;
+const root = document.documentElement;
+root.style.setProperty('--bg-primary', theme.bgPrimary);
+root.style.setProperty('--bg-card', theme.bgCard);
+root.style.setProperty('--color-primary', theme.colorPrimary);
+root.style.setProperty('--color-accent', theme.colorAccent);
+root.style.setProperty('--color-text', theme.colorText);
+root.style.setProperty('--color-muted', theme.colorMuted);
+root.style.setProperty('--border-color', theme.borderColor);
+root.style.setProperty('--shadow', theme.shadow);
+document.documentElement.setAttribute('data-theme', themeName);
+// Update floating button colors to match theme
+updateButtonColors(theme);
+localStorage.setItem('mathNotesTheme', themeName);
+const panel = document.getElementById('themePanel');
+if (panel) panel.classList.add('hidden');
+resetInactivityTimer();
+}
+
+// Function to update button colors
+function updateButtonColors(theme) {
+const toggleBtn = document.getElementById('themeToggle');
+const backToTopBtn = document.getElementById('backToTop');
+const jumpToggleBtn = document.getElementById('jumpToggle');
+if (toggleBtn) {
+toggleBtn.style.backgroundColor = theme.colorPrimary;
+toggleBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+if (backToTopBtn) {
+backToTopBtn.style.backgroundColor = theme.colorPrimary;
+backToTopBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+if (jumpToggleBtn) {
+jumpToggleBtn.style.backgroundColor = theme.colorPrimary;
+jumpToggleBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+}
+
+// Toggle Jump Navigation
+function toggleJumpNav() {
+const nav = document.getElementById('jumpToNav');
+if (!nav) return;
+if (nav.classList.contains('hidden')) {
+nav.classList.remove('hidden');
+nav.style.display = 'block';
+setTimeout(() => {
+nav.style.transform = 'translateX(0)';
+nav.style.opacity = '1';
+nav.style.visibility = 'visible';
+}, 10);
+} else {
+nav.style.transform = 'translateX(-100%)';
+nav.style.opacity = '0';
+nav.style.visibility = 'hidden';
+setTimeout(() => {
+nav.classList.add('hidden');
+}, 300);
+}
+resetInactivityTimer();
+}
+
+// Close Jump Navigation
+function closeJumpNav() {
+const nav = document.getElementById('jumpToNav');
+if (!nav) return;
+nav.style.transform = 'translateX(-100%)';
+nav.style.opacity = '0';
+nav.style.visibility = 'hidden';
+setTimeout(() => {
+nav.classList.add('hidden');
+}, 300);
+resetInactivityTimer();
+}
+
+// Toggle Solution Function
+function toggleSolution(id) {
+const solutionContent = document.getElementById(id);
+if (!solutionContent) return;
+const button = event.currentTarget;
+const icon = button.querySelector('.toggle-icon');
+const text = button.querySelector('.toggle-text');
+if (solutionContent.classList.contains('hidden')) {
+solutionContent.classList.remove('hidden');
+solutionContent.classList.add('open');
+if (icon) icon.textContent = '▼';
+if (text) text.textContent = 'Hide Solution';
+} else {
+solutionContent.classList.add('hidden');
+solutionContent.classList.remove('open');
+if (icon) icon.textContent = '▶';
+if (text) text.textContent = 'Show Solution';
+}
+if (typeof MathJax !== 'undefined') {
+setTimeout(() => {
+MathJax.typesetPromise([solutionContent]).catch((err) => console.log(err));
+}, 100);
+}
+resetInactivityTimer();
+}
+
+// Correct Answers for MCQs
+const correctAnswers = {
+1: 'B',
+2: 'D',
+3: 'A',
+4: 'B',
+5: 'B',
+6: 'A',
+7: 'A',
+8: 'A',
+9: 'A',
+10: 'D',
+11: 'B',
+12: 'A',
+13: 'B',
+14: 'A',
+15: 'B',
+16: 'C',
+17: 'C',
+18: 'B',
+19: 'A'
+};
+
+// MCQ Answer Checking
+function checkAnswer(qNum, selected, optionElement) {
+const container = optionElement.closest('.mcq-container');
+const allOptions = container.querySelectorAll('.mcq-option');
+const showBtn = container.querySelector('.show-correct-btn');
+const correct = correctAnswers[qNum];
+allOptions.forEach(opt => {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '';
+opt.classList.remove('correct', 'incorrect');
+});
+if (selected === correct) {
+const resultSpan = optionElement.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '✅';
+optionElement.classList.add('correct');
+if (showBtn) showBtn.classList.add('hidden');
+} else {
+const resultSpan = optionElement.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '❌';
+optionElement.classList.add('incorrect');
+if (showBtn) showBtn.classList.remove('hidden');
+}
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise([container]).catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Show Correct Answer
+function showCorrect(qNum) {
+const correct = correctAnswers[qNum];
+const containers = document.querySelectorAll('.mcq-container');
+containers.forEach(container => {
+const options = container.querySelectorAll('.mcq-option');
+options.forEach(opt => {
+if (opt.dataset.question == qNum && opt.dataset.option === correct) {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '✅ (Correct Answer)';
+opt.classList.add('correct');
+opt.classList.remove('incorrect');
+}
+});
+});
+const showBtn = document.querySelector(`.mcq-container [data-question="${qNum}"]`)?.closest('.mcq-container')?.querySelector('.show-correct-btn');
+if (showBtn) showBtn.classList.add('hidden');
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Reset All MCQs
+function resetMCQs() {
+document.querySelectorAll('.mcq-option').forEach(opt => {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '';
+opt.classList.remove('correct', 'incorrect');
+});
+document.querySelectorAll('.show-correct-btn').forEach(btn => {
+btn.classList.add('hidden');
+});
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Back to Top Functionality
+function handleBackToTop() {
+const backToTopBtn = document.getElementById('backToTop');
+if (!backToTopBtn) return;
+window.addEventListener('scroll', () => {
+if (window.scrollY > 300) {
+backToTopBtn.classList.add('visible');
+backToTopBtn.classList.remove('hidden');
+} else {
+backToTopBtn.classList.remove('visible');
+}
+});
+backToTopBtn.addEventListener('click', () => {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+resetInactivityTimer();
+});
+}
+
+// Initialize on Page Load
+document.addEventListener('DOMContentLoaded', function() {
+// Load saved theme
+const savedTheme = localStorage.getItem('mathNotesTheme') || 'blue';
+applyTheme(savedTheme);
+
+// Setup inactivity timer
+setupActivityListeners();
+
+// Force initial button colors (in case applyTheme doesn't trigger properly)
+setTimeout(() => {
+const theme = themes[savedTheme];
+updateButtonColors(theme);
+}, 100);
+
+// Show All Solutions Button
+const showAllBtn = document.getElementById("showAllBtn");
+if (showAllBtn) {
+showAllBtn.addEventListener("click", () => {
+const solutions = document.querySelectorAll(".solution-content");
+const toggles = document.querySelectorAll(".solution-toggle");
+const shouldOpen = showAllBtn.innerText.includes("Show");
+solutions.forEach(sol => {
+sol.classList.toggle("hidden", !shouldOpen);
+sol.classList.toggle("open", shouldOpen);
+});
+toggles.forEach(btn => {
+const text = btn.querySelector(".toggle-text");
+const icon = btn.querySelector(".toggle-icon");
+if (text && icon) {
+text.innerText = shouldOpen ? "Hide Solution" : "Show Solution";
+icon.innerText = shouldOpen ? "▼" : "▶";
+}
+});
+showAllBtn.innerText = shouldOpen ? "Hide All Solutions" : "Show All Solutions";
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+});
+}
+
+// MCQ Event Listeners
+document.querySelectorAll('.mcq-option').forEach(option => {
+option.addEventListener('click', function() {
+const question = this.dataset.question;
+const selected = this.dataset.option;
+checkAnswer(question, selected, this);
+});
+});
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+themeToggle.addEventListener('click', function(e) {
+e.stopPropagation();
+const panel = document.getElementById('themePanel');
+if (panel) {
+panel.classList.toggle('hidden');
+}
+resetInactivityTimer();
+});
+}
+
+// Jump Navigation Toggle
+const jumpToggle = document.getElementById('jumpToggle');
+if (jumpToggle) {
+jumpToggle.addEventListener('click', function(e) {
+e.stopPropagation();
+toggleJumpNav();
+});
+}
+
+// Close Jump Navigation
+const closeJumpBtn = document.querySelector('.jump-nav-close');
+if (closeJumpBtn) {
+closeJumpBtn.addEventListener('click', function(e) {
+e.stopPropagation();
+closeJumpNav();
+});
+}
+
+// Close panels when clicking outside
+document.addEventListener('click', function(e) {
+const panel = document.getElementById('themePanel');
+const toggle = document.getElementById('themeToggle');
+const nav = document.getElementById('jumpToNav');
+const jumpBtn = document.getElementById('jumpToggle');
+if (panel && toggle && !panel.contains(e.target) && !toggle.contains(e.target)) {
+panel.classList.add('hidden');
+}
+if (nav && jumpBtn && !nav.contains(e.target) && !jumpBtn.contains(e.target)) {
+closeJumpNav();
+}
+});
+
+// Jump Navigation Links
+document.querySelectorAll('.jump-nav-link').forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 20,
+behavior: 'smooth'
+});
+closeJumpNav();
+}
+resetInactivityTimer();
+});
+});
+
+// Initialize Back to Top
+handleBackToTop();
+
+// Print handling
+window.addEventListener('beforeprint', function() {
+document.querySelectorAll('.solution-content').forEach(s => {
+s.classList.remove('hidden');
+s.classList.add('open');
+});
+});
+
+// Ensure everything fits on mobile
+function ensureMobileFit() {
+if (window.innerWidth <= 768) {
+// Ensure all elements have proper width constraints
+document.querySelectorAll('.card, .question-item, .mcq-container').forEach(el => {
+el.style.maxWidth = '100%';
+el.style.overflow = 'hidden';
+});
+}
+}
+
+// Call on load and resize
+ensureMobileFit();
+window.addEventListener('resize', ensureMobileFit);
+});
+
+// Prevent default touch behavior that might cause issues
+document.addEventListener('touchstart', function(e) {
+if (e.touches.length > 1) {
+e.preventDefault();
+}
+}, { passive: false });
+</script>
+</body>
+</html>
