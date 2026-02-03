@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear Programming (LP) - Math Notes | Guess Paper</title>
+<!-- Google Fonts for Bismillah -->
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Tailwind CSS Browser Build v4 -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<!-- MathJax Configuration -->
+<script>
+MathJax = {
+tex: {
+inlineMath: [['\\(','\\)']],
+displayMath: [['\\[','\\]']],
+processEscapes: true
+},
+svg: { fontCache: 'global' }
+};
+</script>
+<!-- MathJax v3 -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+/* Theme Variables */
+:root {
+--bg-primary: #f0f4f8;
+--bg-card: #ffffff;
+--color-primary: #3498db;
+--color-accent: #2ecc71;
+--color-text: #2c3e50;
+--color-muted: #6c757d;
+--border-color: #dee2e6;
+--shadow: rgba(0,0,0,0.1);
+}
+[data-theme="sepia"] {
+--bg-primary: #f4f1e8;
+--bg-card: #fefcf5;
+--color-primary: #8b7355;
+--color-accent: #a1887f;
+--color-text: #3e2723;
+--color-muted: #795548;
+--border-color: #d7ccc8;
+--shadow: rgba(101, 67, 33, 0.15);
+}
+[data-theme="green"] {
+--bg-primary: #e8f5e9;
+--bg-card: #ffffff;
+--color-primary: #2e7d32;
+--color-accent: #66bb6a;
+--color-text: #1b5e20;
+--color-muted: #558b2f;
+--border-color: #d7ccc8;
+--shadow: rgba(46, 125, 50, 0.15);
+}
+[data-theme="yellow"] {
+--bg-primary: #fffde7;
+--bg-card: #ffffff;
+--color-primary: #f9a825;
+--color-accent: #ffd54f;
+--color-text: #f57f17;
+--color-muted: #fbc02d;
+--border-color: #fff9c4;
+--shadow: rgba(249, 168, 37, 0.2);
+}
+[data-theme="blackwhite"] {
+--bg-primary: #ffffff;
+--bg-card: #f8f9fa;
+--color-primary: #000000;
+--color-accent: #495057;
+--color-text: #000000;
+--color-muted: #495057;
+--border-color: #dee2e6;
+--shadow: rgba(0, 0, 0, 0.15);
+}
+[data-theme="dark"] {
+--bg-primary: #1a1a1a;
+--bg-card: #2d2d2d;
+--color-primary: #60a5fa;
+--color-accent: #34d399;
+--color-text: #e5e7eb;
+--color-muted: #9ca3af;
+--border-color: #404040;
+--shadow: rgba(0, 0, 0, 0.5);
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+background-color: var(--bg-primary);
+color: var(--color-text);
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+line-height: 1.6;
+transition: background-color 0.3s ease, color 0.3s ease;
+max-width: 100vw;
+overflow-x: hidden;
+position: relative;
+}
+/* Bismillah Header */
+.bismillah-header {
+background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+color: white;
+padding: 2rem 1rem;
+text-align: center;
+margin-bottom: 2rem;
+border-radius: 0 0 1rem 1rem;
+box-shadow: 0 4px 12px var(--shadow);
+width: 100%;
+max-width: 100vw;
+}
+.bismillah-arabic {
+font-family: 'Amiri', serif;
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+line-height: 1.3;
+word-wrap: break-word;
+}
+.bismillah-translation {
+font-size: 1.1rem;
+opacity: 0.9;
+max-width: 600px;
+margin: 0 auto;
+font-weight: 300;
+}
+.chapter-title {
+font-size: 2.5rem;
+font-weight: bold;
+color: var(--color-primary);
+text-align: center;
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+padding: 0 1rem;
+}
+.chapter-subtitle {
+font-size: 1.2rem;
+color: var(--color-muted);
+text-align: center;
+margin-bottom: 2rem;
+font-weight: 300;
+padding: 0 1rem;
+}
+.container {
+max-width: 56rem;
+margin: 0 auto;
+padding: 2rem 1rem;
+width: 100%;
+box-sizing: border-box;
+}
+/* Card Component */
+.card {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1.5rem;
+margin-bottom: 2rem;
+box-shadow: 0 4px 6px var(--shadow);
+transition: all 0.3s ease;
+width: 100%;
+box-sizing: border-box;
+overflow: visible;
+}
+/* Typography */
+.main-title {
+font-size: 2.25rem;
+font-weight: bold;
+color: var(--color-primary);
+text-align: center;
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+}
+.subtitle {
+font-size: 1.25rem;
+color: var(--color-muted);
+text-align: center;
+margin-bottom: 2rem;
+}
+.section-title {
+font-size: 1.875rem;
+font-weight: bold;
+color: var(--color-primary);
+margin-bottom: 1rem;
+word-wrap: break-word;
+}
+.subsection-title {
+font-size: 1.25rem;
+font-weight: 600;
+color: var(--color-primary);
+margin-bottom: 1rem;
+margin-top: 1.5rem;
+word-wrap: break-word;
+}
+/* Question Item */
+.question-item {
+margin-bottom: 1.5rem;
+border-left: 4px solid var(--color-primary);
+padding-left: 1rem;
+width: 100%;
+box-sizing: border-box;
+}
+.question-header {
+font-weight: 600;
+margin-bottom: 0.5rem;
+display: flex;
+align-items: flex-start;
+gap: 0.5rem;
+flex-wrap: wrap;
+width: 100%;
+}
+.question-number {
+color: var(--color-primary);
+flex-shrink: 0;
+}
+
+/* Solution Toggle Button */
+.solution-toggle {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+background-color: transparent;
+border: 1px solid var(--color-primary);
+color: var(--color-primary);
+border-radius: 0.375rem;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+font-weight: 500;
+margin-top: 0.5rem;
+}
+.solution-toggle:hover {
+background-color: var(--color-primary);
+color: white;
+transform: translateY(-1px);
+box-shadow: 0 2px 4px var(--shadow);
+}
+.toggle-icon {
+transition: transform 0.2s ease;
+font-size: 0.75rem;
+}
+/* Solution Container - HORIZONTAL SCROLLABLE AS WHOLE */
+.solution {
+margin-top: 0.75rem;
+width: 100%;
+box-sizing: border-box;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.solution-content {
+padding: 1rem;
+background-color: rgba(0,0,0,0.02);
+border-left: 3px solid var(--color-primary);
+border-radius: 0.25rem;
+line-height: 1.8;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+opacity: 0;
+min-width: max-content;
+box-sizing: border-box;
+}
+.solution-content.hidden {
+max-height: 0;
+padding-top: 0;
+padding-bottom: 0;
+opacity: 0;
+}
+.solution-content.open {
+max-height: 500px;
+overflow-y: auto !important;
+overflow-x: visible !important;
+opacity: 1;
+-webkit-overflow-scrolling: touch;
+}
+
+/* MCQ Styles */
+.mcq-container {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1.25rem;
+margin-bottom: 1.5rem;
+transition: all 0.3s ease;
+width: 100%;
+box-sizing: border-box;
+overflow: hidden;
+}
+.mcq-question {
+font-size: 1rem;
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+width: 100%;
+box-sizing: border-box;
+word-wrap: break-word;
+}
+.mcq-number {
+color: var(--color-primary);
+margin-right: 0.5rem;
+}
+.mcq-options {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+margin-top: 0.75rem;
+width: 100%;
+}
+.mcq-option {
+padding: 0.75rem 1rem;
+border: 1px solid var(--border-color);
+border-radius: 0.375rem;
+cursor: pointer;
+transition: all 0.2s ease;
+background-color: var(--bg-card);
+display: flex;
+align-items: center;
+width: 100%;
+box-sizing: border-box;
+}
+.mcq-option:hover {
+background-color: rgba(0,0,0,0.03);
+border-color: var(--color-primary);
+transform: translateX(4px);
+}
+.mcq-option.correct {
+background-color: rgba(76,175,80,0.1);
+border-color: #4caf50;
+}
+.mcq-option.incorrect {
+background-color: rgba(244,67,54,0.1);
+border-color: #f44336;
+}
+.option-label {
+font-weight: 600;
+margin-right: 0.5rem;
+color: var(--color-primary);
+flex-shrink: 0;
+}
+.mcq-result {
+margin-left: auto;
+font-size: 1.25rem;
+}
+.show-correct-btn {
+margin-top: 0.75rem;
+padding: 0.5rem 1rem;
+background-color: var(--color-primary);
+color: white;
+border: none;
+border-radius: 0.375rem;
+cursor: pointer;
+font-size: 0.875rem;
+transition: all 0.2s ease;
+width: 100%;
+box-sizing: border-box;
+}
+.show-correct-btn:hover {
+opacity: 0.9;
+transform: translateY(-1px);
+box-shadow: 0 2px 4px var(--shadow);
+}
+.show-correct-btn.hidden {
+display: none;
+}
+
+/* Theme Toggle System */
+/* moved floating controls to left side */
+#themeToggle {
+position: fixed;
+bottom: 2rem;
+left: 2rem;
+width: 3.5rem;
+height: 3.5rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 1;
+visibility: visible;
+}
+#themeToggle.hidden {
+opacity: 0;
+visibility: hidden;
+}
+#themeToggle:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 16px var(--shadow);
+}
+#themePanel {
+position: fixed;
+bottom: 6rem;
+left: 2rem;
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1rem;
+box-shadow: 0 8px 24px var(--shadow);
+z-index: 1001;
+min-width: 200px;
+transition: all 0.2s ease;
+opacity: 1;
+visibility: visible;
+}
+#themePanel.hidden {
+display: none;
+opacity: 0;
+visibility: hidden;
+}
+.theme-panel-title {
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+font-size: 0.875rem;
+}
+.theme-btn {
+display: block;
+width: 100%;
+padding: 0.75rem 1rem;
+margin-bottom: 0.5rem;
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+background-color: var(--bg-card);
+color: var(--color-text);
+text-align: left;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+}
+.theme-btn:last-child {
+margin-bottom: 0;
+}
+.theme-btn:hover {
+background-color: rgba(0,0,0,0.05);
+transform: scale(1.05);
+border-color: var(--color-primary);
+}
+
+/* Back to Top Button - POSITIONED LEFT SIDE (mirrored) */
+#backToTop {
+position: fixed;
+bottom: 2rem;
+left: 6.5rem;
+width: 3rem;
+height: 3rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.25rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 999;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0;
+visibility: hidden;
+transform: translateY(20px);
+}
+#backToTop.visible {
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
+}
+#backToTop.hidden {
+opacity: 0 !important;
+visibility: hidden !important;
+}
+#backToTop:hover {
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* JUMP-TO NAVIGATION */
+#jumpToNav {
+position: fixed;
+top: 2rem;
+left: 2rem;
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1rem;
+box-shadow: 0 4px 12px var(--shadow);
+z-index: 1002;
+min-width: 200px;
+max-height: 70vh;
+overflow-y: auto;
+transition: all 0.3s ease;
+opacity: 1;
+visibility: visible;
+}
+#jumpToNav.hidden {
+transform: translateX(-100%);
+opacity: 0;
+visibility: hidden;
+}
+.jump-nav-title {
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+font-size: 1rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.jump-nav-close {
+background: none;
+border: none;
+color: var(--color-muted);
+cursor: pointer;
+font-size: 1.25rem;
+padding: 0;
+width: 24px;
+height: 24px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+}
+.jump-nav-close:hover {
+background-color: rgba(0,0,0,0.05);
+}
+.jump-nav-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.jump-nav-item {
+margin-bottom: 0.5rem;
+}
+.jump-nav-link {
+display: block;
+padding: 0.5rem 0.75rem;
+color: var(--color-text);
+text-decoration: none;
+border-radius: 0.375rem;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+}
+.jump-nav-link:hover {
+background-color: rgba(0,0,0,0.05);
+color: var(--color-primary);
+transform: translateX(4px);
+}
+#jumpToggle {
+position: fixed;
+top: 2rem;
+left: 2rem;
+width: 3.5rem;
+height: 3.5rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 999;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 1;
+visibility: visible;
+}
+#jumpToggle.hidden {
+opacity: 0;
+visibility: hidden;
+}
+#jumpToggle:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* Formula Table with HORIZONTAL SCROLLING - WHOLE TABLE SCROLLS */
+.formula-table {
+width: 100%;
+max-width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+display: block;
+margin-bottom: 1rem;
+border: 1px solid var(--border-color);
+border-radius: 0.375rem;
+}
+.formula-table table {
+width: max-content;
+min-width: 100%;
+border-collapse: collapse;
+margin: 0;
+}
+.formula-table thead {
+background-color: var(--color-primary);
+color: white;
+position: sticky;
+top: 0;
+z-index: 10;
+}
+.formula-table th,
+.formula-table td {
+padding: 0.75rem 1rem;
+text-align: left;
+border-bottom: 1px solid var(--border-color);
+white-space: nowrap;
+min-width: 200px;
+}
+.formula-table tbody tr:nth-child(even) {
+background-color: rgba(0,0,0,0.02);
+}
+.formula-table tbody tr:hover {
+background-color: rgba(0,0,0,0.04);
+}
+
+/* Definitions List */
+.definitions-list {
+list-style-type: disc;
+list-style-position: inside;
+line-height: 2;
+width: 100%;
+}
+.definitions-list li {
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+}
+.definitions-list strong {
+color: var(--color-primary);
+}
+
+/* Answer Grid */
+.answer-grid {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 0.75rem;
+width: 100%;
+}
+.answer-item {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+padding: 0.75rem;
+border-radius: 0.375rem;
+text-align: center;
+font-family: 'Courier New', monospace;
+font-weight: 600;
+word-break: break-all;
+}
+
+/* Reset Button */
+.reset-btn {
+padding: 0.5rem 1.5rem;
+background-color: var(--color-primary);
+color: white;
+border: none;
+border-radius: 0.5rem;
+cursor: pointer;
+font-weight: 600;
+transition: all 0.2s ease;
+margin-bottom: 1.5rem;
+display: inline-block;
+}
+.reset-btn:hover {
+transform: scale(1.05);
+opacity: 0.9;
+box-shadow: 0 2px 4px var(--shadow);
+}
+
+/* Print Note */
+.print-note {
+font-size: 0.875rem;
+color: var(--color-muted);
+margin-bottom: 1rem;
+}
+
+/* Utility Classes */
+.hidden {
+display: none !important;
+}
+.text-primary {
+color: var(--color-primary);
+}
+.text-muted {
+color: var(--color-muted);
+}
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+body {
+overflow-x: hidden;
+width: 100vw;
+}
+.bismillah-arabic {
+font-size: 2rem;
+}
+.chapter-title {
+font-size: 2rem;
+padding: 0 0.5rem;
+}
+.main-title {
+font-size: 2rem;
+}
+.section-title {
+font-size: 1.5rem;
+}
+.subsection-title {
+font-size: 1.125rem;
+}
+.formula-table {
+font-size: 0.875rem;
+}
+#themePanel {
+left: 1rem;
+bottom: 5rem;
+}
+#themeToggle {
+width: 3rem;
+height: 3rem;
+bottom: 1rem;
+left: 1rem;
+}
+#backToTop {
+left: 5rem;
+bottom: 1rem;
+width: 2.5rem;
+height: 2.5rem;
+}
+#jumpToNav {
+left: 1rem;
+top: 1rem;
+max-width: calc(100vw - 2rem);
+}
+#jumpToggle {
+left: 1rem;
+top: 1rem;
+width: 3rem;
+height: 3rem;
+}
+.answer-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+.container {
+padding: 1.5rem 0.5rem;
+max-width: 100vw;
+}
+/* MOBILE SCROLLING FOR SOLUTIONS */
+.solution-content.open {
+max-height: 400px;
+overflow: auto !important;
+-webkit-overflow-scrolling: touch !important;
+}
+.card {
+padding: 1rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.question-item {
+padding-left: 0.75rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.mcq-container {
+padding: 1rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.mcq-option {
+padding: 0.5rem 0.75rem;
+}
+}
+@media (max-width: 640px) {
+.bismillah-arabic {
+font-size: 1.75rem;
+}
+.chapter-title {
+font-size: 1.75rem;
+}
+.main-title {
+font-size: 1.75rem;
+}
+.answer-grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 0.5rem;
+}
+.answer-item {
+padding: 0.5rem;
+font-size: 0.875rem;
+}
+.formula-table table {
+min-width: 500px;
+}
+}
+@media (max-width: 480px) {
+.bismillah-arabic {
+font-size: 1.5rem;
+}
+.chapter-title {
+font-size: 1.5rem;
+}
+.section-title {
+font-size: 1.25rem;
+}
+.container {
+padding: 1rem 0.25rem;
+}
+.card {
+padding: 0.75rem;
+margin: 0 0.25rem 1rem 0.25rem;
+width: calc(100% - 0.5rem);
+}
+.formula-table table {
+min-width: 400px;
+}
+}
+
+/* Print Styles */
+@media print {
+.bismillah-header {
+background: white !important;
+color: black !important;
+box-shadow: none !important;
+}
+.bismillah-arabic {
+font-size: 1.5rem;
+color: black !important;
+}
+.solution-toggle,
+.show-correct-btn,
+.reset-btn,
+#themeToggle,
+#themePanel,
+#backToTop,
+#jumpToggle,
+#jumpToNav,
+.print-note {
+display: none !important;
+}
+.solution-content {
+display: block !important;
+max-height: none !important;
+padding: 1rem !important;
+opacity: 1 !important;
+overflow: visible !important;
+}
+.solution-content.hidden {
+display: block !important;
+max-height: none !important;
+opacity: 1 !important;
+}
+.mcq-container {
+page-break-inside: avoid;
+overflow: visible !important;
+}
+.question-item {
+page-break-inside: avoid;
+}
+h1, h2, h3 {
+page-break-after: avoid;
+}
+* {
+box-shadow: none !important;
+}
+.theme-btn {
+display: none !important;
+}
+.formula-table {
+overflow: visible !important;
+}
+.formula-table table {
+min-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<!-- BISMILLAH HEADER -->
+<div class="bismillah-header">
+<div class="bismillah-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+<div class="bismillah-translation">In the name of Allah, the Most Gracious, the Most Merciful</div>
+</div>
+
+<!-- JUMP-TO NAVIGATION -->
+<button id="jumpToggle">🔍</button>
+<div id="jumpToNav" class="hidden">
+<div class="jump-nav-title">
+<span>📚 Jump to Section</span>
+<button class="jump-nav-close">&times;</button>
+</div>
+<ul class="jump-nav-list">
+<li class="jump-nav-item"><a href="#definitions" class="jump-nav-link">📚 Core Definitions</a></li>
+<li class="jump-nav-item"><a href="#formulas" class="jump-nav-link">🧮 Essential Formulas</a></li>
+<li class="jump-nav-item"><a href="#questions" class="jump-nav-link">✍️ Guess-Paper Questions</a></li>
+<li class="jump-nav-item"><a href="#mcqs" class="jump-nav-link">❓ Multiple Choice Questions</a></li>
+<li class="jump-nav-item"><a href="#answerkey" class="jump-nav-link">🔑 MCQ Answer Key</a></li>
+</ul>
+</div>
+
+<!-- CHAPTER HEADER -->
+<div class="container">
+<h1 class="chapter-title">Chapter 9: Linear Programming (LP)</h1>
+<p class="chapter-subtitle">Unit 9: Linear Programming – Complete Solved Notes</p>
+</div>
+
+<!-- DEFINITIONS SECTION -->
+<div class="container" id="definitions">
+<h2 class="section-title">📚 Core Definitions</h2>
+<div class="card">
+<ul class="definitions-list">
+<li><strong>Linear Programming (LP):</strong> A mathematical technique for allocating limited resources in an optimal manner, used to solve complex planning problems involving constraints and objectives.</li>
+<li><strong>Linear Inequality:</strong> An inequality involving a linear expression in one or more variables, e.g., \( ax + b < c \), \( ax + by \geq c \).</li>
+<li><strong>Feasible Region:</strong> The set of all possible points that satisfy all constraints of an LP problem, including non-negativity constraints.</li>
+<li><strong>Objective Function:</strong> A linear function that expresses the main aim of an LP problem, either to be maximized or minimized.</li>
+<li><strong>Problem Constraints:</strong> Linear inequalities or equations that define limitations on the decision variables in an LP problem.</li>
+<li><strong>Decision Variables:</strong> The unknowns in an LP problem, representing quantities to be determined, e.g., \( x, y \).</li>
+<li><strong>Optimal Solution:</strong> The feasible solution that maximizes or minimizes the objective function in an LP problem.</li>
+<li><strong>Corner Points:</strong> The vertices of the feasible region, where the optimal solution is found.</li>
+<li><strong>Graphical Method:</strong> A method to solve LP problems by graphing constraints and identifying the feasible region and corner points.</li>
+<li><strong>Non-Negativity Constraints:</strong> Constraints that restrict decision variables to non-negative values, e.g., \( x \geq 0, y \geq 0 \).</li>
+</ul>
+</div>
+</div>
+
+<!-- FORMULAS SECTION -->
+<div class="container" id="formulas">
+<h2 class="section-title">🧮 Essential Formulas</h2>
+<div class="card">
+<!-- FORMULA TABLE WITH SCROLLING CONTAINER -->
+<div class="formula-table">
+<table>
+<thead>
+<tr>
+<th>Formula Name</th>
+<th>Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>General Form of LP Problem</td><td>Maximize/Minimize \( Z = ax + by \) subject to \( a_1x + b_1y \leq c_1 \), \( a_2x + b_2y \leq c_2 \), \( x, y \geq 0 \).</td></tr>
+<tr><td>Graphical Solution Steps</td><td>1. Plot constraints as equations. 2. Identify feasible region. 3. Find corner points. 4. Evaluate objective function at corner points. 5. Select optimal solution.</td></tr>
+<tr><td>Corner Points for Two Variables</td><td>Intersection points of constraint lines and axes, e.g., \( (0, \frac{c}{b}) \), \( (\frac{c}{a}, 0) \).</td></tr>
+<tr><td>Feasible Region for \( ax + by \leq c \)</td><td>Region below the line \( ax + by = c \) if \( b > 0 \).</td></tr>
+<tr><td>Feasible Region for \( ax + by \geq c \)</td><td>Region above the line \( ax + by = c \) if \( b > 0 \).</td></tr>
+<tr><td>Optimal Solution Selection</td><td>For maximization: highest value of \( Z \) at corner points. For minimization: lowest value of \( Z \) at corner points.</td></tr>
+<tr><td>Interval Notation for \( x \leq a \)</td><td>\( (-\infty, a] \)</td></tr>
+<tr><td>Interval Notation for \( x > a \)</td><td>\( (a, \infty) \)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- GUESS-PAPER QUESTIONS SECTION -->
+<div class="container" id="questions">
+<h2 class="section-title">✍️ Guess-Paper Questions (Solved)</h2>
+<button id="showAllBtn" class="solution-toggle mb-4">
+<span class="toggle-text">Show All Solutions</span>
+</button>
+
+<!-- EXERCISE 9.2 -->
+<h3 class="subsection-title">📝 Exercise 9.2</h3>
+
+<!-- Q1(i) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1(i).</span>
+<span>Draw the graph of the following system of linear inequalities and identify the feasible region and the corner points:
+\( 2x - 3y \leq 8 \), \( 3x + 2y \leq 10 \), \( x \geq 0, y \geq 0 \).</span>
+</div>
+<button onclick="toggleSolution('ex92-q1i')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex92-q1i" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Convert inequalities to equations:
+\( 2x - 3y = 8 \), \( 3x + 2y = 10 \).</p>
+<p><strong>Step 2:</strong> Find intercepts:
+For \( 2x - 3y = 8 \):
+\( x \)-intercept: \( (4, 0) \), \( y \)-intercept: \( (0, -\frac{8}{3}) \).
+For \( 3x + 2y = 10 \):
+\( x \)-intercept: \( (\frac{10}{3}, 0) \), \( y \)-intercept: \( (0, 5) \).</p>
+<p><strong>Step 3:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the axes and the intersection of the two lines.</p>
+<p><strong>Step 4:</strong> Find corner points:
+Intersection of \( 2x - 3y = 8 \) and \( 3x + 2y = 10 \):
+Solve simultaneously:
+\( 4x - 6y = 16 \), \( 9x + 6y = 30 \).
+Adding: \( 13x = 46 \implies x = \frac{46}{13} \), \( y = \frac{2}{13} \).
+Corner points: \( (0, 0) \), \( (4, 0) \), \( (\frac{46}{13}, \frac{2}{13}) \), \( (0, 5) \).</p>
+<p>✅ Answer: Corner points are \(\boxed{(0, 0)}\), \(\boxed{(4, 0)}\), \(\boxed{\left(\frac{46}{13}, \frac{2}{13}\right)}\), and \(\boxed{(0, 5)}\).</p>
+</div>
+</div>
+</div>
+
+<!-- Q2(i) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2(i).</span>
+<span>Draw the graph of the following inequalities and also identify the solution space and the corner points:
+\( 5x - y \leq 16 \), \( 3x + 2y \leq 6 \), \( x + 2y \leq 5 \), \( x \geq 0, y \geq 0 \).</span>
+</div>
+<button onclick="toggleSolution('ex92-q2i')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex92-q2i" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Convert inequalities to equations:
+\( 5x - y = 16 \), \( 3x + 2y = 6 \), \( x + 2y = 5 \).</p>
+<p><strong>Step 2:</strong> Find intercepts:
+For \( 5x - y = 16 \):
+\( x \)-intercept: \( (3.2, 0) \), \( y \)-intercept: \( (0, -16) \).
+For \( 3x + 2y = 6 \):
+\( x \)-intercept: \( (2, 0) \), \( y \)-intercept: \( (0, 3) \).
+For \( x + 2y = 5 \):
+\( x \)-intercept: \( (5, 0) \), \( y \)-intercept: \( (0, 2.5) \).</p>
+<p><strong>Step 3:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the axes and the intersection of the three lines.</p>
+<p><strong>Step 4:</strong> Find corner points:
+Intersection of \( 5x - y = 16 \) and \( 3x + 2y = 6 \):
+Solve simultaneously:
+\( 10x - 2y = 32 \), \( 3x + 2y = 6 \).
+Adding: \( 13x = 38 \implies x = \frac{38}{13} \), \( y = -\frac{104}{13} \).
+Intersection of \( 3x + 2y = 6 \) and \( x + 2y = 5 \):
+Solve simultaneously:
+\( 3x + 2y = 6 \), \( x + 2y = 5 \).
+Subtract: \( 2x = 1 \implies x = 0.5 \), \( y = 2.25 \).
+Corner points: \( (0, 0) \), \( (3.2, 0) \), \( (0.5, 2.25) \), \( (0, 2.5) \).</p>
+<p>✅ Answer: Corner points are \(\boxed{(0, 0)}\), \(\boxed{(3.2, 0)}\), \(\boxed{(0.5, 2.25)}\), and \(\boxed{(0, 2.5)}\).</p>
+</div>
+</div>
+</div>
+
+<!-- Q2(ii) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2(ii).</span>
+<span>Draw the graph of the following inequalities and also identify the solution space and the corner points:
+\( 5x + 3y \leq 12 \), \( 2x - 3y \leq 9 \), \( x + 2y \leq 4 \), \( x \geq 0, y \geq 0 \).</span>
+</div>
+<button onclick="toggleSolution('ex92-q2ii')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex92-q2ii" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Convert inequalities to equations:
+\( 5x + 3y = 12 \), \( 2x - 3y = 9 \), \( x + 2y = 4 \).</p>
+<p><strong>Step 2:</strong> Find intercepts:
+For \( 5x + 3y = 12 \):
+\( x \)-intercept: \( (2.4, 0) \), \( y \)-intercept: \( (0, 4) \).
+For \( 2x - 3y = 9 \):
+\( x \)-intercept: \( (4.5, 0) \), \( y \)-intercept: \( (0, -3) \).
+For \( x + 2y = 4 \):
+\( x \)-intercept: \( (4, 0) \), \( y \)-intercept: \( (0, 2) \).</p>
+<p><strong>Step 3:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the axes and the intersection of the three lines.</p>
+<p><strong>Step 4:</strong> Find corner points:
+Intersection of \( 5x + 3y = 12 \) and \( 2x - 3y = 9 \):
+Solve simultaneously:
+\( 5x + 3y = 12 \), \( 2x - 3y = 9 \).
+Adding: \( 7x = 21 \implies x = 3 \), \( y = -1 \).
+Intersection of \( 2x - 3y = 9 \) and \( x + 2y = 4 \):
+Solve simultaneously:
+\( 2x - 3y = 9 \), \( x + 2y = 4 \).
+Multiply second by 2: \( 2x + 4y = 8 \).
+Subtract first: \( 7y = -1 \implies y = -\frac{1}{7} \), \( x = \frac{30}{7} \).
+Corner points: \( (0, 0) \), \( (2.4, 0) \), \( (3, -1) \), \( (0, 2) \).</p>
+<p>✅ Answer: Corner points are \(\boxed{(0, 0)}\), \(\boxed{(2.4, 0)}\), \(\boxed{(3, -1)}\), and \(\boxed{(0, 2)}\).</p>
+</div>
+</div>
+</div>
+
+<!-- EXERCISE 9.3 -->
+<h3 class="subsection-title">📝 Exercise 9.3</h3>
+
+<!-- Q1(i) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1(i).</span>
+<span>Maximize \( Z(x, y) = 10x + 11y \) subject to:
+\( 2x + 3y \leq 8 \), \( 6x + 3y \leq 10 \), \( x, y \geq 0 \).</span>
+</div>
+<button onclick="toggleSolution('ex93-q1i')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex93-q1i" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Convert inequalities to equations:
+\( 2x + 3y = 8 \), \( 6x + 3y = 10 \).</p>
+<p><strong>Step 2:</strong> Find intercepts:
+For \( 2x + 3y = 8 \):
+\( x \)-intercept: \( (4, 0) \), \( y \)-intercept: \( (0, \frac{8}{3}) \).
+For \( 6x + 3y = 10 \):
+\( x \)-intercept: \( (\frac{5}{3}, 0) \), \( y \)-intercept: \( (0, \frac{10}{3}) \).</p>
+<p><strong>Step 3:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the axes and the intersection of the two lines.</p>
+<p><strong>Step 4:</strong> Find corner points:
+Intersection of \( 2x + 3y = 8 \) and \( 6x + 3y = 10 \):
+Solve simultaneously:
+\( 2x + 3y = 8 \), \( 6x + 3y = 10 \).
+Subtract first from second: \( 4x = 2 \implies x = 0.5 \), \( y = \frac{7}{3} \).
+Corner points: \( (0, 0) \), \( (4, 0) \), \( (0.5, \frac{7}{3}) \), \( (0, \frac{8}{3}) \).</p>
+<p><strong>Step 5:</strong> Evaluate \( Z \) at corner points:
+\( Z(0, 0) = 0 \),
+\( Z(4, 0) = 40 \),
+\( Z(0.5, \frac{7}{3}) = 5 + \frac{77}{3} = \frac{92}{3} \approx 30.67 \),
+\( Z(0, \frac{8}{3}) = \frac{88}{3} \approx 29.33 \).</p>
+<p><strong>Step 6:</strong> The maximum value of \( Z \) is \( \frac{92}{3} \) at \( (0.5, \frac{7}{3}) \).</p>
+<p>✅ Answer: Maximum \( Z = \boxed{\frac{92}{3}} \) at \( \boxed{\left(0.5, \frac{7}{3}\right)} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q1(ii) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1(ii).</span>
+<span>Maximize \( Z(x, y) = 30x + 36y \) subject to:
+\( 4x + 2y \leq 12 \), \( 6x + 5y \leq 20 \), \( x, y \geq 0 \).</span>
+</div>
+<button onclick="toggleSolution('ex93-q1ii')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex93-q1ii" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Convert inequalities to equations:
+\( 4x + 2y = 12 \), \( 6x + 5y = 20 \).</p>
+<p><strong>Step 2:</strong> Find intercepts:
+For \( 4x + 2y = 12 \):
+\( x \)-intercept: \( (3, 0) \), \( y \)-intercept: \( (0, 6) \).
+For \( 6x + 5y = 20 \):
+\( x \)-intercept: \( (\frac{10}{3}, 0) \), \( y \)-intercept: \( (0, 4) \).</p>
+<p><strong>Step 3:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the axes and the intersection of the two lines.</p>
+<p><strong>Step 4:</strong> Find corner points:
+Intersection of \( 4x + 2y = 12 \) and \( 6x + 5y = 20 \):
+Solve simultaneously:
+\( 4x + 2y = 12 \), \( 6x + 5y = 20 \).
+Multiply first by 3: \( 12x + 6y = 36 \).
+Multiply second by 2: \( 12x + 10y = 40 \).
+Subtract: \( -4y = -4 \implies y = 1 \), \( x = 2.5 \).
+Corner points: \( (0, 0) \), \( (3, 0) \), \( (2.5, 1) \), \( (0, 4) \).</p>
+<p><strong>Step 5:</strong> Evaluate \( Z \) at corner points:
+\( Z(0, 0) = 0 \),
+\( Z(3, 0) = 90 \),
+\( Z(2.5, 1) = 75 + 36 = 111 \),
+\( Z(0, 4) = 144 \).</p>
+<p><strong>Step 6:</strong> The maximum value of \( Z \) is \( 144 \) at \( (0, 4) \).</p>
+<p>✅ Answer: Maximum \( Z = \boxed{144} \) at \( \boxed{(0, 4)} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q1(iv) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1(iv).</span>
+<span>Maximize \( Z = 4x + y \) subject to:
+\( x + y \leq 50 \), \( 3x + y \leq 90 \), \( x - y \leq 40 \), \( x, y \geq 0 \).</span>
+</div>
+<button onclick="toggleSolution('ex93-q1iv')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex93-q1iv" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Convert inequalities to equations:
+\( x + y = 50 \), \( 3x + y = 90 \), \( x - y = 40 \).</p>
+<p><strong>Step 2:</strong> Find intercepts:
+For \( x + y = 50 \):
+\( x \)-intercept: \( (50, 0) \), \( y \)-intercept: \( (0, 50) \).
+For \( 3x + y = 90 \):
+\( x \)-intercept: \( (30, 0) \), \( y \)-intercept: \( (0, 90) \).
+For \( x - y = 40 \):
+\( x \)-intercept: \( (40, 0) \), \( y \)-intercept: \( (0, -40) \).</p>
+<p><strong>Step 3:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the axes and the intersection of the three lines.</p>
+<p><strong>Step 4:</strong> Find corner points:
+Intersection of \( x + y = 50 \) and \( 3x + y = 90 \):
+Solve simultaneously:
+\( x + y = 50 \), \( 3x + y = 90 \).
+Subtract first from second: \( 2x = 40 \implies x = 20 \), \( y = 30 \).
+Intersection of \( 3x + y = 90 \) and \( x - y = 40 \):
+Solve simultaneously:
+\( 3x + y = 90 \), \( x - y = 40 \).
+Add: \( 4x = 130 \implies x = 32.5 \), \( y = -8.5 \).
+Corner points: \( (0, 0) \), \( (40, 0) \), \( (32.5, -8.5) \), \( (20, 30) \), \( (0, 40) \).</p>
+<p><strong>Step 5:</strong> Evaluate \( Z \) at corner points:
+\( Z(0, 0) = 0 \),
+\( Z(40, 0) = 160 \),
+\( Z(32.5, -8.5) = 130 - 8.5 = 121.5 \),
+\( Z(20, 30) = 80 + 30 = 110 \),
+\( Z(0, 40) = 40 \).</p>
+<p><strong>Step 6:</strong> The maximum value of \( Z \) is \( 160 \) at \( (40, 0) \).</p>
+<p>✅ Answer: Maximum \( Z = \boxed{160} \) at \( \boxed{(40, 0)} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q1(vi) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1(vi).</span>
+<span>Minimize \( Z = 200x + 500y \) subject to:
+\( x + 2y \geq 10 \), \( 3x + 4y \leq 24 \), \( x, y \geq 0 \).</span>
+</div>
+<button onclick="toggleSolution('ex93-q1vi')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex93-q1vi" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Convert inequalities to equations:
+\( x + 2y = 10 \), \( 3x + 4y = 24 \).</p>
+<p><strong>Step 2:</strong> Find intercepts:
+For \( x + 2y = 10 \):
+\( x \)-intercept: \( (10, 0) \), \( y \)-intercept: \( (0, 5) \).
+For \( 3x + 4y = 24 \):
+\( x \)-intercept: \( (8, 0) \), \( y \)-intercept: \( (0, 6) \).</p>
+<p><strong>Step 3:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the axes and the intersection of the two lines.</p>
+<p><strong>Step 4:</strong> Find corner points:
+Intersection of \( x + 2y = 10 \) and \( 3x + 4y = 24 \):
+Solve simultaneously:
+\( x + 2y = 10 \), \( 3x + 4y = 24 \).
+Multiply first by 2: \( 2x + 4y = 20 \).
+Subtract from second: \( x = 4 \), \( y = 3 \).
+Corner points: \( (0, 5) \), \( (8, 0) \), \( (4, 3) \).</p>
+<p><strong>Step 5:</strong> Evaluate \( Z \) at corner points:
+\( Z(0, 5) = 2500 \),
+\( Z(8, 0) = 1600 \),
+\( Z(4, 3) = 800 + 1500 = 2300 \).</p>
+<p><strong>Step 6:</strong> The minimum value of \( Z \) is \( 1600 \) at \( (8, 0) \).</p>
+<p>✅ Answer: Minimum \( Z = \boxed{1600} \) at \( \boxed{(8, 0)} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q2 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2.</span>
+<span>A landlord has 50 hectares of land to grow two crops X and Y with profits per hectare estimated as Rs 10,500 and Rs 9,000 respectively. To control weeds, a liquid herbicide no more than 800 litres is to be used for crops X and Y at rates of 20 liters and 10 liters per hectare. How much land should be allocated to each crop so as to maximize the total profit?</span>
+</div>
+<button onclick="toggleSolution('ex93-q2')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex93-q2" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Define variables:
+Let \( x \) = hectares for crop X, \( y \) = hectares for crop Y.</p>
+<p><strong>Step 2:</strong> Formulate LP problem:
+Maximize \( Z = 10500x + 9000y \)
+Subject to:
+\( x + y \leq 50 \),
+\( 20x + 10y \leq 800 \),
+\( x, y \geq 0 \).</p>
+<p><strong>Step 3:</strong> Convert inequalities to equations:
+\( x + y = 50 \),
+\( 20x + 10y = 800 \).</p>
+<p><strong>Step 4:</strong> Find intercepts:
+For \( x + y = 50 \):
+\( x \)-intercept: \( (50, 0) \), \( y \)-intercept: \( (0, 50) \).
+For \( 20x + 10y = 800 \):
+\( x \)-intercept: \( (40, 0) \), \( y \)-intercept: \( (0, 80) \).</p>
+<p><strong>Step 5:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the axes and the intersection of the two lines.</p>
+<p><strong>Step 6:</strong> Find corner points:
+Intersection of \( x + y = 50 \) and \( 20x + 10y = 800 \):
+Solve simultaneously:
+\( x + y = 50 \), \( 2x + y = 80 \).
+Subtract first from second: \( x = 30 \), \( y = 20 \).
+Corner points: \( (0, 0) \), \( (40, 0) \), \( (30, 20) \), \( (0, 50) \).</p>
+<p><strong>Step 7:</strong> Evaluate \( Z \) at corner points:
+\( Z(0, 0) = 0 \),
+\( Z(40, 0) = 420000 \),
+\( Z(30, 20) = 315000 + 180000 = 495000 \),
+\( Z(0, 50) = 450000 \).</p>
+<p><strong>Step 8:</strong> The maximum profit is Rs 495,000 at \( (30, 20) \).</p>
+<p>✅ Answer: Allocate \(\boxed{30 \text{ hectares}}\) to crop X and \(\boxed{20 \text{ hectares}}\) to crop Y for maximum profit of \(\boxed{\text{Rs } 495,000}\).</p>
+</div>
+</div>
+</div>
+
+<!-- Q3 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3.</span>
+<span>A toy factory manufactures two types of toys A and B and sells for Rs.25 and Rs.20 respectively. The toys A and B respectively, require 20 units and 12 units daily out of 2000 available resource units. Both require a production time of 5 minutes and total working hours are 9 per day. What should be the quantity for each of the toys to maximize the selling amount?</span>
+</div>
+<button onclick="toggleSolution('ex93-q3')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex93-q3" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Define variables:
+Let \( x \) = number of toys A, \( y \) = number of toys B.</p>
+<p><strong>Step 2:</strong> Formulate LP problem:
+Maximize \( Z = 25x + 20y \)
+Subject to:
+\( 20x + 12y \leq 2000 \),
+\( 5x + 5y \leq 540 \),
+\( x, y \geq 0 \).</p>
+<p><strong>Step 3:</strong> Convert inequalities to equations:
+\( 20x + 12y = 2000 \),
+\( 5x + 5y = 540 \).</p>
+<p><strong>Step 4:</strong> Find intercepts:
+For \( 20x + 12y = 2000 \):
+\( x \)-intercept: \( (100, 0) \), \( y \)-intercept: \( (0, \frac{500}{3}) \).
+For \( 5x + 5y = 540 \):
+\( x \)-intercept: \( (108, 0) \), \( y \)-intercept: \( (0, 108) \).</p>
+<p><strong>Step 5:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the axes and the intersection of the two lines.</p>
+<p><strong>Step 6:</strong> Find corner points:
+Intersection of \( 20x + 12y = 2000 \) and \( 5x + 5y = 540 \):
+Solve simultaneously:
+\( 20x + 12y = 2000 \), \( x + y = 108 \).
+Multiply second by 12: \( 12x + 12y = 1296 \).
+Subtract from first: \( 8x = 704 \implies x = 88 \), \( y = 20 \).
+Corner points: \( (0, 0) \), \( (100, 0) \), \( (88, 20) \), \( (0, 100) \).</p>
+<p><strong>Step 7:</strong> Evaluate \( Z \) at corner points:
+\( Z(0, 0) = 0 \),
+\( Z(100, 0) = 2500 \),
+\( Z(88, 20) = 2200 + 400 = 2600 \),
+\( Z(0, 100) = 2000 \).</p>
+<p><strong>Step 8:</strong> The maximum selling amount is Rs 2600 at \( (88, 20) \).</p>
+<p>✅ Answer: Manufacture \(\boxed{88}\) toys A and \(\boxed{20}\) toys B for maximum selling amount of \(\boxed{\text{Rs } 2600}\).</p>
+</div>
+</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>At a university, Professor Abdul Sattar wishes to employ two people, Farhan and Sarfaraz, to grade papers for his classes. Farhan is a graduate student and can grade 20 papers per hour; Farhan earns \$15 per hour for grading papers. Sarfaraz is a post-doctoral associate and can grade 30 papers per hour; Sarfaraz earns \$25 per hour for grading papers. Each must be employed at least one hour a week to justify their employment. If Prof. Abdul Sattar has at least 110 papers to be graded each week, how many hours per week should he employ each person to minimize the cost?</span>
+</div>
+<button onclick="toggleSolution('ex93-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex93-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>Step 1:</strong> Define variables:
+Let \( x \) = hours for Farhan, \( y \) = hours for Sarfaraz.</p>
+<p><strong>Step 2:</strong> Formulate LP problem:
+Minimize \( Z = 15x + 25y \)
+Subject to:
+\( 20x + 30y \geq 110 \),
+\( x \geq 1 \),
+\( y \geq 1 \).</p>
+<p><strong>Step 3:</strong> Convert inequalities to equations:
+\( 20x + 30y = 110 \),
+\( x = 1 \),
+\( y = 1 \).</p>
+<p><strong>Step 4:</strong> Find intercepts:
+For \( 20x + 30y = 110 \):
+\( x \)-intercept: \( (5.5, 0) \), \( y \)-intercept: \( (0, 3.67) \).</p>
+<p><strong>Step 5:</strong> Plot lines and shade feasible region:
+The feasible region is bounded by the lines and the axes.</p>
+<p><strong>Step 6:</strong> Find corner points:
+Intersection of \( 20x + 30y = 110 \) and \( x = 1 \):
+\( 20(1) + 30y = 110 \implies y = 3 \).
+Intersection of \( 20x + 30y = 110 \) and \( y = 1 \):
+\( 20x + 30(1) = 110 \implies x = 4 \).
+Corner points: \( (1, 1) \), \( (1, 3) \), \( (4, 1) \).</p>
+<p><strong>Step 7:</strong> Evaluate \( Z \) at corner points:
+\( Z(1, 1) = 15 + 25 = 40 \),
+\( Z(1, 3) = 15 + 75 = 90 \),
+\( Z(4, 1) = 60 + 25 = 85 \).</p>
+<p><strong>Step 8:</strong> The minimum cost is \$40 at \( (1, 1) \).</p>
+<p>✅ Answer: Employ Farhan for \(\boxed{1 \text{ hour}}\) and Sarfaraz for \(\boxed{1 \text{ hour}}\) to minimize cost to \(\boxed{\$40}\).</p>
+</div>
+</div>
+</div>
+
+<!-- MCQs SECTION -->
+<div class="container" id="mcqs">
+<h2 class="section-title">❓ Multiple Choice Questions (Interactive)</h2>
+<div class="print-note">
+💡 <em>For printing: MCQs will show correct answers automatically</em>
+</div>
+<button onclick="resetMCQs()" class="reset-btn">🔄 Reset All MCQs</button>
+
+<!-- MCQ 1 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">1.</span>
+<span>If \( 2x - 5 \geq 3 \) then its solution set is _____, where \( x \in \mathbb{Z} \).</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="1" data-option="A">
+<span class="option-label">(a)</span> \( \{2, 3, 4, ...\} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="B">
+<span class="option-label">(b)</span> \( \{4, 5, ...\} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="C">
+<span class="option-label">(c)</span> \( \{2, 1, 0, ...\} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="D">
+<span class="option-label">(d)</span> \( \{1, 0, -1, ...\} \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(1)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 2 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">2.</span>
+<span>If \( 4x - 3y = 8 \) is the corresponding equation of an inequality \( 4x - 3y \leq 8 \) then its \( x \)-intercept is _____.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="2" data-option="A">
+<span class="option-label">(a)</span> \( \frac{3}{2} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="B">
+<span class="option-label">(b)</span> \( \frac{2}{3} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="C">
+<span class="option-label">(c)</span> 2
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="D">
+<span class="option-label">(d)</span> \( \frac{1}{2} \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(2)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 3 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">3.</span>
+<span>\( \{x | x \in \mathbb{R} \land x > 5\} = \) _____.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="3" data-option="A">
+<span class="option-label">(a)</span> \( [5, \infty) \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="B">
+<span class="option-label">(b)</span> \( (-\infty, 5) \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="C">
+<span class="option-label">(c)</span> \( (5, \infty) \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="D">
+<span class="option-label">(d)</span> \( (-\infty, 5] \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(3)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 4 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">4.</span>
+<span>Linear Programming (LP) is used to obtain _____ solution.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="4" data-option="A">
+<span class="option-label">(a)</span> Feasible
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="B">
+<span class="option-label">(b)</span> Trivial
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="C">
+<span class="option-label">(c)</span> Optimal
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="D">
+<span class="option-label">(d)</span> Infeasible
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(4)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 5 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">5.</span>
+<span>Solution space of the linear inequality \( 2x + 3y \leq 6, \forall x,y \in \mathbb{R} \) includes _____.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="5" data-option="A">
+<span class="option-label">(a)</span> All points above the line
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="B">
+<span class="option-label">(b)</span> All points on and below the line
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="C">
+<span class="option-label">(c)</span> All points below the line
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="D">
+<span class="option-label">(d)</span> All points on and above the line
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(5)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 6 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">6.</span>
+<span>If \( f(x, y) = 5x + 4y \) is an objective function and the corner points of the feasible region are (5,4), (0,0), (4,0) and (0,6) then the function is maximum at:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="6" data-option="A">
+<span class="option-label">(a)</span> (4,0)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="B">
+<span class="option-label">(b)</span> (0,6)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="C">
+<span class="option-label">(c)</span> (0,0)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="D">
+<span class="option-label">(d)</span> (5,4)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(6)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 7 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">7.</span>
+<span>_____ are the entities whose values are to be determined from the solution of the LP problem.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="7" data-option="A">
+<span class="option-label">(a)</span> Objective function
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="B">
+<span class="option-label">(b)</span> Decision Variables
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="C">
+<span class="option-label">(c)</span> Constraints
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="D">
+<span class="option-label">(d)</span> Opportunity cost
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(7)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 8 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">8.</span>
+<span>_____ specifies the objective or goal of solving the LP problem.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="8" data-option="A">
+<span class="option-label">(a)</span> Objective function
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="B">
+<span class="option-label">(b)</span> Decision Variables
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="C">
+<span class="option-label">(c)</span> Constraints
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="D">
+<span class="option-label">(d)</span> Opportunity cost
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(8)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 9 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">9.</span>
+<span>_____ are the restrictions or limitations imposed on the LP problem.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="9" data-option="A">
+<span class="option-label">(a)</span> Variables
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="B">
+<span class="option-label">(b)</span> Costs
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="C">
+<span class="option-label">(c)</span> Profits
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="D">
+<span class="option-label">(d)</span> Constraints
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(9)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 10 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">10.</span>
+<span>The region of solution in LP problem is called _____.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="10" data-option="A">
+<span class="option-label">(a)</span> Infeasible region
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="B">
+<span class="option-label">(b)</span> Unbounded region
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="C">
+<span class="option-label">(c)</span> Infinite region
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="D">
+<span class="option-label">(d)</span> Feasible region
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(10)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 11 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">11.</span>
+<span>In case of an 'equal to' constraint, the feasible region is a straight line.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="11" data-option="A">
+<span class="option-label">(a)</span> Less than or equal to
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="11" data-option="B">
+<span class="option-label">(b)</span> Greater than or equal to
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="11" data-option="C">
+<span class="option-label">(c)</span> Mixed
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="11" data-option="D">
+<span class="option-label">(d)</span> Equal to
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(11)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 12 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">12.</span>
+<span>\( ax + b \le 0, a \ne 0, a, b \in \mathbb{R} \), is called _____.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="12" data-option="A">
+<span class="option-label">(a)</span> Non-linear inequality
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="12" data-option="B">
+<span class="option-label">(b)</span> Linear inequality
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="12" data-option="C">
+<span class="option-label">(c)</span> Linear equality
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="12" data-option="D">
+<span class="option-label">(d)</span> Complex inequality
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(12)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 13 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">13.</span>
+<span>A point of a solution region where two of its boundary lines intersect, is called _____.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="13" data-option="A">
+<span class="option-label">(a)</span> Middle point
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="13" data-option="B">
+<span class="option-label">(b)</span> Origin
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="13" data-option="C">
+<span class="option-label">(c)</span> Corner point
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="13" data-option="D">
+<span class="option-label">(d)</span> Feasible point
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(13)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 14 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">14.</span>
+<span>The solution region of an inequality restricted to the first quadrant is called _____ region.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="14" data-option="A">
+<span class="option-label">(a)</span> Combined
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="14" data-option="B">
+<span class="option-label">(b)</span> Unbounded
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="14" data-option="C">
+<span class="option-label">(c)</span> Infeasible
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="14" data-option="D">
+<span class="option-label">(d)</span> Feasible
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(14)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 15 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">15.</span>
+<span>A function which is to be maximized or minimized is called _____.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="15" data-option="A">
+<span class="option-label">(a)</span> Linear function
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="15" data-option="B">
+<span class="option-label">(b)</span> Equal function
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="15" data-option="C">
+<span class="option-label">(c)</span> Objective function
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="15" data-option="D">
+<span class="option-label">(d)</span> Non linear function
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(15)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 16 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">16.</span>
+<span>The feasible solution which maximizes or minimizes the objective function is called the _____.</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="16" data-option="A">
+<span class="option-label">(a)</span> Optimal solution
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="16" data-option="B">
+<span class="option-label">(b)</span> Corner solution
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="16" data-option="C">
+<span class="option-label">(c)</span> Initial solution
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="16" data-option="D">
+<span class="option-label">(d)</span> Complex solution
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(16)">
+💡 Show Correct Answer
+</button>
+</div>
+
+</div>
+
+<!-- ANSWER KEY SECTION -->
+<div class="container" id="answerkey">
+<h2 class="section-title">🔑 MCQ Answer Key</h2>
+<div class="card">
+<div class="answer-grid">
+<div class="answer-item">1. B</div>
+<div class="answer-item">2. C</div>
+<div class="answer-item">3. C</div>
+<div class="answer-item">4. C</div>
+<div class="answer-item">5. B</div>
+<div class="answer-item">6. D</div>
+<div class="answer-item">7. B</div>
+<div class="answer-item">8. A</div>
+<div class="answer-item">9. D</div>
+<div class="answer-item">10. D</div>
+<div class="answer-item">11. D</div>
+<div class="answer-item">12. B</div>
+<div class="answer-item">13. C</div>
+<div class="answer-item">14. D</div>
+<div class="answer-item">15. C</div>
+<div class="answer-item">16. A</div>
+</div>
+</div>
+</div>
+
+<!-- THEME TOGGLE -->
+<button id="themeToggle">🎨</button>
+
+<!-- BACK TO TOP (MOVED TO LEFT SIDE) -->
+<button id="backToTop" title="Back to top">↑</button>
+
+<!-- THEME PANEL -->
+<div id="themePanel" class="hidden">
+<div class="theme-panel-title">🎨 Choose Theme</div>
+<button class="theme-btn" onclick="applyTheme('blue')">💙 Blue</button>
+<button class="theme-btn" onclick="applyTheme('sepia')">📜 Sepia</button>
+<button class="theme-btn" onclick="applyTheme('green')">🌿 Green</button>
+<button class="theme-btn" onclick="applyTheme('yellow')">⚡ Yellow Neon</button>
+<button class="theme-btn" onclick="applyTheme('blackwhite')">⚫ Black & White</button>
+<button class="theme-btn" onclick="applyTheme('dark')">🌙 Dark Mode</button>
+</div>
+
+<script>
+// Theme Definitions
+const themes = {
+blue: {
+bgPrimary: '#f0f4f8',
+bgCard: '#ffffff',
+colorPrimary: '#3498db',
+colorAccent: '#2ecc71',
+colorText: '#2c3e50',
+colorMuted: '#6c757d',
+borderColor: '#dee2e6',
+shadow: 'rgba(0, 0, 0, 0.1)'
+},
+sepia: {
+bgPrimary: '#f4f1e8',
+bgCard: '#fefcf5',
+colorPrimary: '#8b7355',
+colorAccent: '#a1887f',
+colorText: '#3e2723',
+colorMuted: '#795548',
+borderColor: '#d7ccc8',
+shadow: 'rgba(101, 67, 33, 0.15)'
+},
+green: {
+bgPrimary: '#e8f5e9',
+bgCard: '#ffffff',
+colorPrimary: '#2e7d32',
+colorAccent: '#66bb6a',
+colorText: '#1b5e20',
+colorMuted: '#558b2f',
+borderColor: '#d7ccc8',
+shadow: 'rgba(46, 125, 50, 0.15)'
+},
+yellow: {
+bgPrimary: '#fffde7',
+bgCard: '#ffffff',
+colorPrimary: '#f9a825',
+colorAccent: '#ffd54f',
+colorText: '#f57f17',
+colorMuted: '#fbc02d',
+borderColor: '#fff9c4',
+shadow: 'rgba(249, 168, 37, 0.2)'
+},
+blackwhite: {
+bgPrimary: '#ffffff',
+bgCard: '#f8f9fa',
+colorPrimary: '#000000',
+colorAccent: '#495057',
+colorText: '#000000',
+colorMuted: '#495057',
+borderColor: '#dee2e6',
+shadow: 'rgba(0, 0, 0, 0.15)'
+},
+dark: {
+bgPrimary: '#1a1a1a',
+bgCard: '#2d2d2d',
+colorPrimary: '#60a5fa',
+colorAccent: '#34d399',
+colorText: '#e5e7eb',
+colorMuted: '#9ca3af',
+borderColor: '#404040',
+shadow: 'rgba(0, 0, 0, 0.5)'
+}
+};
+
+// Inactivity Timer Variables
+let inactivityTimer;
+const INACTIVITY_TIMEOUT = 3000; // 3 seconds
+
+// Reset Inactivity Timer
+function resetInactivityTimer() {
+clearTimeout(inactivityTimer);
+showFloatingButtons();
+inactivityTimer = setTimeout(() => {
+hideFloatingButtons();
+}, INACTIVITY_TIMEOUT);
+}
+
+// Show Floating Buttons
+function showFloatingButtons() {
+const themeToggle = document.getElementById('themeToggle');
+const backToTop = document.getElementById('backToTop');
+const jumpToggle = document.getElementById('jumpToggle');
+if (themeToggle) {
+themeToggle.classList.remove('hidden');
+}
+if (backToTop && backToTop.classList.contains('visible')) {
+backToTop.classList.remove('hidden');
+}
+if (jumpToggle) {
+jumpToggle.classList.remove('hidden');
+}
+}
+
+// Hide Floating Buttons
+function hideFloatingButtons() {
+const themeToggle = document.getElementById('themeToggle');
+const backToTop = document.getElementById('backToTop');
+const themePanel = document.getElementById('themePanel');
+const jumpToggle = document.getElementById('jumpToggle');
+if (themeToggle) {
+themeToggle.classList.add('hidden');
+}
+if (backToTop) {
+backToTop.classList.add('hidden');
+}
+if (themePanel) {
+themePanel.classList.add('hidden');
+}
+if (jumpToggle) {
+jumpToggle.classList.add('hidden');
+}
+}
+
+// Setup Activity Listeners
+function setupActivityListeners() {
+const activityEvents = ['mousemove', 'mousedown', 'keypress', 'scroll', 'touchstart', 'click', 'touchmove'];
+activityEvents.forEach(eventName => {
+document.addEventListener(eventName, resetInactivityTimer);
+});
+resetInactivityTimer();
+}
+
+// Apply Theme Function
+function applyTheme(themeName) {
+const theme = themes[themeName];
+if (!theme) return;
+const root = document.documentElement;
+root.style.setProperty('--bg-primary', theme.bgPrimary);
+root.style.setProperty('--bg-card', theme.bgCard);
+root.style.setProperty('--color-primary', theme.colorPrimary);
+root.style.setProperty('--color-accent', theme.colorAccent);
+root.style.setProperty('--color-text', theme.colorText);
+root.style.setProperty('--color-muted', theme.colorMuted);
+root.style.setProperty('--border-color', theme.borderColor);
+root.style.setProperty('--shadow', theme.shadow);
+document.documentElement.setAttribute('data-theme', themeName);
+// Update floating button colors to match theme
+updateButtonColors(theme);
+localStorage.setItem('mathNotesTheme', themeName);
+const panel = document.getElementById('themePanel');
+if (panel) panel.classList.add('hidden');
+resetInactivityTimer();
+}
+
+// Function to update button colors
+function updateButtonColors(theme) {
+const toggleBtn = document.getElementById('themeToggle');
+const backToTopBtn = document.getElementById('backToTop');
+const jumpToggleBtn = document.getElementById('jumpToggle');
+if (toggleBtn) {
+toggleBtn.style.backgroundColor = theme.colorPrimary;
+toggleBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+if (backToTopBtn) {
+backToTopBtn.style.backgroundColor = theme.colorPrimary;
+backToTopBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+if (jumpToggleBtn) {
+jumpToggleBtn.style.backgroundColor = theme.colorPrimary;
+jumpToggleBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+}
+
+// Toggle Jump Navigation
+function toggleJumpNav() {
+const nav = document.getElementById('jumpToNav');
+if (!nav) return;
+if (nav.classList.contains('hidden')) {
+nav.classList.remove('hidden');
+nav.style.display = 'block';
+setTimeout(() => {
+nav.style.transform = 'translateX(0)';
+nav.style.opacity = '1';
+nav.style.visibility = 'visible';
+}, 10);
+} else {
+nav.style.transform = 'translateX(-100%)';
+nav.style.opacity = '0';
+nav.style.visibility = 'hidden';
+setTimeout(() => {
+nav.classList.add('hidden');
+}, 300);
+}
+resetInactivityTimer();
+}
+
+// Close Jump Navigation
+function closeJumpNav() {
+const nav = document.getElementById('jumpToNav');
+if (!nav) return;
+nav.style.transform = 'translateX(-100%)';
+nav.style.opacity = '0';
+nav.style.visibility = 'hidden';
+setTimeout(() => {
+nav.classList.add('hidden');
+}, 300);
+resetInactivityTimer();
+}
+
+// Toggle Solution Function
+function toggleSolution(id) {
+const solutionContent = document.getElementById(id);
+if (!solutionContent) return;
+const button = event.currentTarget;
+const icon = button.querySelector('.toggle-icon');
+const text = button.querySelector('.toggle-text');
+if (solutionContent.classList.contains('hidden')) {
+solutionContent.classList.remove('hidden');
+solutionContent.classList.add('open');
+if (icon) icon.textContent = '▼';
+if (text) text.textContent = 'Hide Solution';
+} else {
+solutionContent.classList.add('hidden');
+solutionContent.classList.remove('open');
+if (icon) icon.textContent = '▶';
+if (text) text.textContent = 'Show Solution';
+}
+if (typeof MathJax !== 'undefined') {
+setTimeout(() => {
+MathJax.typesetPromise([solutionContent]).catch((err) => console.log(err));
+}, 100);
+}
+resetInactivityTimer();
+}
+
+// Correct Answers for MCQs
+const correctAnswers = {
+1: 'B',
+2: 'C',
+3: 'C',
+4: 'C',
+5: 'B',
+6: 'D',
+7: 'B',
+8: 'A',
+9: 'D',
+10: 'D',
+11: 'D',
+12: 'B',
+13: 'C',
+14: 'D',
+15: 'C',
+16: 'A'
+};
+
+// MCQ Answer Checking
+function checkAnswer(qNum, selected, optionElement) {
+const container = optionElement.closest('.mcq-container');
+const allOptions = container.querySelectorAll('.mcq-option');
+const showBtn = container.querySelector('.show-correct-btn');
+const correct = correctAnswers[qNum];
+allOptions.forEach(opt => {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '';
+opt.classList.remove('correct', 'incorrect');
+});
+if (selected === correct) {
+const resultSpan = optionElement.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '✅';
+optionElement.classList.add('correct');
+if (showBtn) showBtn.classList.add('hidden');
+} else {
+const resultSpan = optionElement.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '❌';
+optionElement.classList.add('incorrect');
+if (showBtn) showBtn.classList.remove('hidden');
+}
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise([container]).catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Show Correct Answer
+function showCorrect(qNum) {
+const correct = correctAnswers[qNum];
+const containers = document.querySelectorAll('.mcq-container');
+containers.forEach(container => {
+const options = container.querySelectorAll('.mcq-option');
+options.forEach(opt => {
+if (opt.dataset.question == qNum && opt.dataset.option === correct) {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '✅ (Correct Answer)';
+opt.classList.add('correct');
+opt.classList.remove('incorrect');
+}
+});
+});
+const showBtn = document.querySelector(`.mcq-container [data-question="${qNum}"]`)?.closest('.mcq-container')?.querySelector('.show-correct-btn');
+if (showBtn) showBtn.classList.add('hidden');
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Reset All MCQs
+function resetMCQs() {
+document.querySelectorAll('.mcq-option').forEach(opt => {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '';
+opt.classList.remove('correct', 'incorrect');
+});
+document.querySelectorAll('.show-correct-btn').forEach(btn => {
+btn.classList.add('hidden');
+});
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Back to Top Functionality
+function handleBackToTop() {
+const backToTopBtn = document.getElementById('backToTop');
+if (!backToTopBtn) return;
+window.addEventListener('scroll', () => {
+if (window.scrollY > 300) {
+backToTopBtn.classList.add('visible');
+backToTopBtn.classList.remove('hidden');
+} else {
+backToTopBtn.classList.remove('visible');
+}
+});
+backToTopBtn.addEventListener('click', () => {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+resetInactivityTimer();
+});
+}
+
+// Initialize on Page Load
+document.addEventListener('DOMContentLoaded', function() {
+// Load saved theme
+const savedTheme = localStorage.getItem('mathNotesTheme') || 'blue';
+applyTheme(savedTheme);
+
+// Setup inactivity timer
+setupActivityListeners();
+
+// Force initial button colors (in case applyTheme doesn't trigger properly)
+setTimeout(() => {
+const theme = themes[savedTheme];
+updateButtonColors(theme);
+}, 100);
+
+// Show All Solutions Button
+const showAllBtn = document.getElementById("showAllBtn");
+if (showAllBtn) {
+showAllBtn.addEventListener("click", () => {
+const solutions = document.querySelectorAll(".solution-content");
+const toggles = document.querySelectorAll(".solution-toggle");
+const shouldOpen = showAllBtn.innerText.includes("Show");
+solutions.forEach(sol => {
+sol.classList.toggle("hidden", !shouldOpen);
+sol.classList.toggle("open", shouldOpen);
+});
+toggles.forEach(btn => {
+const text = btn.querySelector(".toggle-text");
+const icon = btn.querySelector(".toggle-icon");
+if (text && icon) {
+text.innerText = shouldOpen ? "Hide Solution" : "Show Solution";
+icon.innerText = shouldOpen ? "▼" : "▶";
+}
+});
+showAllBtn.innerText = shouldOpen ? "Hide All Solutions" : "Show All Solutions";
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+});
+}
+
+// MCQ Event Listeners
+document.querySelectorAll('.mcq-option').forEach(option => {
+option.addEventListener('click', function() {
+const question = this.dataset.question;
+const selected = this.dataset.option;
+checkAnswer(question, selected, this);
+});
+});
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+themeToggle.addEventListener('click', function(e) {
+e.stopPropagation();
+const panel = document.getElementById('themePanel');
+if (panel) {
+panel.classList.toggle('hidden');
+}
+resetInactivityTimer();
+});
+}
+
+// Jump Navigation Toggle
+const jumpToggle = document.getElementById('jumpToggle');
+if (jumpToggle) {
+jumpToggle.addEventListener('click', function(e) {
+e.stopPropagation();
+toggleJumpNav();
+});
+}
+
+// Close Jump Navigation
+const closeJumpBtn = document.querySelector('.jump-nav-close');
+if (closeJumpBtn) {
+closeJumpBtn.addEventListener('click', function(e) {
+e.stopPropagation();
+closeJumpNav();
+});
+}
+
+// Close panels when clicking outside
+document.addEventListener('click', function(e) {
+const panel = document.getElementById('themePanel');
+const toggle = document.getElementById('themeToggle');
+const nav = document.getElementById('jumpToNav');
+const jumpBtn = document.getElementById('jumpToggle');
+if (panel && toggle && !panel.contains(e.target) && !toggle.contains(e.target)) {
+panel.classList.add('hidden');
+}
+if (nav && jumpBtn && !nav.contains(e.target) && !jumpBtn.contains(e.target)) {
+closeJumpNav();
+}
+});
+
+// Jump Navigation Links
+document.querySelectorAll('.jump-nav-link').forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 20,
+behavior: 'smooth'
+});
+closeJumpNav();
+}
+resetInactivityTimer();
+});
+});
+
+// Initialize Back to Top
+handleBackToTop();
+
+// Print handling
+window.addEventListener('beforeprint', function() {
+document.querySelectorAll('.solution-content').forEach(s => {
+s.classList.remove('hidden');
+s.classList.add('open');
+});
+});
+
+// Ensure everything fits on mobile
+function ensureMobileFit() {
+if (window.innerWidth <= 768) {
+// Ensure all elements have proper width constraints
+document.querySelectorAll('.card, .question-item, .mcq-container').forEach(el => {
+el.style.maxWidth = '100%';
+el.style.overflow = 'hidden';
+});
+}
+}
+
+// Call on load and resize
+ensureMobileFit();
+window.addEventListener('resize', ensureMobileFit);
+});
+
+// Prevent default touch behavior that might cause issues
+document.addEventListener('touchstart', function(e) {
+if (e.touches.length > 1) {
+e.preventDefault();
+}
+}, { passive: false });
+</script>
+</body>
+</html>
