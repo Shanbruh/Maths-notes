@@ -1,0 +1,3040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrices & Determinants | Guess Paper Solutions</title>
+<!-- Google Fonts for Bismillah -->
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Tailwind CSS Browser Build v4 -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<!-- MathJax Configuration -->
+<script>
+MathJax = {
+tex: {
+inlineMath: [['\\(','\\)']],
+displayMath: [['\\[','\\]']],
+processEscapes: true
+},
+svg: { fontCache: 'global' }
+};
+</script>
+<!-- MathJax v3 -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+/* Theme Variables */
+:root {
+--bg-primary: #f0f4f8;
+--bg-card: #ffffff;
+--color-primary: #3498db;
+--color-accent: #2ecc71;
+--color-text: #2c3e50;
+--color-muted: #6c757d;
+--border-color: #dee2e6;
+--shadow: rgba(0,0,0,0.1);
+}
+[data-theme="sepia"] {
+--bg-primary: #f4f1e8;
+--bg-card: #fefcf5;
+--color-primary: #8b7355;
+--color-accent: #a1887f;
+--color-text: #3e2723;
+--color-muted: #795548;
+--border-color: #d7ccc8;
+--shadow: rgba(101, 67, 33, 0.15);
+}
+[data-theme="green"] {
+--bg-primary: #e8f5e9;
+--bg-card: #ffffff;
+--color-primary: #2e7d32;
+--color-accent: #66bb6a;
+--color-text: #1b5e20;
+--color-muted: #558b2f;
+--border-color: #d7ccc8;
+--shadow: rgba(46, 125, 50, 0.15);
+}
+[data-theme="yellow"] {
+--bg-primary: #fffde7;
+--bg-card: #ffffff;
+--color-primary: #f9a825;
+--color-accent: #ffd54f;
+--color-text: #f57f17;
+--color-muted: #fbc02d;
+--border-color: #fff9c4;
+--shadow: rgba(249, 168, 37, 0.2);
+}
+[data-theme="blackwhite"] {
+--bg-primary: #ffffff;
+--bg-card: #f8f9fa;
+--color-primary: #000000;
+--color-accent: #495057;
+--color-text: #000000;
+--color-muted: #495057;
+--border-color: #dee2e6;
+--shadow: rgba(0, 0, 0, 0.15);
+}
+[data-theme="dark"] {
+--bg-primary: #1a1a1a;
+--bg-card: #2d2d2d;
+--color-primary: #60a5fa;
+--color-accent: #34d399;
+--color-text: #e5e7eb;
+--color-muted: #9ca3af;
+--border-color: #404040;
+--shadow: rgba(0, 0, 0, 0.5);
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+background-color: var(--bg-primary);
+color: var(--color-text);
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+line-height: 1.6;
+transition: background-color 0.3s ease, color 0.3s ease;
+max-width: 100vw;
+overflow-x: hidden;
+position: relative;
+}
+/* Bismillah Header */
+.bismillah-header {
+background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+color: white;
+padding: 2rem 1rem;
+text-align: center;
+margin-bottom: 2rem;
+border-radius: 0 0 1rem 1rem;
+box-shadow: 0 4px 12px var(--shadow);
+width: 100%;
+max-width: 100vw;
+}
+.bismillah-arabic {
+font-family: 'Amiri', serif;
+font-size: 2.5rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+line-height: 1.3;
+word-wrap: break-word;
+}
+.bismillah-translation {
+font-size: 1.1rem;
+opacity: 0.9;
+max-width: 600px;
+margin: 0 auto;
+font-weight: 300;
+}
+.chapter-title {
+font-size: 2.5rem;
+font-weight: bold;
+color: var(--color-primary);
+text-align: center;
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+padding: 0 1rem;
+}
+.chapter-subtitle {
+font-size: 1.2rem;
+color: var(--color-muted);
+text-align: center;
+margin-bottom: 2rem;
+font-weight: 300;
+padding: 0 1rem;
+}
+.container {
+max-width: 56rem;
+margin: 0 auto;
+padding: 2rem 1rem;
+width: 100%;
+box-sizing: border-box;
+}
+/* Card Component */
+.card {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1.5rem;
+margin-bottom: 2rem;
+box-shadow: 0 4px 6px var(--shadow);
+transition: all 0.3s ease;
+width: 100%;
+box-sizing: border-box;
+overflow: visible;
+}
+/* Typography */
+.main-title {
+font-size: 2.25rem;
+font-weight: bold;
+color: var(--color-primary);
+text-align: center;
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+}
+.subtitle {
+font-size: 1.25rem;
+color: var(--color-muted);
+text-align: center;
+margin-bottom: 2rem;
+}
+.section-title {
+font-size: 1.875rem;
+font-weight: bold;
+color: var(--color-primary);
+margin-bottom: 1rem;
+word-wrap: break-word;
+}
+.subsection-title {
+font-size: 1.25rem;
+font-weight: 600;
+color: var(--color-primary);
+margin-bottom: 1rem;
+margin-top: 1.5rem;
+word-wrap: break-word;
+}
+/* Question Item */
+.question-item {
+margin-bottom: 1.5rem;
+border-left: 4px solid var(--color-primary);
+padding-left: 1rem;
+width: 100%;
+box-sizing: border-box;
+}
+.question-header {
+font-weight: 600;
+margin-bottom: 0.5rem;
+display: flex;
+align-items: flex-start;
+gap: 0.5rem;
+flex-wrap: wrap;
+width: 100%;
+}
+.question-number {
+color: var(--color-primary);
+flex-shrink: 0;
+}
+
+/* Solution Toggle Button */
+.solution-toggle {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.5rem 1rem;
+background-color: transparent;
+border: 1px solid var(--color-primary);
+color: var(--color-primary);
+border-radius: 0.375rem;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+font-weight: 500;
+margin-top: 0.5rem;
+}
+.solution-toggle:hover {
+background-color: var(--color-primary);
+color: white;
+transform: translateY(-1px);
+box-shadow: 0 2px 4px var(--shadow);
+}
+.toggle-icon {
+transition: transform 0.2s ease;
+font-size: 0.75rem;
+}
+/* Solution Container - HORIZONTAL SCROLLABLE AS WHOLE */
+.solution {
+margin-top: 0.75rem;
+width: 100%;
+box-sizing: border-box;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+}
+.solution-content {
+padding: 1rem;
+background-color: rgba(0,0,0,0.02);
+border-left: 3px solid var(--color-primary);
+border-radius: 0.25rem;
+line-height: 1.8;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+opacity: 0;
+min-width: max-content;
+box-sizing: border-box;
+}
+.solution-content.hidden {
+max-height: 0;
+padding-top: 0;
+padding-bottom: 0;
+opacity: 0;
+}
+.solution-content.open {
+max-height: 500px;
+overflow-y: auto !important;
+overflow-x: visible !important;
+opacity: 1;
+-webkit-overflow-scrolling: touch;
+}
+
+/* MCQ Styles */
+.mcq-container {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1.25rem;
+margin-bottom: 1.5rem;
+transition: all 0.3s ease;
+width: 100%;
+box-sizing: border-box;
+overflow: hidden;
+}
+.mcq-question {
+font-size: 1rem;
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+width: 100%;
+box-sizing: border-box;
+word-wrap: break-word;
+}
+.mcq-number {
+color: var(--color-primary);
+margin-right: 0.5rem;
+}
+.mcq-options {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+margin-top: 0.75rem;
+width: 100%;
+}
+.mcq-option {
+padding: 0.75rem 1rem;
+border: 1px solid var(--border-color);
+border-radius: 0.375rem;
+cursor: pointer;
+transition: all 0.2s ease;
+background-color: var(--bg-card);
+display: flex;
+align-items: center;
+width: 100%;
+box-sizing: border-box;
+}
+.mcq-option:hover {
+background-color: rgba(0,0,0,0.03);
+border-color: var(--color-primary);
+transform: translateX(4px);
+}
+.mcq-option.correct {
+background-color: rgba(76,175,80,0.1);
+border-color: #4caf50;
+}
+.mcq-option.incorrect {
+background-color: rgba(244,67,54,0.1);
+border-color: #f44336;
+}
+.option-label {
+font-weight: 600;
+margin-right: 0.5rem;
+color: var(--color-primary);
+flex-shrink: 0;
+}
+.mcq-result {
+margin-left: auto;
+font-size: 1.25rem;
+}
+.show-correct-btn {
+margin-top: 0.75rem;
+padding: 0.5rem 1rem;
+background-color: var(--color-primary);
+color: white;
+border: none;
+border-radius: 0.375rem;
+cursor: pointer;
+font-size: 0.875rem;
+transition: all 0.2s ease;
+width: 100%;
+box-sizing: border-box;
+}
+.show-correct-btn:hover {
+opacity: 0.9;
+transform: translateY(-1px);
+box-shadow: 0 2px 4px var(--shadow);
+}
+.show-correct-btn.hidden {
+display: none;
+}
+
+/* Theme Toggle System */
+/* moved floating controls to left side */
+#themeToggle {
+position: fixed;
+bottom: 2rem;
+left: 2rem;
+width: 3.5rem;
+height: 3.5rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 1;
+visibility: visible;
+}
+#themeToggle.hidden {
+opacity: 0;
+visibility: hidden;
+}
+#themeToggle:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 16px var(--shadow);
+}
+#themePanel {
+position: fixed;
+bottom: 6rem;
+left: 2rem;
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1rem;
+box-shadow: 0 8px 24px var(--shadow);
+z-index: 1001;
+min-width: 200px;
+transition: all 0.2s ease;
+opacity: 1;
+visibility: visible;
+}
+#themePanel.hidden {
+display: none;
+opacity: 0;
+visibility: hidden;
+}
+.theme-panel-title {
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+font-size: 0.875rem;
+}
+.theme-btn {
+display: block;
+width: 100%;
+padding: 0.75rem 1rem;
+margin-bottom: 0.5rem;
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+background-color: var(--bg-card);
+color: var(--color-text);
+text-align: left;
+cursor: pointer;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+}
+.theme-btn:last-child {
+margin-bottom: 0;
+}
+.theme-btn:hover {
+background-color: rgba(0,0,0,0.05);
+transform: scale(1.05);
+border-color: var(--color-primary);
+}
+
+/* Back to Top Button - POSITIONED LEFT SIDE (mirrored) */
+#backToTop {
+position: fixed;
+bottom: 2rem;
+left: 6.5rem;
+width: 3rem;
+height: 3rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.25rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 999;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 0;
+visibility: hidden;
+transform: translateY(20px);
+}
+#backToTop.visible {
+opacity: 1;
+visibility: visible;
+transform: translateY(0);
+}
+#backToTop.hidden {
+opacity: 0 !important;
+visibility: hidden !important;
+}
+#backToTop:hover {
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* JUMP-TO NAVIGATION */
+#jumpToNav {
+position: fixed;
+top: 2rem;
+left: 2rem;
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 0.5rem;
+padding: 1rem;
+box-shadow: 0 4px 12px var(--shadow);
+z-index: 1002;
+min-width: 200px;
+max-height: 70vh;
+overflow-y: auto;
+transition: all 0.3s ease;
+opacity: 1;
+visibility: visible;
+}
+#jumpToNav.hidden {
+transform: translateX(-100%);
+opacity: 0;
+visibility: hidden;
+}
+.jump-nav-title {
+font-weight: 600;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+font-size: 1rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.jump-nav-close {
+background: none;
+border: none;
+color: var(--color-muted);
+cursor: pointer;
+font-size: 1.25rem;
+padding: 0;
+width: 24px;
+height: 24px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+}
+.jump-nav-close:hover {
+background-color: rgba(0,0,0,0.05);
+}
+.jump-nav-list {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.jump-nav-item {
+margin-bottom: 0.5rem;
+}
+.jump-nav-link {
+display: block;
+padding: 0.5rem 0.75rem;
+color: var(--color-text);
+text-decoration: none;
+border-radius: 0.375rem;
+transition: all 0.2s ease;
+font-size: 0.875rem;
+}
+.jump-nav-link:hover {
+background-color: rgba(0,0,0,0.05);
+color: var(--color-primary);
+transform: translateX(4px);
+}
+#jumpToggle {
+position: fixed;
+top: 2rem;
+left: 2rem;
+width: 3.5rem;
+height: 3.5rem;
+border-radius: 50%;
+color: white;
+border: none;
+font-size: 1.5rem;
+cursor: pointer;
+transition: all 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+z-index: 999;
+display: flex;
+align-items: center;
+justify-content: center;
+opacity: 1;
+visibility: visible;
+}
+#jumpToggle.hidden {
+opacity: 0;
+visibility: hidden;
+}
+#jumpToggle:hover {
+transform: scale(1.1);
+box-shadow: 0 6px 16px var(--shadow);
+}
+
+/* Formula Table with HORIZONTAL SCROLLING - WHOLE TABLE SCROLLS */
+.formula-table {
+width: 100%;
+max-width: 100%;
+overflow-x: auto;
+-webkit-overflow-scrolling: touch;
+display: block;
+margin-bottom: 1rem;
+border: 1px solid var(--border-color);
+border-radius: 0.375rem;
+}
+.formula-table table {
+width: max-content;
+min-width: 100%;
+border-collapse: collapse;
+margin: 0;
+}
+.formula-table thead {
+background-color: var(--color-primary);
+color: white;
+position: sticky;
+top: 0;
+z-index: 10;
+}
+.formula-table th,
+.formula-table td {
+padding: 0.75rem 1rem;
+text-align: left;
+border-bottom: 1px solid var(--border-color);
+white-space: nowrap;
+min-width: 200px;
+}
+.formula-table tbody tr:nth-child(even) {
+background-color: rgba(0,0,0,0.02);
+}
+.formula-table tbody tr:hover {
+background-color: rgba(0,0,0,0.04);
+}
+
+/* Definitions List */
+.definitions-list {
+list-style-type: disc;
+list-style-position: inside;
+line-height: 2;
+width: 100%;
+}
+.definitions-list li {
+margin-bottom: 0.5rem;
+word-wrap: break-word;
+}
+.definitions-list strong {
+color: var(--color-primary);
+}
+
+/* Answer Grid */
+.answer-grid {
+display: grid;
+grid-template-columns: repeat(5, 1fr);
+gap: 0.75rem;
+width: 100%;
+}
+.answer-item {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+padding: 0.75rem;
+border-radius: 0.375rem;
+text-align: center;
+font-family: 'Courier New', monospace;
+font-weight: 600;
+word-break: break-all;
+}
+
+/* Reset Button */
+.reset-btn {
+padding: 0.5rem 1.5rem;
+background-color: var(--color-primary);
+color: white;
+border: none;
+border-radius: 0.5rem;
+cursor: pointer;
+font-weight: 600;
+transition: all 0.2s ease;
+margin-bottom: 1.5rem;
+display: inline-block;
+}
+.reset-btn:hover {
+transform: scale(1.05);
+opacity: 0.9;
+box-shadow: 0 2px 4px var(--shadow);
+}
+
+/* Print Note */
+.print-note {
+font-size: 0.875rem;
+color: var(--color-muted);
+margin-bottom: 1rem;
+}
+
+/* Utility Classes */
+.hidden {
+display: none !important;
+}
+.text-primary {
+color: var(--color-primary);
+}
+.text-muted {
+color: var(--color-muted);
+}
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+body {
+overflow-x: hidden;
+width: 100vw;
+}
+.bismillah-arabic {
+font-size: 2rem;
+}
+.chapter-title {
+font-size: 2rem;
+padding: 0 0.5rem;
+}
+.main-title {
+font-size: 2rem;
+}
+.section-title {
+font-size: 1.5rem;
+}
+.subsection-title {
+font-size: 1.125rem;
+}
+.formula-table {
+font-size: 0.875rem;
+}
+#themePanel {
+left: 1rem;
+bottom: 5rem;
+}
+#themeToggle {
+width: 3rem;
+height: 3rem;
+bottom: 1rem;
+left: 1rem;
+}
+#backToTop {
+left: 5rem;
+bottom: 1rem;
+width: 2.5rem;
+height: 2.5rem;
+}
+#jumpToNav {
+left: 1rem;
+top: 1rem;
+max-width: calc(100vw - 2rem);
+}
+#jumpToggle {
+left: 1rem;
+top: 1rem;
+width: 3rem;
+height: 3rem;
+}
+.answer-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+.container {
+padding: 1.5rem 0.5rem;
+max-width: 100vw;
+}
+/* MOBILE SCROLLING FOR SOLUTIONS */
+.solution-content.open {
+max-height: 400px;
+overflow: auto !important;
+-webkit-overflow-scrolling: touch !important;
+}
+.card {
+padding: 1rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.question-item {
+padding-left: 0.75rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.mcq-container {
+padding: 1rem;
+margin: 0 0.5rem 1.5rem 0.5rem;
+width: calc(100% - 1rem);
+}
+.mcq-option {
+padding: 0.5rem 0.75rem;
+}
+}
+@media (max-width: 640px) {
+.bismillah-arabic {
+font-size: 1.75rem;
+}
+.chapter-title {
+font-size: 1.75rem;
+}
+.main-title {
+font-size: 1.75rem;
+}
+.answer-grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 0.5rem;
+}
+.answer-item {
+padding: 0.5rem;
+font-size: 0.875rem;
+}
+.formula-table table {
+min-width: 500px;
+}
+}
+@media (max-width: 480px) {
+.bismillah-arabic {
+font-size: 1.5rem;
+}
+.chapter-title {
+font-size: 1.5rem;
+}
+.section-title {
+font-size: 1.25rem;
+}
+.container {
+padding: 1rem 0.25rem;
+}
+.card {
+padding: 0.75rem;
+margin: 0 0.25rem 1rem 0.25rem;
+width: calc(100% - 0.5rem);
+}
+.formula-table table {
+min-width: 400px;
+}
+}
+
+/* Print Styles */
+@media print {
+.bismillah-header {
+background: white !important;
+color: black !important;
+box-shadow: none !important;
+}
+.bismillah-arabic {
+font-size: 1.5rem;
+color: black !important;
+}
+.solution-toggle,
+.show-correct-btn,
+.reset-btn,
+#themeToggle,
+#themePanel,
+#backToTop,
+#jumpToggle,
+#jumpToNav,
+.print-note {
+display: none !important;
+}
+.solution-content {
+display: block !important;
+max-height: none !important;
+padding: 1rem !important;
+opacity: 1 !important;
+overflow: visible !important;
+}
+.solution-content.hidden {
+display: block !important;
+max-height: none !important;
+opacity: 1 !important;
+}
+.mcq-container {
+page-break-inside: avoid;
+overflow: visible !important;
+}
+.question-item {
+page-break-inside: avoid;
+}
+h1, h2, h3 {
+page-break-after: avoid;
+}
+* {
+box-shadow: none !important;
+}
+.theme-btn {
+display: none !important;
+}
+.formula-table {
+overflow: visible !important;
+}
+.formula-table table {
+min-width: 100% !important;
+}
+}
+</style>
+</head>
+<body>
+<!-- BISMILLAH HEADER -->
+<div class="bismillah-header">
+<div class="bismillah-arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+<div class="bismillah-translation">In the name of Allah, the Most Gracious, the Most Merciful</div>
+</div>
+
+<!-- JUMP-TO NAVIGATION -->
+<button id="jumpToggle">🔍</button>
+<div id="jumpToNav" class="hidden">
+<div class="jump-nav-title">
+<span>📚 Jump to Section</span>
+<button class="jump-nav-close">&times;</button>
+</div>
+<ul class="jump-nav-list">
+<li class="jump-nav-item"><a href="#definitions" class="jump-nav-link">📚 Core Definitions</a></li>
+<li class="jump-nav-item"><a href="#formulas" class="jump-nav-link">🧮 Essential Formulas</a></li>
+<li class="jump-nav-item"><a href="#ex21" class="jump-nav-link">✍️ Exercise 2.1</a></li>
+<li class="jump-nav-item"><a href="#ex22" class="jump-nav-link">✍️ Exercise 2.2</a></li>
+<li class="jump-nav-item"><a href="#ex23" class="jump-nav-link">✍️ Exercise 2.3</a></li>
+<li class="jump-nav-item"><a href="#ex24" class="jump-nav-link">✍️ Exercise 2.4</a></li>
+<li class="jump-nav-item"><a href="#ex25" class="jump-nav-link">✍️ Exercise 2.5</a></li>
+<li class="jump-nav-item"><a href="#ex26" class="jump-nav-link">✍️ Exercise 2.6</a></li>
+<li class="jump-nav-item"><a href="#mcqs" class="jump-nav-link">❓ Multiple Choice Questions</a></li>
+<li class="jump-nav-item"><a href="#answerkey" class="jump-nav-link">🔑 MCQ Answer Key</a></li>
+</ul>
+</div>
+
+<!-- CHAPTER HEADER -->
+<div class="container">
+<h1 class="chapter-title">Matrices and Determinants</h1>
+<p class="chapter-subtitle">Unit 2: Complete Solved Notes & Guess Paper</p>
+</div>
+
+<!-- DEFINITIONS SECTION -->
+<div class="container" id="definitions">
+<h2 class="section-title">📚 Core Definitions</h2>
+<div class="card">
+<ul class="definitions-list">
+<li><strong>Matrix:</strong> A rectangular array of numbers, symbols, or expressions, arranged in rows and columns. Denoted by capital letters, e.g., \( A = [a_{ij}] \).</li>
+<li><strong>Order of a Matrix:</strong> The number of rows \( m \) and columns \( n \) in a matrix, denoted as \( m \times n \).</li>
+<li><strong>Equality of Matrices:</strong> Two matrices are equal if they have the same order and corresponding elements are equal.</li>
+<li><strong>Row Matrix:</strong> A matrix with only one row, e.g., \( [1 \ 2 \ 3] \).</li>
+<li><strong>Column Matrix:</strong> A matrix with only one column, e.g., \( \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix} \).</li>
+<li><strong>Square Matrix:</strong> A matrix with equal number of rows and columns, e.g., \( \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \).</li>
+<li><strong>Rectangular Matrix:</strong> A matrix with unequal number of rows and columns, e.g., \( \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix} \).</li>
+<li><strong>Zero/Null Matrix:</strong> A matrix with all elements zero, e.g., \( \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix} \).</li>
+<li><strong>Diagonal Matrix:</strong> A square matrix with non-diagonal elements zero, e.g., \( \begin{bmatrix} 1 & 0 \\ 0 & 2 \end{bmatrix} \).</li>
+<li><strong>Scalar Matrix:</strong> A diagonal matrix with equal diagonal elements, e.g., \( \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix} \).</li>
+<li><strong>Identity Matrix:</strong> A diagonal matrix with diagonal elements equal to 1, e.g., \( I_2 = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \).</li>
+<li><strong>Upper Triangular Matrix:</strong> A square matrix with all elements below the main diagonal zero.</li>
+<li><strong>Lower Triangular Matrix:</strong> A square matrix with all elements above the main diagonal zero.</li>
+<li><strong>Transpose of a Matrix:</strong> The matrix obtained by interchanging rows and columns, denoted as \( A^t \).</li>
+<li><strong>Symmetric Matrix:</strong> A square matrix \( A \) such that \( A^t = A \).</li>
+<li><strong>Skew-Symmetric Matrix:</strong> A square matrix \( A \) such that \( A^t = -A \).</li>
+<li><strong>Idempotent Matrix:</strong> A square matrix \( A \) such that \( A^2 = A \).</li>
+<li><strong>Nilpotent Matrix:</strong> A square matrix \( A \) such that \( A^p = 0 \) for some positive integer \( p \).</li>
+<li><strong>Involutory Matrix:</strong> A square matrix \( A \) such that \( A^2 = I \).</li>
+<li><strong>Periodic Matrix:</strong> A square matrix \( A \) such that \( A^{k+1} = A \) for some positive integer \( k \).</li>
+<li><strong>Hermitian Matrix:</strong> A square matrix \( A \) over \( \mathbb{C} \) such that \( (\bar{A})^t = A \).</li>
+<li><strong>Skew-Hermitian Matrix:</strong> A square matrix \( A \) over \( \mathbb{C} \) such that \( (\bar{A})^t = -A \).</li>
+<li><strong>Determinant:</strong> A scalar value associated with a square matrix, denoted as \( |A| \) or \( \det(A) \).</li>
+<li><strong>Minor:</strong> The determinant of the sub-matrix obtained by deleting the \( i \)-th row and \( j \)-th column.</li>
+<li><strong>Cofactor:</strong> The signed minor, \( A_{ij} = (-1)^{i+j} M_{ij} \).</li>
+<li><strong>Adjoint of a Matrix:</strong> The transpose of the cofactor matrix, denoted as \( \text{adj}(A) \).</li>
+<li><strong>Singular Matrix:</strong> A square matrix with determinant zero.</li>
+<li><strong>Non-Singular Matrix:</strong> A square matrix with non-zero determinant.</li>
+<li><strong>Inverse of a Matrix:</strong> A matrix \( A^{-1} \) such that \( AA^{-1} = A^{-1}A = I \).</li>
+<li><strong>Rank of a Matrix:</strong> The number of non-zero rows in its echelon form.</li>
+<li><strong>Echelon Form:</strong> A matrix where all non-zero rows precede zero rows, and the leading entry of each row is to the right of the leading entry of the row above.</li>
+<li><strong>Reduced Echelon Form:</strong> An echelon form matrix where the leading entry of each row is 1, and all other elements in the column are zero.</li>
+<li><strong>Consistent System:</strong> A system of linear equations with one or more solutions.</li>
+<li><strong>Inconsistent System:</strong> A system of linear equations with no solution.</li>
+<li><strong>Homogeneous System:</strong> A system of linear equations where all constants are zero.</li>
+<li><strong>Non-Homogeneous System:</strong> A system of linear equations with at least one non-zero constant.</li>
+</ul>
+</div>
+</div>
+
+<!-- FORMULAS SECTION -->
+<div class="container" id="formulas">
+<h2 class="section-title">🧮 Essential Formulas</h2>
+<div class="card">
+<!-- FORMULA TABLE WITH SCROLLING CONTAINER -->
+<div class="formula-table">
+<table>
+<thead>
+<tr>
+<th>Formula Name</th>
+<th>Expression</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Determinant of \( 2 \times 2 \) Matrix</td><td>\( \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc \)</td></tr>
+<tr><td>Determinant of \( 3 \times 3 \) Matrix</td><td>\( \begin{vmatrix} a & b & c \\ d & e & f \\ g & h & i \end{vmatrix} = a(ei - fh) - b(di - fg) + c(dh - eg) \)</td></tr>
+<tr><td>Cofactor \( A_{ij} \)</td><td>\( A_{ij} = (-1)^{i+j} M_{ij} \)</td></tr>
+<tr><td>Adjoint of Matrix \( A \)</td><td>\( \text{adj}(A) = [A_{ij}]^t \)</td></tr>
+<tr><td>Inverse of Matrix \( A \)</td><td>\( A^{-1} = \frac{\text{adj}(A)}{|A|} \)</td></tr>
+<tr><td>Cramer's Rule for \( x \)</td><td>\( x = \frac{|A_1|}{|A|} \), where \( A_1 \) is \( A \) with the first column replaced by \( B \).</td></tr>
+<tr><td>Rank of Matrix \( A \)</td><td>Number of non-zero rows in echelon form of \( A \).</td></tr>
+<tr><td>Matrix Multiplication</td><td>\( (AB)_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj} \)</td></tr>
+<tr><td>Transpose of Product</td><td>\( (AB)^t = B^t A^t \)</td></tr>
+<tr><td>Inverse of Product</td><td>\( (AB)^{-1} = B^{-1} A^{-1} \)</td></tr>
+<tr><td>Elementary Row Operations</td><td>1. \( R_i \leftrightarrow R_j \), 2. \( kR_i \), 3. \( R_i + kR_j \)</td></tr>
+<tr><td>Consistency Condition</td><td>System is consistent if \( \text{rank}(A) = \text{rank}(A|B) \).</td></tr>
+<tr><td>Gauss Elimination</td><td>Convert augmented matrix to echelon form and back-substitute.</td></tr>
+<tr><td>Gauss-Jordan Method</td><td>Convert augmented matrix to reduced echelon form.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- EXERCISE 2.1 -->
+<div class="container" id="ex21">
+<h2 class="section-title">✍️ Exercise 2.1 (Solved)</h2>
+<button id="showAllBtn" class="solution-toggle mb-4">
+<span class="toggle-text">Show All Solutions</span>
+</button>
+
+<!-- Q7 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q7.</span>
+<span>Find the index of the following nilpotent matrices.
+(i) \( \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} \)
+(ii) \( \begin{bmatrix} 1 & -3 & -4 \\ -1 & 3 & 4 \\ 1 & -3 & -4 \end{bmatrix} \)
+(iii) \( \begin{bmatrix} 1 & 1 & 3 \\ 5 & 2 & 6 \\ -2 & -1 & -3 \end{bmatrix} \)</span>
+</div>
+<button onclick="toggleSolution('ex21-q7')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex21-q7" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(i)</strong> Let \( A = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} \).</p>
+<p>Compute \( A^2 \):</p>
+\[
+A^2 = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+<p>Compute \( A^3 \):</p>
+\[
+A^3 = A^2 \cdot A = \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix} = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+<p>Thus, \( A^3 = 0 \) and \( A^2 \neq 0 \). The index is \( \boxed{3} \).</p>
+<p><strong>(ii)</strong> Let \( A = \begin{bmatrix} 1 & -3 & -4 \\ -1 & 3 & 4 \\ 1 & -3 & -4 \end{bmatrix} \).</p>
+<p>Compute \( A^2 \):</p>
+\[
+A^2 = \begin{bmatrix} 1 & -3 & -4 \\ -1 & 3 & 4 \\ 1 & -3 & -4 \end{bmatrix} \begin{bmatrix} 1 & -3 & -4 \\ -1 & 3 & 4 \\ 1 & -3 & -4 \end{bmatrix} = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+<p>Thus, \( A^2 = 0 \) and \( A \neq 0 \). The index is \( \boxed{2} \).</p>
+<p><strong>(iii)</strong> Let \( A = \begin{bmatrix} 1 & 1 & 3 \\ 5 & 2 & 6 \\ -2 & -1 & -3 \end{bmatrix} \).</p>
+<p>Compute \( A^2 \):</p>
+\[
+A^2 = \begin{bmatrix} 1 & 1 & 3 \\ 5 & 2 & 6 \\ -2 & -1 & -3 \end{bmatrix} \begin{bmatrix} 1 & 1 & 3 \\ 5 & 2 & 6 \\ -2 & -1 & -3 \end{bmatrix} = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+<p>Thus, \( A^2 = 0 \) and \( A \neq 0 \). The index is \( \boxed{2} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q8 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q8.</span>
+<span>Find the period of the following periodic matrix.
+\( \begin{bmatrix} 1 & -2 & -6 \\ -3 & 2 & 9 \\ 2 & 0 & -3 \end{bmatrix} \)</span>
+</div>
+<button onclick="toggleSolution('ex21-q8')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex21-q8" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Let \( A = \begin{bmatrix} 1 & -2 & -6 \\ -3 & 2 & 9 \\ 2 & 0 & -3 \end{bmatrix} \).</p>
+<p>Compute \( A^2 \):</p>
+\[
+A^2 = \begin{bmatrix} 1 & -2 & -6 \\ -3 & 2 & 9 \\ 2 & 0 & -3 \end{bmatrix} \begin{bmatrix} 1 & -2 & -6 \\ -3 & 2 & 9 \\ 2 & 0 & -3 \end{bmatrix} = \begin{bmatrix} -5 & -6 & -6 \\ 9 & 10 & 9 \\ -4 & -4 & -3 \end{bmatrix}
+\]
+<p>Compute \( A^3 \):</p>
+\[
+A^3 = A^2 \cdot A = \begin{bmatrix} -5 & -6 & -6 \\ 9 & 10 & 9 \\ -4 & -4 & -3 \end{bmatrix} \begin{bmatrix} 1 & -2 & -6 \\ -3 & 2 & 9 \\ 2 & 0 & -3 \end{bmatrix} = \begin{bmatrix} 1 & -2 & -6 \\ -3 & 2 & 9 \\ 2 & 0 & -3 \end{bmatrix} = A
+\]
+<p>Thus, \( A^3 = A \). The period is \( \boxed{2} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q9 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q9.</span>
+<span>Which of the following is idempotent or involutory matrix.
+(i) \( \begin{bmatrix} -5 & -8 & 0 \\ 3 & 5 & 0 \\ 1 & 2 & -1 \end{bmatrix} \)
+(ii) \( \begin{bmatrix} 2 & -2 & -4 \\ -1 & 3 & 4 \\ 1 & -2 & -3 \end{bmatrix} \)</span>
+</div>
+<button onclick="toggleSolution('ex21-q9')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex21-q9" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(i)</strong> Let \( A = \begin{bmatrix} -5 & -8 & 0 \\ 3 & 5 & 0 \\ 1 & 2 & -1 \end{bmatrix} \).</p>
+<p>Compute \( A^2 \):</p>
+\[
+A^2 = \begin{bmatrix} -5 & -8 & 0 \\ 3 & 5 & 0 \\ 1 & 2 & -1 \end{bmatrix} \begin{bmatrix} -5 & -8 & 0 \\ 3 & 5 & 0 \\ 1 & 2 & -1 \end{bmatrix} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} = I
+\]
+<p>Thus, \( A^2 = I \). The matrix is \( \boxed{\text{involutory}} \).</p>
+<p><strong>(ii)</strong> Let \( A = \begin{bmatrix} 2 & -2 & -4 \\ -1 & 3 & 4 \\ 1 & -2 & -3 \end{bmatrix} \).</p>
+<p>Compute \( A^2 \):</p>
+\[
+A^2 = \begin{bmatrix} 2 & -2 & -4 \\ -1 & 3 & 4 \\ 1 & -2 & -3 \end{bmatrix} \begin{bmatrix} 2 & -2 & -4 \\ -1 & 3 & 4 \\ 1 & -2 & -3 \end{bmatrix} = \begin{bmatrix} 2 & -2 & -4 \\ -1 & 3 & 4 \\ 1 & -2 & -3 \end{bmatrix} = A
+\]
+<p>Thus, \( A^2 = A \). The matrix is \( \boxed{\text{idempotent}} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q10 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q10.</span>
+<span>Which of the following is Hermitian or Skew Hermitian matrix or neither.
+(i) \( \begin{bmatrix} 3 & 1 - 2i & 4 + 7i \\ 1 + 2i & -4 & -2i \\ 4 - 7i & 2i & 5 \end{bmatrix} \)
+(ii) \( \begin{bmatrix} -i & 3i & i \\ 3i & 7i & -5i \\ i & -5i & -i \end{bmatrix} \)
+(iii) \( \begin{bmatrix} 1 & -i & -1 + i \\ i & 1 & 1 + i \\ 1 + i & -1 + i & 0 \end{bmatrix} \)</span>
+</div>
+<button onclick="toggleSolution('ex21-q10')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex21-q10" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(i)</strong> Let \( A = \begin{bmatrix} 3 & 1 - 2i & 4 + 7i \\ 1 + 2i & -4 & -2i \\ 4 - 7i & 2i & 5 \end{bmatrix} \).</p>
+<p>Compute \( (\bar{A})^t \):</p>
+\[
+(\bar{A})^t = \begin{bmatrix} 3 & 1 + 2i & 4 - 7i \\ 1 - 2i & -4 & 2i \\ 4 + 7i & -2i & 5 \end{bmatrix}^t = \begin{bmatrix} 3 & 1 - 2i & 4 + 7i \\ 1 + 2i & -4 & -2i \\ 4 - 7i & 2i & 5 \end{bmatrix} = A
+\]
+<p>Thus, \( (\bar{A})^t = A \). The matrix is \( \boxed{\text{Hermitian}} \).</p>
+<p><strong>(ii)</strong> Let \( A = \begin{bmatrix} -i & 3i & i \\ 3i & 7i & -5i \\ i & -5i & -i \end{bmatrix} \).</p>
+<p>Compute \( (\bar{A})^t \):</p>
+\[
+(\bar{A})^t = \begin{bmatrix} i & -3i & -i \\ -3i & -7i & 5i \\ -i & 5i & i \end{bmatrix}^t = \begin{bmatrix} i & -3i & -i \\ -3i & -7i & 5i \\ -i & 5i & i \end{bmatrix} = -A
+\]
+<p>Thus, \( (\bar{A})^t = -A \). The matrix is \( \boxed{\text{Skew Hermitian}} \).</p>
+<p><strong>(iii)</strong> Let \( A = \begin{bmatrix} 1 & -i & -1 + i \\ i & 1 & 1 + i \\ 1 + i & -1 + i & 0 \end{bmatrix} \).</p>
+<p>Compute \( (\bar{A})^t \):</p>
+\[
+(\bar{A})^t = \begin{bmatrix} 1 & i & 1 - i \\ -i & 1 & -1 - i \\ -1 - i & 1 + i & 0 \end{bmatrix}^t = \begin{bmatrix} 1 & -i & -1 + i \\ i & 1 & 1 + i \\ 1 + i & -1 + i & 0 \end{bmatrix} \neq A \text{ or } -A
+\]
+<p>Thus, the matrix is \( \boxed{\text{neither}} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q11 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q11.</span>
+<span>Find real numbers \( x, y, z \) such that matrix \( A \) is Hermitian matrix.
+\( A = \begin{bmatrix} 3 & x + 2i & yi \\ 3 - 2i & 0 & 1 + zi \\ yi & 1 - xi & -1 \end{bmatrix} \)</span>
+</div>
+<button onclick="toggleSolution('ex21-q11')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex21-q11" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>For \( A \) to be Hermitian, \( (\bar{A})^t = A \).</p>
+<p>Compute \( (\bar{A})^t \):</p>
+\[
+(\bar{A})^t = \begin{bmatrix} 3 & 3 + 2i & -yi \\ x - 2i & 0 & 1 - zi \\ -yi & 1 + xi & -1 \end{bmatrix}^t = \begin{bmatrix} 3 & x - 2i & -yi \\ 3 + 2i & 0 & 1 - zi \\ -yi & 1 + xi & -1 \end{bmatrix}
+\]
+<p>Set \( (\bar{A})^t = A \):</p>
+\[
+\begin{bmatrix} 3 & x - 2i & -yi \\ 3 + 2i & 0 & 1 - zi \\ -yi & 1 + xi & -1 \end{bmatrix} = \begin{bmatrix} 3 & x + 2i & yi \\ 3 - 2i & 0 & 1 + zi \\ yi & 1 - xi & -1 \end{bmatrix}
+\]
+<p>Equate corresponding elements:</p>
+\[
+x - 2i = x + 2i \implies -2i = 2i \implies x = 0
+\]
+\[
+-yi = yi \implies y = 0
+\]
+\[
+1 - zi = 1 + zi \implies -zi = zi \implies z = 0
+\]
+<p>Thus, \( x = \boxed{0} \), \( y = \boxed{0} \), \( z = \boxed{0} \).</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- EXERCISE 2.2 -->
+<div class="container" id="ex22">
+<h2 class="section-title">✍️ Exercise 2.2 (Solved)</h2>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>If \( A = \begin{bmatrix} -2 & 1 & 0 \\ -1 & 4 & 3 \\ 0 & 8 & 5 \end{bmatrix} \) then find: \( A^2 - 5A + 4I \).</span>
+</div>
+<button onclick="toggleSolution('ex22-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex22-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Compute \( A^2 \):</p>
+\[
+A^2 = \begin{bmatrix} -2 & 1 & 0 \\ -1 & 4 & 3 \\ 0 & 8 & 5 \end{bmatrix} \begin{bmatrix} -2 & 1 & 0 \\ -1 & 4 & 3 \\ 0 & 8 & 5 \end{bmatrix} = \begin{bmatrix} 4 + 1 + 0 & -2 + 4 + 0 & 0 + 3 + 0 \\ 2 - 4 + 0 & -1 + 16 + 24 & 0 + 12 + 15 \\ 0 - 8 + 0 & 0 + 32 + 40 & 0 + 24 + 25 \end{bmatrix} = \begin{bmatrix} 5 & 2 & 3 \\ -2 & 39 & 27 \\ -8 & 72 & 49 \end{bmatrix}
+\]
+<p>Compute \( 5A \):</p>
+\[
+5A = 5 \begin{bmatrix} -2 & 1 & 0 \\ -1 & 4 & 3 \\ 0 & 8 & 5 \end{bmatrix} = \begin{bmatrix} -10 & 5 & 0 \\ -5 & 20 & 15 \\ 0 & 40 & 25 \end{bmatrix}
+\]
+<p>Compute \( 4I \):</p>
+\[
+4I = 4 \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 4 & 0 & 0 \\ 0 & 4 & 0 \\ 0 & 0 & 4 \end{bmatrix}
+\]
+<p>Compute \( A^2 - 5A + 4I \):</p>
+\[
+A^2 - 5A + 4I = \begin{bmatrix} 5 & 2 & 3 \\ -2 & 39 & 27 \\ -8 & 72 & 49 \end{bmatrix} - \begin{bmatrix} -10 & 5 & 0 \\ -5 & 20 & 15 \\ 0 & 40 & 25 \end{bmatrix} + \begin{bmatrix} 4 & 0 & 0 \\ 0 & 4 & 0 \\ 0 & 0 & 4 \end{bmatrix} = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+<p>Thus, \( A^2 - 5A + 4I = \boxed{0} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q5 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q5.</span>
+<span>Prove the identity:
+\( \left\{ \begin{bmatrix} 1 & \omega & \omega^2 \\ \omega & \omega^2 & 1 \\ \omega^2 & 1 & \omega \end{bmatrix} \begin{bmatrix} \omega & \omega^2 & 1 \\ \omega^2 & 1 & \omega \\ 1 & \omega & \omega^2 \end{bmatrix} \right\} \begin{bmatrix} 1 \\ \omega \\ \omega^2 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex22-q5')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex22-q5" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Let \( A = \begin{bmatrix} 1 & \omega & \omega^2 \\ \omega & \omega^2 & 1 \\ \omega^2 & 1 & \omega \end{bmatrix} \) and \( B = \begin{bmatrix} \omega & \omega^2 & 1 \\ \omega^2 & 1 & \omega \\ 1 & \omega & \omega^2 \end{bmatrix} \).</p>
+<p>Compute \( AB \):</p>
+\[
+AB = \begin{bmatrix} 1 & \omega & \omega^2 \\ \omega & \omega^2 & 1 \\ \omega^2 & 1 & \omega \end{bmatrix} \begin{bmatrix} \omega & \omega^2 & 1 \\ \omega^2 & 1 & \omega \\ 1 & \omega & \omega^2 \end{bmatrix} = \begin{bmatrix} \omega + \omega^3 + \omega^2 & \omega^2 + \omega + \omega^3 & 1 + \omega^2 + \omega^3 \\ \omega^2 + \omega^4 + 1 & \omega^3 + \omega^2 + \omega & \omega + \omega^3 + \omega^4 \\ \omega^3 + \omega + \omega^2 & \omega^4 + 1 + \omega^2 & \omega^2 + \omega + \omega^3 \end{bmatrix}
+\]
+<p>Using \( \omega^3 = 1 \) and \( \omega^4 = \omega \):</p>
+\[
+AB = \begin{bmatrix} \omega + 1 + \omega^2 & \omega^2 + \omega + 1 & 1 + \omega^2 + \omega \\ \omega^2 + \omega + 1 & 1 + \omega^2 + \omega & \omega + 1 + \omega^2 \\ 1 + \omega + \omega^2 & \omega + 1 + \omega^2 & \omega^2 + \omega + 1 \end{bmatrix} = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}
+\]
+<p>Thus, \( AB \begin{bmatrix} 1 \\ \omega \\ \omega^2 \end{bmatrix} = \boxed{\begin{bmatrix} 0 \\ 0 \\ 0 \end{bmatrix}} \).</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- EXERCISE 2.3 -->
+<div class="container" id="ex23">
+<h2 class="section-title">✍️ Exercise 2.3 (Solved)</h2>
+
+<!-- Q3(iii) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3(iii).</span>
+<span>Evaluate the determinant:
+\( \begin{vmatrix} 2c & c & c \\ a & a & 2a \\ b & 2b & b \end{vmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex23-q3iii')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex23-q3iii" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+\[
+\begin{vmatrix} 2c & c & c \\ a & a & 2a \\ b & 2b & b \end{vmatrix} = 2c(a \cdot b - 2a \cdot 2b) - c(a \cdot b - 2a \cdot b) + c(a \cdot 2b - a \cdot b) = 2c(ab - 4ab) - c(ab - 2ab) + c(2ab - ab) = 2c(-3ab) - c(-ab) + c(ab) = -6abc + abc + abc = -4abc
+\]
+<p>Thus, the determinant is \( \boxed{-4abc} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q3(iv) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3(iv).</span>
+<span>Evaluate the determinant:
+\( \begin{vmatrix} 1 & 0 & 1-i \\ 0 & 1 & i \\ 1+i & i & 1 \end{vmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex23-q3iv')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex23-q3iv" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+\[
+\begin{vmatrix} 1 & 0 & 1-i \\ 0 & 1 & i \\ 1+i & i & 1 \end{vmatrix} = 1(1 \cdot 1 - i \cdot i) - 0(0 \cdot 1 - i \cdot (1+i)) + (1-i)(0 \cdot i - 1 \cdot (1+i)) = 1(1 - i^2) + (1-i)(-1 - i) = 1(1 + 1) + (1-i)(-1 - i) = 2 + (1-i)(-1 - i) = 2 + (-1 - i + i + i^2) = 2 + (-1 + i - 1) = 2 + (-2 + i) = i
+\]
+<p>Thus, the determinant is \( \boxed{i} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q4(iii) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4(iii).</span>
+<span>Find the adjoint of the matrix:
+\( \begin{bmatrix} 4 & 6 & 8 \\ 1 & 3 & 2 \\ 2 & 7 & 5 \end{bmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex23-q4iii')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex23-q4iii" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Compute cofactors:</p>
+\[
+A_{11} = (-1)^{1+1} \begin{vmatrix} 3 & 2 \\ 7 & 5 \end{vmatrix} = 15 - 14 = 1, \quad A_{12} = (-1)^{1+2} \begin{vmatrix} 1 & 2 \\ 2 & 5 \end{vmatrix} = - (5 - 4) = -1, \quad A_{13} = (-1)^{1+3} \begin{vmatrix} 1 & 3 \\ 2 & 7 \end{vmatrix} = 7 - 6 = 1
+\]
+\[
+A_{21} = (-1)^{2+1} \begin{vmatrix} 6 & 8 \\ 7 & 5 \end{vmatrix} = - (30 - 56) = 26, \quad A_{22} = (-1)^{2+2} \begin{vmatrix} 4 & 8 \\ 2 & 5 \end{vmatrix} = 20 - 16 = 4, \quad A_{23} = (-1)^{2+3} \begin{vmatrix} 4 & 6 \\ 2 & 7 \end{vmatrix} = - (28 - 12) = -16
+\]
+\[
+A_{31} = (-1)^{3+1} \begin{vmatrix} 6 & 8 \\ 3 & 2 \end{vmatrix} = 12 - 24 = -12, \quad A_{32} = (-1)^{3+2} \begin{vmatrix} 4 & 8 \\ 1 & 2 \end{vmatrix} = - (8 - 8) = 0, \quad A_{33} = (-1)^{3+3} \begin{vmatrix} 4 & 6 \\ 1 & 3 \end{vmatrix} = 12 - 6 = 6
+\]
+<p>Thus, the adjoint is:</p>
+\[
+\text{adj}(A) = \begin{bmatrix} 1 & -1 & 1 \\ 26 & 4 & -16 \\ -12 & 0 & 6 \end{bmatrix}^t = \boxed{\begin{bmatrix} 1 & 26 & -12 \\ -1 & 4 & 0 \\ 1 & -16 & 6 \end{bmatrix}}
+\]
+</div>
+</div>
+</div>
+
+<!-- Q6 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q6.</span>
+<span>Verify the following:
+(i) \( \left[ \begin{bmatrix} 2 & 3 \\ 1 & -1 \end{bmatrix} \begin{bmatrix} 3 & 1 \\ 2 & 0 \end{bmatrix} \right]^{-1} = \begin{bmatrix} 3 & 1 \\ 2 & 0 \end{bmatrix}^{-1} \begin{bmatrix} 2 & 3 \\ 1 & -1 \end{bmatrix}^{-1} \)
+(ii) \( \left[ \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix} \begin{bmatrix} 1 & i \\ -i & 1 \end{bmatrix} \right]^{-1} = \begin{bmatrix} 1 & i \\ -i & 1 \end{bmatrix}^{-1} \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}^{-1} \).</span>
+</div>
+<button onclick="toggleSolution('ex23-q6')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex23-q6" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(i)</strong> Let \( A = \begin{bmatrix} 2 & 3 \\ 1 & -1 \end{bmatrix} \) and \( B = \begin{bmatrix} 3 & 1 \\ 2 & 0 \end{bmatrix} \).</p>
+<p>Compute \( AB \):</p>
+\[
+AB = \begin{bmatrix} 2 & 3 \\ 1 & -1 \end{bmatrix} \begin{bmatrix} 3 & 1 \\ 2 & 0 \end{bmatrix} = \begin{bmatrix} 6 + 6 & 2 + 0 \\ 3 - 2 & 1 + 0 \end{bmatrix} = \begin{bmatrix} 12 & 2 \\ 1 & 1 \end{bmatrix}
+\]
+<p>Compute \( (AB)^{-1} \):</p>
+\[
+|AB| = 12 \cdot 1 - 2 \cdot 1 = 10, \quad \text{adj}(AB) = \begin{bmatrix} 1 & -2 \\ -1 & 12 \end{bmatrix}^t = \begin{bmatrix} 1 & -1 \\ -2 & 12 \end{bmatrix}, \quad (AB)^{-1} = \frac{1}{10} \begin{bmatrix} 1 & -1 \\ -2 & 12 \end{bmatrix}
+\]
+<p>Compute \( B^{-1} \) and \( A^{-1} \):</p>
+\[
+|B| = 3 \cdot 0 - 1 \cdot 2 = -2, \quad \text{adj}(B) = \begin{bmatrix} 0 & -1 \\ -2 & 3 \end{bmatrix}^t = \begin{bmatrix} 0 & -2 \\ -1 & 3 \end{bmatrix}, \quad B^{-1} = \frac{1}{-2} \begin{bmatrix} 0 & -2 \\ -1 & 3 \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ 0.5 & -1.5 \end{bmatrix}
+\]
+\[
+|A| = 2 \cdot (-1) - 3 \cdot 1 = -5, \quad \text{adj}(A) = \begin{bmatrix} -1 & -3 \\ -1 & 2 \end{bmatrix}^t = \begin{bmatrix} -1 & -1 \\ -3 & 2 \end{bmatrix}, \quad A^{-1} = \frac{1}{-5} \begin{bmatrix} -1 & -1 \\ -3 & 2 \end{bmatrix} = \begin{bmatrix} 0.2 & 0.2 \\ 0.6 & -0.4 \end{bmatrix}
+\]
+<p>Compute \( B^{-1} A^{-1} \):</p>
+\[
+B^{-1} A^{-1} = \begin{bmatrix} 0 & 1 \\ 0.5 & -1.5 \end{bmatrix} \begin{bmatrix} 0.2 & 0.2 \\ 0.6 & -0.4 \end{bmatrix} = \begin{bmatrix} 0.6 & -0.4 \\ -0.9 + 0.3 & 0.1 + 0.6 \end{bmatrix} = \begin{bmatrix} 0.6 & -0.4 \\ -0.6 & 0.7 \end{bmatrix}
+\]
+<p>Thus, \( (AB)^{-1} = B^{-1} A^{-1} \).</p>
+<p><strong>(ii)</strong> Let \( A = \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix} \) and \( B = \begin{bmatrix} 1 & i \\ -i & 1 \end{bmatrix} \).</p>
+<p>Compute \( AB \):</p>
+\[
+AB = \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix} \begin{bmatrix} 1 & i \\ -i & 1 \end{bmatrix} = \begin{bmatrix} 1 - i & i + 1 \\ 1 - i & i + 1 \end{bmatrix}
+\]
+<p>Compute \( |AB| \):</p>
+\[
+|AB| = (1 - i)(i + 1) - (1 - i)(i + 1) = 0
+\]
+<p>Thus, \( AB \) is singular and its inverse does not exist. The verification is not possible.</p>
+</div>
+</div>
+</div>
+
+<!-- Q7(iii, iv, v, vi) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q7(iii, iv, v, vi).</span>
+<span>Use adjoint method to calculate the inverse of the following square matrices, if possible.
+(iii) \( \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 3 & 0 & 9 \end{bmatrix} \)
+(iv) \( \begin{bmatrix} 2 & 3 & 4 \\ 3 & 1 & 5 \\ -5 & 1 & 0 \end{bmatrix} \)
+(v) \( \begin{bmatrix} 1 & 0 & 2 \\ 0 & 2 & 1 \\ 1 & -1 & 1 \end{bmatrix} \)
+(vi) \( \begin{bmatrix} 2 & 1 & 0 \\ 1 & 1 & 0 \\ 2 & -3 & 5 \end{bmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex23-q7')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex23-q7" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(iii)</strong> Let \( A = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 4 & 6 \\ 3 & 0 & 9 \end{bmatrix} \).</p>
+<p>Compute \( |A| \):</p>
+\[
+|A| = 1(36 - 0) - 2(18 - 18) + 3(0 - 12) = 36 - 0 - 36 = 0
+\]
+<p>Thus, \( A \) is singular and its inverse does not exist.</p>
+<p><strong>(iv)</strong> Let \( A = \begin{bmatrix} 2 & 3 & 4 \\ 3 & 1 & 5 \\ -5 & 1 & 0 \end{bmatrix} \).</p>
+<p>Compute \( |A| \):</p>
+\[
+|A| = 2(0 - 5) - 3(0 + 25) + 4(3 + 5) = -10 - 75 + 32 = -53
+\]
+<p>Compute cofactors:</p>
+\[
+A_{11} = (-1)^{1+1} \begin{vmatrix} 1 & 5 \\ 1 & 0 \end{vmatrix} = -5, \quad A_{12} = (-1)^{1+2} \begin{vmatrix} 3 & 5 \\ -5 & 0 \end{vmatrix} = 25, \quad A_{13} = (-1)^{1+3} \begin{vmatrix} 3 & 1 \\ -5 & 1 \end{vmatrix} = 8
+\]
+\[
+A_{21} = (-1)^{2+1} \begin{vmatrix} 3 & 4 \\ 1 & 0 \end{vmatrix} = 4, \quad A_{22} = (-1)^{2+2} \begin{vmatrix} 2 & 4 \\ -5 & 0 \end{vmatrix} = 20, \quad A_{23} = (-1)^{2+3} \begin{vmatrix} 2 & 3 \\ -5 & 1 \end{vmatrix} = -17
+\]
+\[
+A_{31} = (-1)^{3+1} \begin{vmatrix} 3 & 4 \\ 1 & 5 \end{vmatrix} = 11, \quad A_{32} = (-1)^{3+2} \begin{vmatrix} 2 & 4 \\ 3 & 5 \end{vmatrix} = 2, \quad A_{33} = (-1)^{3+3} \begin{vmatrix} 2 & 3 \\ 3 & 1 \end{vmatrix} = -7
+\]
+<p>Thus, the adjoint is:</p>
+\[
+\text{adj}(A) = \begin{bmatrix} -5 & 4 & 11 \\ 25 & 20 & 2 \\ 8 & -17 & -7 \end{bmatrix}^t = \begin{bmatrix} -5 & 25 & 8 \\ 4 & 20 & -17 \\ 11 & 2 & -7 \end{bmatrix}
+\]
+<p>Thus, the inverse is:</p>
+\[
+A^{-1} = \frac{1}{-53} \begin{bmatrix} -5 & 25 & 8 \\ 4 & 20 & -17 \\ 11 & 2 & -7 \end{bmatrix} = \boxed{\begin{bmatrix} \frac{5}{53} & -\frac{25}{53} & -\frac{8}{53} \\ -\frac{4}{53} & -\frac{20}{53} & \frac{17}{53} \\ -\frac{11}{53} & -\frac{2}{53} & \frac{7}{53} \end{bmatrix}}
+\]
+<p><strong>(v)</strong> Let \( A = \begin{bmatrix} 1 & 0 & 2 \\ 0 & 2 & 1 \\ 1 & -1 & 1 \end{bmatrix} \).</p>
+<p>Compute \( |A| \):</p>
+\[
+|A| = 1(2 + 1) - 0(0 - 1) + 2(0 + 2) = 3 + 4 = 7
+\]
+<p>Compute cofactors:</p>
+\[
+A_{11} = (-1)^{1+1} \begin{vmatrix} 2 & 1 \\ -1 & 1 \end{vmatrix} = 3, \quad A_{12} = (-1)^{1+2} \begin{vmatrix} 0 & 1 \\ 1 & 1 \end{vmatrix} = 1, \quad A_{13} = (-1)^{1+3} \begin{vmatrix} 0 & 2 \\ 1 & -1 \end{vmatrix} = 2
+\]
+\[
+A_{21} = (-1)^{2+1} \begin{vmatrix} 0 & 2 \\ -1 & 1 \end{vmatrix} = -2, \quad A_{22} = (-1)^{2+2} \begin{vmatrix} 1 & 2 \\ 1 & 1 \end{vmatrix} = -1, \quad A_{23} = (-1)^{2+3} \begin{vmatrix} 1 & 0 \\ 1 & -1 \end{vmatrix} = 1
+\]
+\[
+A_{31} = (-1)^{3+1} \begin{vmatrix} 0 & 2 \\ 2 & 1 \end{vmatrix} = -4, \quad A_{32} = (-1)^{3+2} \begin{vmatrix} 1 & 2 \\ 0 & 1 \end{vmatrix} = -1, \quad A_{33} = (-1)^{3+3} \begin{vmatrix} 1 & 0 \\ 0 & 2 \end{vmatrix} = 2
+\]
+<p>Thus, the adjoint is:</p>
+\[
+\text{adj}(A) = \begin{bmatrix} 3 & -2 & -4 \\ 1 & -1 & -1 \\ 2 & 1 & 2 \end{bmatrix}^t = \begin{bmatrix} 3 & 1 & 2 \\ -2 & -1 & 1 \\ -4 & -1 & 2 \end{bmatrix}
+\]
+<p>Thus, the inverse is:</p>
+\[
+A^{-1} = \frac{1}{7} \begin{bmatrix} 3 & 1 & 2 \\ -2 & -1 & 1 \\ -4 & -1 & 2 \end{bmatrix} = \boxed{\begin{bmatrix} \frac{3}{7} & \frac{1}{7} & \frac{2}{7} \\ -\frac{2}{7} & -\frac{1}{7} & \frac{1}{7} \\ -\frac{4}{7} & -\frac{1}{7} & \frac{2}{7} \end{bmatrix}}
+\]
+<p><strong>(vi)</strong> Let \( A = \begin{bmatrix} 2 & 1 & 0 \\ 1 & 1 & 0 \\ 2 & -3 & 5 \end{bmatrix} \).</p>
+<p>Compute \( |A| \):</p>
+\[
+|A| = 2(5 - 0) - 1(5 - 0) + 0(-3 - 2) = 10 - 5 = 5
+\]
+<p>Compute cofactors:</p>
+\[
+A_{11} = (-1)^{1+1} \begin{vmatrix} 1 & 0 \\ -3 & 5 \end{vmatrix} = 5, \quad A_{12} = (-1)^{1+2} \begin{vmatrix} 1 & 0 \\ 2 & 5 \end{vmatrix} = -5, \quad A_{13} = (-1)^{1+3} \begin{vmatrix} 1 & 1 \\ 2 & -3 \end{vmatrix} = -5
+\]
+\[
+A_{21} = (-1)^{2+1} \begin{vmatrix} 1 & 0 \\ -3 & 5 \end{vmatrix} = -5, \quad A_{22} = (-1)^{2+2} \begin{vmatrix} 2 & 0 \\ 2 & 5 \end{vmatrix} = 10, \quad A_{23} = (-1)^{2+3} \begin{vmatrix} 2 & 1 \\ 2 & -3 \end{vmatrix} = 8
+\]
+\[
+A_{31} = (-1)^{3+1} \begin{vmatrix} 1 & 0 \\ 1 & 0 \end{vmatrix} = 0, \quad A_{32} = (-1)^{3+2} \begin{vmatrix} 2 & 0 \\ 1 & 0 \end{vmatrix} = 0, \quad A_{33} = (-1)^{3+3} \begin{vmatrix} 2 & 1 \\ 1 & 1 \end{vmatrix} = 1
+\]
+<p>Thus, the adjoint is:</p>
+\[
+\text{adj}(A) = \begin{bmatrix} 5 & -5 & 0 \\ -5 & 10 & 0 \\ -5 & 8 & 1 \end{bmatrix}^t = \begin{bmatrix} 5 & -5 & -5 \\ -5 & 10 & 8 \\ 0 & 0 & 1 \end{bmatrix}
+\]
+<p>Thus, the inverse is:</p>
+\[
+A^{-1} = \frac{1}{5} \begin{bmatrix} 5 & -5 & -5 \\ -5 & 10 & 8 \\ 0 & 0 & 1 \end{bmatrix} = \boxed{\begin{bmatrix} 1 & -1 & -1 \\ -1 & 2 & \frac{8}{5} \\ 0 & 0 & \frac{1}{5} \end{bmatrix}}
+\]
+</div>
+</div>
+</div>
+</div>
+
+<!-- EXERCISE 2.4 -->
+<div class="container" id="ex24">
+<h2 class="section-title">✍️ Exercise 2.4 (Solved)</h2>
+
+<!-- Q1 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1.</span>
+<span>Let \( A = \begin{bmatrix} 2 & 5 & 0 \\ 3 & 4 & 6 \\ 1 & -5 & 1 \end{bmatrix} \), verify that \( |A| = |A^t| \).</span>
+</div>
+<button onclick="toggleSolution('ex24-q1')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex24-q1" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Compute \( |A| \):</p>
+\[
+|A| = 2(4 \cdot 1 - 6 \cdot (-5)) - 5(3 \cdot 1 - 6 \cdot 1) + 0(3 \cdot (-5) - 4 \cdot 1) = 2(4 + 30) - 5(3 - 6) = 68 + 15 = 83
+\]
+<p>Compute \( |A^t| \):</p>
+\[
+A^t = \begin{bmatrix} 2 & 3 & 1 \\ 5 & 4 & -5 \\ 0 & 6 & 1 \end{bmatrix}, \quad |A^t| = 2(4 \cdot 1 - 6 \cdot (-5)) - 3(5 \cdot 1 - (-5) \cdot 0) + 1(5 \cdot 6 - 4 \cdot 0) = 2(4 + 30) - 3(5) + 1(30) = 68 - 15 + 30 = 83
+\]
+<p>Thus, \( |A| = |A^t| = \boxed{83} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q2(iii) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2(iii).</span>
+<span>Without expanding, prove that:
+\( \begin{vmatrix} x+1 & x+3 & x+5 \\ x+4 & x+6 & x+8 \\ x+7 & x+9 & x+11 \end{vmatrix} = 0 \).</span>
+</div>
+<button onclick="toggleSolution('ex24-q2iii')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex24-q2iii" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Subtract the first row from the second and third rows:</p>
+\[
+\begin{vmatrix} x+1 & x+3 & x+5 \\ 3 & 3 & 3 \\ 6 & 6 & 6 \end{vmatrix} = 0
+\]
+<p>Thus, the determinant is \( \boxed{0} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q3 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3.</span>
+<span>Without expanding determinants, prove that:
+(i) \( \begin{vmatrix} 1 & a & b+c \\ 1 & b & c+a \\ 1 & c & a+b \end{vmatrix} = 0 \)
+(ii) \( \begin{vmatrix} b+c & a & a \\ b & c+a & b \\ c & c & a+b \end{vmatrix} = 4abc \)
+(iii) \( \begin{vmatrix} 1+a & 1 & 1 \\ 1 & 1+b & 1 \\ 1 & 1 & 1+c \end{vmatrix} = abc(1 + \frac{1}{a} + \frac{1}{b} + \frac{1}{c}) = abc + bc + ca + ab \).</span>
+</div>
+<button onclick="toggleSolution('ex24-q3')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex24-q3" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(i)</strong> Subtract the first column from the second and third columns:</p>
+\[
+\begin{vmatrix} 1 & a-1 & b+c-1 \\ 1 & b-1 & c+a-1 \\ 1 & c-1 & a+b-1 \end{vmatrix} = \begin{vmatrix} 1 & a-1 & b+c-1 \\ 0 & b-a & c-b \\ 0 & c-a & a-c \end{vmatrix} = 0
+\]
+<p><strong>(ii)</strong> Expand along the first row:</p>
+\[
+(b+c) \begin{vmatrix} c+a & b \\ c & a+b \end{vmatrix} - a \begin{vmatrix} b & b \\ c & a+b \end{vmatrix} + a \begin{vmatrix} b & c+a \\ c & c \end{vmatrix} = (b+c)(ac + ab - bc - ab) - a(b(a+b) - bc) + a(bc - ac) = (b+c)(ac - bc) - a(ab + b^2 - bc) + a(bc - ac) = abc - b^2c + abc - b^2c - ab^2 + abc + abc - a^2c = 4abc
+\]
+<p><strong>(iii)</strong> Expand along the first row:</p>
+\[
+(1+a) \begin{vmatrix} 1+b & 1 \\ 1 & 1+c \end{vmatrix} - 1 \begin{vmatrix} 1 & 1 \\ 1 & 1+c \end{vmatrix} + 1 \begin{vmatrix} 1 & 1+b \\ 1 & 1 \end{vmatrix} = (1+a)((1+b)(1+c) - 1) - (1+c - 1) + (1 - (1+b)) = (1+a)(1 + b + c + bc) - c - b = abc + ab + ac + bc + a + ab + ac + abc - c - b = abc + bc + ca + ab
+\]
+</div>
+</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>Without expanding the determinants, prove that:
+\( \begin{vmatrix} a & b & c \\ x & y & z \\ p & q & r \end{vmatrix} = \begin{vmatrix} y & b & q \\ x & a & p \\ z & c & r \end{vmatrix} = \begin{vmatrix} x & y & z \\ p & q & r \\ a & b & c \end{vmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex24-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex24-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>All three determinants are equal by the property that interchanging rows and columns does not change the value of the determinant.</p>
+</div>
+</div>
+</div>
+
+<!-- Q5 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q5.</span>
+<span>If \( a, b, c \) are different and \( \Delta = \begin{vmatrix} a & a^2 & 1+a^3 \\ b & b^2 & 1+b^3 \\ c & c^2 & 1+c^3 \end{vmatrix} = 0 \), then show that \( 1+abc=0 \).</span>
+</div>
+<button onclick="toggleSolution('ex24-q5')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex24-q5" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p>Expand \( \Delta \):</p>
+\[
+\Delta = a \begin{vmatrix} b^2 & 1+b^3 \\ c^2 & 1+c^3 \end{vmatrix} - a^2 \begin{vmatrix} b & 1+b^3 \\ c & 1+c^3 \end{vmatrix} + (1+a^3) \begin{vmatrix} b & b^2 \\ c & c^2 \end{vmatrix} = a(b^2(1+c^3) - (1+b^3)c^2) - a^2(b(1+c^3) - (1+b^3)c) + (1+a^3)(bc^2 - b^2c) = a(b^2 + b^2c^3 - c^2 - b^3c^2) - a^2(b + bc^3 - c - b^3c) + (1+a^3)(bc^2 - b^2c) = ab^2 + ab^2c^3 - ac^2 - ab^3c^2 - a^2b - a^2bc^3 + a^2c + a^2b^3c + bc^2 - b^2c + a^3bc^2 - a^3b^2c
+\]
+<p>Simplify and factor:</p>
+\[
+\Delta = (a - b)(b - c)(c - a)(1 + abc)
+\]
+<p>Since \( \Delta = 0 \) and \( a, b, c \) are distinct, \( 1 + abc = 0 \).</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- EXERCISE 2.5 -->
+<div class="container" id="ex25">
+<h2 class="section-title">✍️ Exercise 2.5 (Solved)</h2>
+
+<!-- Q1(i) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q1(i).</span>
+<span>Reduce the matrix to echelon form:
+\( \begin{bmatrix} 5 & 9 & 3 \\ -3 & 5 & 6 \\ -1 & -5 & -3 \end{bmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex25-q1i')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex25-q1i" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+\[
+\begin{bmatrix} 5 & 9 & 3 \\ -3 & 5 & 6 \\ -1 & -5 & -3 \end{bmatrix} \sim \begin{bmatrix} -1 & -5 & -3 \\ -3 & 5 & 6 \\ 5 & 9 & 3 \end{bmatrix} \quad (R_1 \leftrightarrow R_3)
+\]
+\[
+\sim \begin{bmatrix} 1 & 5 & 3 \\ 0 & 20 & 15 \\ 0 & -16 & -12 \end{bmatrix} \quad (R_2 + 3R_1, R_3 + 5R_1)
+\]
+\[
+\sim \begin{bmatrix} 1 & 5 & 3 \\ 0 & 1 & \frac{3}{4} \\ 0 & 0 & 0 \end{bmatrix} \quad (R_3 + \frac{4}{5}R_2)
+\]
+<p>Thus, the echelon form is \( \boxed{\begin{bmatrix} 1 & 5 & 3 \\ 0 & 1 & \frac{3}{4} \\ 0 & 0 & 0 \end{bmatrix}} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q2(i) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q2(i).</span>
+<span>Reduce the matrix to reduced echelon form:
+\( \begin{bmatrix} 3 & 5 & 4 \\ 4 & 1 & 5 \\ 7 & 6 & 3 \end{bmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex25-q2i')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex25-q2i" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+\[
+\begin{bmatrix} 3 & 5 & 4 \\ 4 & 1 & 5 \\ 7 & 6 & 3 \end{bmatrix} \sim \begin{bmatrix} 1 & \frac{5}{3} & \frac{4}{3} \\ 4 & 1 & 5 \\ 7 & 6 & 3 \end{bmatrix} \quad (\frac{1}{3}R_1)
+\]
+\[
+\sim \begin{bmatrix} 1 & \frac{5}{3} & \frac{4}{3} \\ 0 & -\frac{17}{3} & \frac{7}{3} \\ 0 & -\frac{1}{3} & -\frac{13}{3} \end{bmatrix} \quad (R_2 - 4R_1, R_3 - 7R_1)
+\]
+\[
+\sim \begin{bmatrix} 1 & \frac{5}{3} & \frac{4}{3} \\ 0 & 1 & -\frac{7}{17} \\ 0 & 0 & -\frac{120}{17} \end{bmatrix} \quad (-\frac{3}{17}R_2, R_3 + \frac{1}{17}R_2)
+\]
+\[
+\sim \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} \quad (R_1 - \frac{5}{3}R_2, R_3 + \frac{120}{17}R_2, -\frac{17}{120}R_3)
+\]
+<p>Thus, the reduced echelon form is \( \boxed{\begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q3(i) -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3(i).</span>
+<span>Find the rank of the matrix:
+\( \begin{bmatrix} 1 & 2 & 3 \\ 2 & 3 & 4 \\ 0 & 2 & 2 \end{bmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex25-q3i')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex25-q3i" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+\[
+\begin{bmatrix} 1 & 2 & 3 \\ 2 & 3 & 4 \\ 0 & 2 & 2 \end{bmatrix} \sim \begin{bmatrix} 1 & 2 & 3 \\ 0 & -1 & -2 \\ 0 & 2 & 2 \end{bmatrix} \quad (R_2 - 2R_1)
+\]
+\[
+\sim \begin{bmatrix} 1 & 2 & 3 \\ 0 & 1 & 2 \\ 0 & 0 & -2 \end{bmatrix} \quad (R_3 + 2R_2)
+\]
+<p>The rank is \( \boxed{3} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>Find the inverse of the matrix using elementary row operations:
+\( \begin{bmatrix} 1 & 2 & -3 \\ 0 & -2 & 0 \\ -2 & -2 & 2 \end{bmatrix} \).</span>
+</div>
+<button onclick="toggleSolution('ex25-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex25-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+\[
+\begin{bmatrix} 1 & 2 & -3 & : & 1 & 0 & 0 \\ 0 & -2 & 0 & : & 0 & 1 & 0 \\ -2 & -2 & 2 & : & 0 & 0 & 1 \end{bmatrix} \sim \begin{bmatrix} 1 & 2 & -3 & : & 1 & 0 & 0 \\ 0 & 1 & 0 & : & 0 & -\frac{1}{2} & 0 \\ 0 & 2 & -4 & : & 2 & 0 & 1 \end{bmatrix} \quad (R_3 + 2R_1, -\frac{1}{2}R_2)
+\]
+\[
+\sim \begin{bmatrix} 1 & 0 & -3 & : & 1 & 1 & 0 \\ 0 & 1 & 0 & : & 0 & -\frac{1}{2} & 0 \\ 0 & 0 & -4 & : & 2 & 1 & 1 \end{bmatrix} \quad (R_1 - 2R_2, R_3 - 2R_2)
+\]
+\[
+\sim \begin{bmatrix} 1 & 0 & 0 & : & \frac{1}{2} & \frac{1}{4} & \frac{3}{4} \\ 0 & 1 & 0 & : & 0 & -\frac{1}{2} & 0 \\ 0 & 0 & 1 & : & -\frac{1}{2} & -\frac{1}{4} & -\frac{1}{4} \end{bmatrix} \quad (R_1 + \frac{3}{4}R_3, -\frac{1}{4}R_3)
+\]
+<p>Thus, the inverse is \( \boxed{\begin{bmatrix} \frac{1}{2} & \frac{1}{4} & \frac{3}{4} \\ 0 & -\frac{1}{2} & 0 \\ -\frac{1}{2} & -\frac{1}{4} & -\frac{1}{4} \end{bmatrix}} \).</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- EXERCISE 2.6 -->
+<div class="container" id="ex26">
+<h2 class="section-title">✍️ Exercise 2.6 (Solved)</h2>
+
+<!-- Q3 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q3.</span>
+<span>Solve the non-homogeneous system of linear equations using matrix inversion method:
+(i) \( \begin{array}{l} x + 2y + z = 8 \\ 2x - y + z = 3 \\ x + y - z = 0 \end{array} \)
+(ii) \( \begin{array}{l} 2x - y + 2z = 4 \\ x + 10y - 3z = 10 \\ -x + y + z = -6 \end{array} \).</span>
+</div>
+<button onclick="toggleSolution('ex26-q3')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex26-q3" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(i)</strong> Let \( A = \begin{bmatrix} 1 & 2 & 1 \\ 2 & -1 & 1 \\ 1 & 1 & -1 \end{bmatrix} \), \( X = \begin{bmatrix} x \\ y \\ z \end{bmatrix} \), \( B = \begin{bmatrix} 8 \\ 3 \\ 0 \end{bmatrix} \).</p>
+<p>Compute \( |A| \):</p>
+\[
+|A| = 1(1 - 1) - 2(-2 - 1) + 1(2 + 1) = 0 + 6 + 3 = 9
+\]
+<p>Compute \( \text{adj}(A) \):</p>
+\[
+\text{adj}(A) = \begin{bmatrix} 0 & 3 & 3 \\ -3 & -2 & 1 \\ -3 & 1 & -5 \end{bmatrix}^t = \begin{bmatrix} 0 & -3 & -3 \\ 3 & -2 & 1 \\ 3 & 1 & -5 \end{bmatrix}
+\]
+<p>Compute \( A^{-1} \):</p>
+\[
+A^{-1} = \frac{1}{9} \begin{bmatrix} 0 & -3 & -3 \\ 3 & -2 & 1 \\ 3 & 1 & -5 \end{bmatrix}
+\]
+<p>Compute \( X = A^{-1}B \):</p>
+\[
+X = \frac{1}{9} \begin{bmatrix} 0 & -3 & -3 \\ 3 & -2 & 1 \\ 3 & 1 & -5 \end{bmatrix} \begin{bmatrix} 8 \\ 3 \\ 0 \end{bmatrix} = \frac{1}{9} \begin{bmatrix} -9 \\ 18 \\ 27 \end{bmatrix} = \begin{bmatrix} -1 \\ 2 \\ 3 \end{bmatrix}
+\]
+<p>Thus, \( x = \boxed{-1} \), \( y = \boxed{2} \), \( z = \boxed{3} \).</p>
+<p><strong>(ii)</strong> Let \( A = \begin{bmatrix} 2 & -1 & 2 \\ 1 & 10 & -3 \\ -1 & 1 & 1 \end{bmatrix} \), \( X = \begin{bmatrix} x \\ y \\ z \end{bmatrix} \), \( B = \begin{bmatrix} 4 \\ 10 \\ -6 \end{bmatrix} \).</p>
+<p>Compute \( |A| \):</p>
+\[
+|A| = 2(10 + 3) + 1(1 + 3) + 2(-1 - 10) = 26 + 4 - 22 = 8
+\]
+<p>Compute \( \text{adj}(A) \):</p>
+\[
+\text{adj}(A) = \begin{bmatrix} 13 & -3 & 23 \\ -4 & 4 & -8 \\ 21 & -1 & -21 \end{bmatrix}^t = \begin{bmatrix} 13 & -4 & 21 \\ -3 & 4 & -1 \\ 23 & -8 & -21 \end{bmatrix}
+\]
+<p>Compute \( A^{-1} \):</p>
+\[
+A^{-1} = \frac{1}{8} \begin{bmatrix} 13 & -4 & 21 \\ -3 & 4 & -1 \\ 23 & -8 & -21 \end{bmatrix}
+\]
+<p>Compute \( X = A^{-1}B \):</p>
+\[
+X = \frac{1}{8} \begin{bmatrix} 13 & -4 & 21 \\ -3 & 4 & -1 \\ 23 & -8 & -21 \end{bmatrix} \begin{bmatrix} 4 \\ 10 \\ -6 \end{bmatrix} = \frac{1}{8} \begin{bmatrix} 52 - 40 - 126 \\ -12 + 40 + 6 \\ 92 - 80 + 126 \end{bmatrix} = \frac{1}{8} \begin{bmatrix} -114 \\ 34 \\ 142 \end{bmatrix} = \begin{bmatrix} -14.25 \\ 4.25 \\ 17.75 \end{bmatrix}
+\]
+<p>Thus, \( x = \boxed{-14.25} \), \( y = \boxed{4.25} \), \( z = \boxed{17.75} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q4 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q4.</span>
+<span>Solve the non-homogeneous system of linear equations using Gauss elimination method:
+(i) \( \begin{array}{l} -x + y + z = 0 \\ x + 2y = 5 \\ -3x + 2y - z = -2 \end{array} \)
+(ii) \( \begin{array}{l} x + 2y + z = 8 \\ 2x - y + z = 3 \\ x + y - z = 0 \end{array} \).</span>
+</div>
+<button onclick="toggleSolution('ex26-q4')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex26-q4" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(i)</strong> Augmented matrix:</p>
+\[
+\begin{bmatrix} -1 & 1 & 1 & : & 0 \\ 1 & 2 & 0 & : & 5 \\ -3 & 2 & -1 & : & -2 \end{bmatrix} \sim \begin{bmatrix} 1 & 2 & 0 & : & 5 \\ 0 & 3 & 1 & : & 5 \\ 0 & 8 & -1 & : & 13 \end{bmatrix} \quad (R_1 \leftrightarrow R_2, R_2 + R_1, R_3 + 3R_1)
+\]
+\[
+\sim \begin{bmatrix} 1 & 2 & 0 & : & 5 \\ 0 & 1 & \frac{1}{3} & : & \frac{5}{3} \\ 0 & 0 & -11 & : & -1 \end{bmatrix} \quad (\frac{1}{3}R_2, R_3 - 8R_2)
+\]
+<p>Back-substitute:</p>
+\[
+z = \frac{1}{11}, \quad y = \frac{5}{3} - \frac{1}{33} = \frac{54}{33}, \quad x = 5 - 2 \cdot \frac{54}{33} = \frac{11}{33}
+\]
+<p>Thus, \( x = \boxed{\frac{11}{33}} \), \( y = \boxed{\frac{54}{33}} \), \( z = \boxed{\frac{1}{11}} \).</p>
+<p><strong>(ii)</strong> Augmented matrix:</p>
+\[
+\begin{bmatrix} 1 & 2 & 1 & : & 8 \\ 2 & -1 & 1 & : & 3 \\ 1 & 1 & -1 & : & 0 \end{bmatrix} \sim \begin{bmatrix} 1 & 2 & 1 & : & 8 \\ 0 & -5 & -1 & : & -13 \\ 0 & -1 & -2 & : & -8 \end{bmatrix} \quad (R_2 - 2R_1, R_3 - R_1)
+\]
+\[
+\sim \begin{bmatrix} 1 & 2 & 1 & : & 8 \\ 0 & 1 & \frac{1}{5} & : & \frac{13}{5} \\ 0 & 0 & -\frac{9}{5} & : & -\frac{33}{5} \end{bmatrix} \quad (-\frac{1}{5}R_2, R_3 + R_2)
+\]
+<p>Back-substitute:</p>
+\[
+z = \frac{11}{3}, \quad y = \frac{13}{5} - \frac{11}{15} = \frac{28}{15}, \quad x = 8 - 2 \cdot \frac{28}{15} - \frac{11}{3} = \frac{23}{15}
+\]
+<p>Thus, \( x = \boxed{\frac{23}{15}} \), \( y = \boxed{\frac{28}{15}} \), \( z = \boxed{\frac{11}{3}} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q5 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q5.</span>
+<span>Solve the non-homogeneous system of linear equations using Gauss-Jordan method:
+(i) \( \begin{array}{l} x - y + 4z = 4 \\ 2x + 2y - z = 2 \\ 3x - 2y + 3z = -3 \end{array} \)
+(ii) \( \begin{array}{l} 2x + 2y - z = 4 \\ x - 2y + z = 2 \\ x + y = 0 \end{array} \).</span>
+</div>
+<button onclick="toggleSolution('ex26-q5')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex26-q5" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(i)</strong> Augmented matrix:</p>
+\[
+\begin{bmatrix} 1 & -1 & 4 & : & 4 \\ 2 & 2 & -1 & : & 2 \\ 3 & -2 & 3 & : & -3 \end{bmatrix} \sim \begin{bmatrix} 1 & -1 & 4 & : & 4 \\ 0 & 4 & -9 & : & -6 \\ 0 & 1 & -9 & : & -15 \end{bmatrix} \quad (R_2 - 2R_1, R_3 - 3R_1)
+\]
+\[
+\sim \begin{bmatrix} 1 & -1 & 4 & : & 4 \\ 0 & 1 & -\frac{9}{4} & : & -\frac{3}{2} \\ 0 & 0 & -\frac{27}{4} & : & -\frac{27}{2} \end{bmatrix} \quad (\frac{1}{4}R_2, R_3 - R_2)
+\]
+\[
+\sim \begin{bmatrix} 1 & 0 & 0 & : & 1 \\ 0 & 1 & 0 & : & 1 \\ 0 & 0 & 1 & : & 2 \end{bmatrix} \quad (R_1 + R_2, R_2 + \frac{9}{4}R_3, -\frac{4}{27}R_3)
+\]
+<p>Thus, \( x = \boxed{1} \), \( y = \boxed{1} \), \( z = \boxed{2} \).</p>
+<p><strong>(ii)</strong> Augmented matrix:</p>
+\[
+\begin{bmatrix} 2 & 2 & -1 & : & 4 \\ 1 & -2 & 1 & : & 2 \\ 1 & 1 & 0 & : & 0 \end{bmatrix} \sim \begin{bmatrix} 1 & -2 & 1 & : & 2 \\ 0 & 6 & -3 & : & 0 \\ 0 & 3 & -1 & : & -2 \end{bmatrix} \quad (R_1 \leftrightarrow R_2, R_2 - 2R_1, R_3 - R_1)
+\]
+\[
+\sim \begin{bmatrix} 1 & -2 & 1 & : & 2 \\ 0 & 1 & -\frac{1}{2} & : & 0 \\ 0 & 0 & \frac{1}{2} & : & -2 \end{bmatrix} \quad (\frac{1}{6}R_2, R_3 - 3R_2)
+\]
+\[
+\sim \begin{bmatrix} 1 & 0 & 0 & : & 2 \\ 0 & 1 & 0 & : & -1 \\ 0 & 0 & 1 & : & -4 \end{bmatrix} \quad (R_1 + 2R_2, R_2 + \frac{1}{2}R_3, 2R_3)
+\]
+<p>Thus, \( x = \boxed{2} \), \( y = \boxed{-1} \), \( z = \boxed{-4} \).</p>
+</div>
+</div>
+</div>
+
+<!-- Q6 -->
+<div class="question-item">
+<div class="question-header">
+<span class="question-number">Q6.</span>
+<span>Solve the non-homogeneous system of linear equations using Cramer's Rule:
+(i) \( \begin{array}{l} x - 2y + z = 2 \\ 2x + 2y - z = 4 \\ x + y + 0.z = 0 \end{array} \)
+(ii) \( \begin{array}{l} x - 2y + 0.z = -4 \\ 3x + y + 0.z = -5 \\ 2x + 0.y + z = -1 \end{array} \).</span>
+</div>
+<button onclick="toggleSolution('ex26-q6')" class="solution-toggle">
+<span class="toggle-icon">▶</span>
+<span class="toggle-text">Show Solution</span>
+</button>
+<div class="solution">
+<div id="ex26-q6" class="solution-content hidden">
+<p><strong>Solution:</strong></p>
+<p><strong>(i)</strong> Let \( A = \begin{bmatrix} 1 & -2 & 1 \\ 2 & 2 & -1 \\ 1 & 1 & 0 \end{bmatrix} \), \( B = \begin{bmatrix} 2 \\ 4 \\ 0 \end{bmatrix} \).</p>
+<p>Compute \( |A| \):</p>
+\[
+|A| = 1(0 + 1) + 2(0 + 2) + 1(2 - 2) = 1 + 4 = 5
+\]
+<p>Compute \( |A_1| \), \( |A_2| \), \( |A_3| \):</p>
+\[
+|A_1| = \begin{vmatrix} 2 & -2 & 1 \\ 4 & 2 & -1 \\ 0 & 1 & 0 \end{vmatrix} = 2(0 + 1) + 2(0 + 0) + 1(4 - 0) = 2 + 4 = 6
+\]
+\[
+|A_2| = \begin{vmatrix} 1 & 2 & 1 \\ 2 & 4 & -1 \\ 1 & 0 & 0 \end{vmatrix} = 1(0 + 0) - 2(0 + 1) + 1(0 - 4) = -2 - 4 = -6
+\]
+\[
+|A_3| = \begin{vmatrix} 1 & -2 & 2 \\ 2 & 2 & 4 \\ 1 & 1 & 0 \end{vmatrix} = 1(0 - 4) + 2(0 - 4) + 2(2 - 2) = -4 - 8 = -12
+\]
+<p>Thus, \( x = \frac{6}{5} \), \( y = \frac{-6}{5} \), \( z = \frac{-12}{5} \).</p>
+<p><strong>(ii)</strong> Let \( A = \begin{bmatrix} 1 & -2 & 0 \\ 3 & 1 & 0 \\ 2 & 0 & 1 \end{bmatrix} \), \( B = \begin{bmatrix} -4 \\ -5 \\ -1 \end{bmatrix} \).</p>
+<p>Compute \( |A| \):</p>
+\[
+|A| = 1(1 - 0) + 2(3 - 0) + 0(0 - 2) = 1 + 6 = 7
+\]
+<p>Compute \( |A_1| \), \( |A_2| \), \( |A_3| \):</p>
+\[
+|A_1| = \begin{vmatrix} -4 & -2 & 0 \\ -5 & 1 & 0 \\ -1 & 0 & 1 \end{vmatrix} = -4(1 - 0) + 2(-5 - 0) + 0(0 + 2) = -4 - 10 = -14
+\]
+\[
+|A_2| = \begin{vmatrix} 1 & -4 & 0 \\ 3 & -5 & 0 \\ 2 & -1 & 1 \end{vmatrix} = 1(-5 - 0) + 4(3 - 0) + 0(-1 + 10) = -5 + 12 = 7
+\]
+\[
+|A_3| = \begin{vmatrix} 1 & -2 & -4 \\ 3 & 1 & -5 \\ 2 & 0 & -1 \end{vmatrix} = 1(-1 - 0) + 2(-3 + 10) + (-4)(0 - 2) = -1 + 14 + 8 = 21
+\]
+<p>Thus, \( x = \frac{-14}{7} = -2 \), \( y = \frac{7}{7} = 1 \), \( z = \frac{21}{7} = 3 \).</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- MCQs SECTION -->
+<div class="container" id="mcqs">
+<h2 class="section-title">❓ Multiple Choice Questions (Interactive)</h2>
+<div class="print-note">
+💡 <em>For printing: MCQs will show correct answers automatically</em>
+</div>
+<button onclick="resetMCQs()" class="reset-btn">🔄 Reset All MCQs</button>
+
+<!-- MCQ 1 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">1.</span>
+<span>If a matrix A has m row and n column, then order of A is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="1" data-option="A">
+<span class="option-label">(a)</span> \( m \times n \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="B">
+<span class="option-label">(b)</span> \( n \times m \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="C">
+<span class="option-label">(c)</span> \( mn \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="1" data-option="D">
+<span class="option-label">(d)</span> \( m^{n} \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(1)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 2 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">2.</span>
+<span>Any matrix of order \( m \times 1 \) is called:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="2" data-option="A">
+<span class="option-label">(a)</span> Row matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="B">
+<span class="option-label">(b)</span> Column matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="C">
+<span class="option-label">(c)</span> Square matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="2" data-option="D">
+<span class="option-label">(d)</span> Zero matrix
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(2)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 3 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">3.</span>
+<span>For the square matrix \( A = [a_{ij}] \). If all \( a_{ij} = 0, i \neq j \) and all \( a_{ij} = k \) (non zero) for \( i = j \), then A is called:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="3" data-option="A">
+<span class="option-label">(a)</span> Rectangular matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="B">
+<span class="option-label">(b)</span> Scalar matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="C">
+<span class="option-label">(c)</span> Identity matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="3" data-option="D">
+<span class="option-label">(d)</span> Null matrix
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(3)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 4 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">4.</span>
+<span>The matrix [7] is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="4" data-option="A">
+<span class="option-label">(a)</span> Square matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="B">
+<span class="option-label">(b)</span> Row matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="C">
+<span class="option-label">(c)</span> Column matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="4" data-option="D">
+<span class="option-label">(d)</span> all of these
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(4)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 5 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">5.</span>
+<span>\( (k ABC)^{t} = \)</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="5" data-option="A">
+<span class="option-label">(a)</span> \( k A^{t}B^{t}C^{t} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="B">
+<span class="option-label">(b)</span> \( k C^{t}B^{t}A^{t} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="C">
+<span class="option-label">(c)</span> \( k (BA)^{t} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="5" data-option="D">
+<span class="option-label">(d)</span> \( k^{t}(AB) \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(5)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 6 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">6.</span>
+<span>\( \begin{vmatrix} 1 & 0 \\ 5 & 6 \end{vmatrix} - \begin{vmatrix} 1 & 2 \\ 3 & 4 \end{vmatrix} = \):</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="6" data-option="A">
+<span class="option-label">(a)</span> 4
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="B">
+<span class="option-label">(b)</span> 8
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="C">
+<span class="option-label">(c)</span> -2
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="6" data-option="D">
+<span class="option-label">(d)</span> 10
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(6)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 7 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">7.</span>
+<span>If AB = BA , then which one is true, where A and B are square matrices:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="7" data-option="A">
+<span class="option-label">(a)</span> A and B are multiplicative inverses of each other
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="B">
+<span class="option-label">(b)</span> One of A or B is null matrix.
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="C">
+<span class="option-label">(c)</span> One of A or B is identity matrix.
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="7" data-option="D">
+<span class="option-label">(d)</span> all of these
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(7)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 8 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">8.</span>
+<span>If \( A = [-7] \), then \( |A| \) is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="8" data-option="A">
+<span class="option-label">(a)</span> 7
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="B">
+<span class="option-label">(b)</span> -7
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="C">
+<span class="option-label">(c)</span> 0
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="8" data-option="D">
+<span class="option-label">(d)</span> Not possible
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(8)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 9 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">9.</span>
+<span>Let \( A = [a_{ij}] \) be a square matrix. Then cofactor of \( a_{ij} \) is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="9" data-option="A">
+<span class="option-label">(a)</span> \( M_{ij} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="B">
+<span class="option-label">(b)</span> \( (-1)^{i+j} M_{ij} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="C">
+<span class="option-label">(c)</span> \( (-1)^{ij} M_{ij} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="9" data-option="D">
+<span class="option-label">(d)</span> \( (-1)^{i+j} a_{ij} \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(9)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 10 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">10.</span>
+<span>For any triangular matrix A, \( |A| \) is equal to:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="10" data-option="A">
+<span class="option-label">(a)</span> Product of leading diagonal elements
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="B">
+<span class="option-label">(b)</span> Sum of leading diagonal elements
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="C">
+<span class="option-label">(c)</span> Sum of square of diagonal elements
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="10" data-option="D">
+<span class="option-label">(d)</span> All of these
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(10)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 11 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">11.</span>
+<span>A square matrix \( A = [a_{ij}] \) for which all \( a_{ij} = 0, i < j \), then A is called:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="11" data-option="A">
+<span class="option-label">(a)</span> Upper triangular
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="11" data-option="B">
+<span class="option-label">(b)</span> Lower triangular
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="11" data-option="C">
+<span class="option-label">(c)</span> Symmetric
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="11" data-option="D">
+<span class="option-label">(d)</span> Hermitian
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(11)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 12 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">12.</span>
+<span>A triangular matrix is always a:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="12" data-option="A">
+<span class="option-label">(a)</span> Diagonal matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="12" data-option="B">
+<span class="option-label">(b)</span> Scalar matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="12" data-option="C">
+<span class="option-label">(c)</span> Square matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="12" data-option="D">
+<span class="option-label">(d)</span> all of these
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(12)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 13 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">13.</span>
+<span>A square matrix A is skew symmetric if:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="13" data-option="A">
+<span class="option-label">(a)</span> \( A^{t} = A \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="13" data-option="B">
+<span class="option-label">(b)</span> \( A^{t} = -A \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="13" data-option="C">
+<span class="option-label">(c)</span> \( (\bar{A})^{t} = A \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="13" data-option="D">
+<span class="option-label">(d)</span> None
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(13)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 14 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">14.</span>
+<span>A square matrix A is Hermitian matrix if:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="14" data-option="A">
+<span class="option-label">(a)</span> \( A^{t} = A \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="14" data-option="B">
+<span class="option-label">(b)</span> \( A^{t} = -A \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="14" data-option="C">
+<span class="option-label">(c)</span> \( (\bar{A})^{t} = A \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="14" data-option="D">
+<span class="option-label">(d)</span> \( (\bar{A})^{t} = -A \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(14)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 15 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">15.</span>
+<span>Each diagonal element of main diagonal of a skew Hermitian matrix must be:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="15" data-option="A">
+<span class="option-label">(a)</span> 1
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="15" data-option="B">
+<span class="option-label">(b)</span> 0
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="15" data-option="C">
+<span class="option-label">(c)</span> Any non-zero number
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="15" data-option="D">
+<span class="option-label">(d)</span> Any complex number
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(15)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 16 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">16.</span>
+<span>If \( \begin{vmatrix} a & b \\ 0 & 7 \end{vmatrix} = \begin{vmatrix} 2 & 3 \\ 1 & -9 \end{vmatrix} \) then</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="16" data-option="A">
+<span class="option-label">(a)</span> \( a = -3 \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="16" data-option="B">
+<span class="option-label">(b)</span> \( a = b \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="16" data-option="C">
+<span class="option-label">(c)</span> \( a = \frac{1}{3} \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="16" data-option="D">
+<span class="option-label">(d)</span> \( a = \frac{-1}{3} \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(16)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 17 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">17.</span>
+<span>The number of non-zero rows in echelon form of a matrix is called:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="17" data-option="A">
+<span class="option-label">(a)</span> Order of a matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="17" data-option="B">
+<span class="option-label">(b)</span> Rank of a matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="17" data-option="C">
+<span class="option-label">(c)</span> Leading Column
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="17" data-option="D">
+<span class="option-label">(d)</span> Leading row
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(17)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 18 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">18.</span>
+<span>If A is any square matrix and \( A = -A^{t} \) then A is a:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="18" data-option="A">
+<span class="option-label">(a)</span> Symmetric matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="18" data-option="B">
+<span class="option-label">(b)</span> Skew symmetric matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="18" data-option="C">
+<span class="option-label">(c)</span> Hermitian matrix
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="18" data-option="D">
+<span class="option-label">(d)</span> Skew Hermitian matrix
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(18)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 19 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">19.</span>
+<span>If A is idempotent matrix then:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="19" data-option="A">
+<span class="option-label">(a)</span> \( A^{2} = I \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="19" data-option="B">
+<span class="option-label">(b)</span> \( A^{2} = 0 \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="19" data-option="C">
+<span class="option-label">(c)</span> \( A^{2} = A \)
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="19" data-option="D">
+<span class="option-label">(d)</span> \( A^{2} = A^{t} \)
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(19)">
+💡 Show Correct Answer
+</button>
+</div>
+
+<!-- MCQ 20 -->
+<div class="mcq-container">
+<div class="mcq-question">
+<span class="mcq-number">20.</span>
+<span>The cofactor \( A_{22} \) of \( \begin{bmatrix} 1 & 2 & 4 \\ -1 & 2 & 5 \\ 0 & 1 & -1 \end{bmatrix} \) is:</span>
+</div>
+<div class="mcq-options">
+<div class="mcq-option" data-question="20" data-option="A">
+<span class="option-label">(a)</span> 0
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="20" data-option="B">
+<span class="option-label">(b)</span> -1
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="20" data-option="C">
+<span class="option-label">(c)</span> 1
+<span class="mcq-result"></span>
+</div>
+<div class="mcq-option" data-question="20" data-option="D">
+<span class="option-label">(d)</span> 2
+<span class="mcq-result"></span>
+</div>
+</div>
+<button class="show-correct-btn hidden" onclick="showCorrect(20)">
+💡 Show Correct Answer
+</button>
+</div>
+
+</div>
+
+<!-- ANSWER KEY SECTION -->
+<div class="container" id="answerkey">
+<h2 class="section-title">🔑 MCQ Answer Key</h2>
+<div class="card">
+<div class="answer-grid">
+<div class="answer-item">1. A</div>
+<div class="answer-item">2. B</div>
+<div class="answer-item">3. B</div>
+<div class="answer-item">4. D</div>
+<div class="answer-item">5. B</div>
+<div class="answer-item">6. A</div>
+<div class="answer-item">7. D</div>
+<div class="answer-item">8. B</div>
+<div class="answer-item">9. B</div>
+<div class="answer-item">10. A</div>
+<div class="answer-item">11. B</div>
+<div class="answer-item">12. C</div>
+<div class="answer-item">13. B</div>
+<div class="answer-item">14. C</div>
+<div class="answer-item">15. B</div>
+<div class="answer-item">16. D</div>
+<div class="answer-item">17. B</div>
+<div class="answer-item">18. B</div>
+<div class="answer-item">19. C</div>
+<div class="answer-item">20. B</div>
+</div>
+</div>
+</div>
+
+<!-- THEME TOGGLE -->
+<button id="themeToggle">🎨</button>
+
+<!-- BACK TO TOP (MOVED TO LEFT SIDE) -->
+<button id="backToTop" title="Back to top">↑</button>
+
+<!-- THEME PANEL -->
+<div id="themePanel" class="hidden">
+<div class="theme-panel-title">🎨 Choose Theme</div>
+<button class="theme-btn" onclick="applyTheme('blue')">💙 Blue</button>
+<button class="theme-btn" onclick="applyTheme('sepia')">📜 Sepia</button>
+<button class="theme-btn" onclick="applyTheme('green')">🌿 Green</button>
+<button class="theme-btn" onclick="applyTheme('yellow')">⚡ Yellow Neon</button>
+<button class="theme-btn" onclick="applyTheme('blackwhite')">⚫ Black & White</button>
+<button class="theme-btn" onclick="applyTheme('dark')">🌙 Dark Mode</button>
+</div>
+
+<script>
+// Theme Definitions
+const themes = {
+blue: {
+bgPrimary: '#f0f4f8',
+bgCard: '#ffffff',
+colorPrimary: '#3498db',
+colorAccent: '#2ecc71',
+colorText: '#2c3e50',
+colorMuted: '#6c757d',
+borderColor: '#dee2e6',
+shadow: 'rgba(0, 0, 0, 0.1)'
+},
+sepia: {
+bgPrimary: '#f4f1e8',
+bgCard: '#fefcf5',
+colorPrimary: '#8b7355',
+colorAccent: '#a1887f',
+colorText: '#3e2723',
+colorMuted: '#795548',
+borderColor: '#d7ccc8',
+shadow: 'rgba(101, 67, 33, 0.15)'
+},
+green: {
+bgPrimary: '#e8f5e9',
+bgCard: '#ffffff',
+colorPrimary: '#2e7d32',
+colorAccent: '#66bb6a',
+colorText: '#1b5e20',
+colorMuted: '#558b2f',
+borderColor: '#d7ccc8',
+shadow: 'rgba(46, 125, 50, 0.15)'
+},
+yellow: {
+bgPrimary: '#fffde7',
+bgCard: '#ffffff',
+colorPrimary: '#f9a825',
+colorAccent: '#ffd54f',
+colorText: '#f57f17',
+colorMuted: '#fbc02d',
+borderColor: '#fff9c4',
+shadow: 'rgba(249, 168, 37, 0.2)'
+},
+blackwhite: {
+bgPrimary: '#ffffff',
+bgCard: '#f8f9fa',
+colorPrimary: '#000000',
+colorAccent: '#495057',
+colorText: '#000000',
+colorMuted: '#495057',
+borderColor: '#dee2e6',
+shadow: 'rgba(0, 0, 0, 0.15)'
+},
+dark: {
+bgPrimary: '#1a1a1a',
+bgCard: '#2d2d2d',
+colorPrimary: '#60a5fa',
+colorAccent: '#34d399',
+colorText: '#e5e7eb',
+colorMuted: '#9ca3af',
+borderColor: '#404040',
+shadow: 'rgba(0, 0, 0, 0.5)'
+}
+};
+
+// Inactivity Timer Variables
+let inactivityTimer;
+const INACTIVITY_TIMEOUT = 3000; // 3 seconds
+
+// Reset Inactivity Timer
+function resetInactivityTimer() {
+clearTimeout(inactivityTimer);
+showFloatingButtons();
+inactivityTimer = setTimeout(() => {
+hideFloatingButtons();
+}, INACTIVITY_TIMEOUT);
+}
+
+// Show Floating Buttons
+function showFloatingButtons() {
+const themeToggle = document.getElementById('themeToggle');
+const backToTop = document.getElementById('backToTop');
+const jumpToggle = document.getElementById('jumpToggle');
+if (themeToggle) {
+themeToggle.classList.remove('hidden');
+}
+if (backToTop && backToTop.classList.contains('visible')) {
+backToTop.classList.remove('hidden');
+}
+if (jumpToggle) {
+jumpToggle.classList.remove('hidden');
+}
+}
+
+// Hide Floating Buttons
+function hideFloatingButtons() {
+const themeToggle = document.getElementById('themeToggle');
+const backToTop = document.getElementById('backToTop');
+const themePanel = document.getElementById('themePanel');
+const jumpToggle = document.getElementById('jumpToggle');
+if (themeToggle) {
+themeToggle.classList.add('hidden');
+}
+if (backToTop) {
+backToTop.classList.add('hidden');
+}
+if (themePanel) {
+themePanel.classList.add('hidden');
+}
+if (jumpToggle) {
+jumpToggle.classList.add('hidden');
+}
+}
+
+// Setup Activity Listeners
+function setupActivityListeners() {
+const activityEvents = ['mousemove', 'mousedown', 'keypress', 'scroll', 'touchstart', 'click', 'touchmove'];
+activityEvents.forEach(eventName => {
+document.addEventListener(eventName, resetInactivityTimer);
+});
+resetInactivityTimer();
+}
+
+// Apply Theme Function
+function applyTheme(themeName) {
+const theme = themes[themeName];
+if (!theme) return;
+const root = document.documentElement;
+root.style.setProperty('--bg-primary', theme.bgPrimary);
+root.style.setProperty('--bg-card', theme.bgCard);
+root.style.setProperty('--color-primary', theme.colorPrimary);
+root.style.setProperty('--color-accent', theme.colorAccent);
+root.style.setProperty('--color-text', theme.colorText);
+root.style.setProperty('--color-muted', theme.colorMuted);
+root.style.setProperty('--border-color', theme.borderColor);
+root.style.setProperty('--shadow', theme.shadow);
+document.documentElement.setAttribute('data-theme', themeName);
+// Update floating button colors to match theme
+updateButtonColors(theme);
+localStorage.setItem('mathNotesTheme', themeName);
+const panel = document.getElementById('themePanel');
+if (panel) panel.classList.add('hidden');
+resetInactivityTimer();
+}
+
+// Function to update button colors
+function updateButtonColors(theme) {
+const toggleBtn = document.getElementById('themeToggle');
+const backToTopBtn = document.getElementById('backToTop');
+const jumpToggleBtn = document.getElementById('jumpToggle');
+if (toggleBtn) {
+toggleBtn.style.backgroundColor = theme.colorPrimary;
+toggleBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+if (backToTopBtn) {
+backToTopBtn.style.backgroundColor = theme.colorPrimary;
+backToTopBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+if (jumpToggleBtn) {
+jumpToggleBtn.style.backgroundColor = theme.colorPrimary;
+jumpToggleBtn.style.boxShadow = `0 4px 12px ${theme.shadow}`;
+}
+}
+
+// Toggle Jump Navigation
+function toggleJumpNav() {
+const nav = document.getElementById('jumpToNav');
+if (!nav) return;
+if (nav.classList.contains('hidden')) {
+nav.classList.remove('hidden');
+nav.style.display = 'block';
+setTimeout(() => {
+nav.style.transform = 'translateX(0)';
+nav.style.opacity = '1';
+nav.style.visibility = 'visible';
+}, 10);
+} else {
+nav.style.transform = 'translateX(-100%)';
+nav.style.opacity = '0';
+nav.style.visibility = 'hidden';
+setTimeout(() => {
+nav.classList.add('hidden');
+}, 300);
+}
+resetInactivityTimer();
+}
+
+// Close Jump Navigation
+function closeJumpNav() {
+const nav = document.getElementById('jumpToNav');
+if (!nav) return;
+nav.style.transform = 'translateX(-100%)';
+nav.style.opacity = '0';
+nav.style.visibility = 'hidden';
+setTimeout(() => {
+nav.classList.add('hidden');
+}, 300);
+resetInactivityTimer();
+}
+
+// Toggle Solution Function
+function toggleSolution(id) {
+const solutionContent = document.getElementById(id);
+if (!solutionContent) return;
+const button = event.currentTarget;
+const icon = button.querySelector('.toggle-icon');
+const text = button.querySelector('.toggle-text');
+if (solutionContent.classList.contains('hidden')) {
+solutionContent.classList.remove('hidden');
+solutionContent.classList.add('open');
+if (icon) icon.textContent = '▼';
+if (text) text.textContent = 'Hide Solution';
+} else {
+solutionContent.classList.add('hidden');
+solutionContent.classList.remove('open');
+if (icon) icon.textContent = '▶';
+if (text) text.textContent = 'Show Solution';
+}
+if (typeof MathJax !== 'undefined') {
+setTimeout(() => {
+MathJax.typesetPromise([solutionContent]).catch((err) => console.log(err));
+}, 100);
+}
+resetInactivityTimer();
+}
+
+// Correct Answers for MCQs
+const correctAnswers = {
+1: 'A',
+2: 'B',
+3: 'B',
+4: 'D',
+5: 'B',
+6: 'A',
+7: 'D',
+8: 'B',
+9: 'B',
+10: 'A',
+11: 'B',
+12: 'C',
+13: 'B',
+14: 'C',
+15: 'B',
+16: 'D',
+17: 'B',
+18: 'B',
+19: 'C',
+20: 'B'
+};
+
+// MCQ Answer Checking
+function checkAnswer(qNum, selected, optionElement) {
+const container = optionElement.closest('.mcq-container');
+const allOptions = container.querySelectorAll('.mcq-option');
+const showBtn = container.querySelector('.show-correct-btn');
+const correct = correctAnswers[qNum];
+allOptions.forEach(opt => {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '';
+opt.classList.remove('correct', 'incorrect');
+});
+if (selected === correct) {
+const resultSpan = optionElement.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '✅';
+optionElement.classList.add('correct');
+if (showBtn) showBtn.classList.add('hidden');
+} else {
+const resultSpan = optionElement.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '❌';
+optionElement.classList.add('incorrect');
+if (showBtn) showBtn.classList.remove('hidden');
+}
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise([container]).catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Show Correct Answer
+function showCorrect(qNum) {
+const correct = correctAnswers[qNum];
+const containers = document.querySelectorAll('.mcq-container');
+containers.forEach(container => {
+const options = container.querySelectorAll('.mcq-option');
+options.forEach(opt => {
+if (opt.dataset.question == qNum && opt.dataset.option === correct) {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '✅ (Correct Answer)';
+opt.classList.add('correct');
+opt.classList.remove('incorrect');
+}
+});
+});
+const showBtn = document.querySelector(`.mcq-container [data-question="${qNum}"]`)?.closest('.mcq-container')?.querySelector('.show-correct-btn');
+if (showBtn) showBtn.classList.add('hidden');
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Reset All MCQs
+function resetMCQs() {
+document.querySelectorAll('.mcq-option').forEach(opt => {
+const resultSpan = opt.querySelector('.mcq-result');
+if (resultSpan) resultSpan.textContent = '';
+opt.classList.remove('correct', 'incorrect');
+});
+document.querySelectorAll('.show-correct-btn').forEach(btn => {
+btn.classList.add('hidden');
+});
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+}
+
+// Back to Top Functionality
+function handleBackToTop() {
+const backToTopBtn = document.getElementById('backToTop');
+if (!backToTopBtn) return;
+window.addEventListener('scroll', () => {
+if (window.scrollY > 300) {
+backToTopBtn.classList.add('visible');
+backToTopBtn.classList.remove('hidden');
+} else {
+backToTopBtn.classList.remove('visible');
+}
+});
+backToTopBtn.addEventListener('click', () => {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+resetInactivityTimer();
+});
+}
+
+// Initialize on Page Load
+document.addEventListener('DOMContentLoaded', function() {
+// Load saved theme
+const savedTheme = localStorage.getItem('mathNotesTheme') || 'blue';
+applyTheme(savedTheme);
+
+// Setup inactivity timer
+setupActivityListeners();
+
+// Force initial button colors (in case applyTheme doesn't trigger properly)
+setTimeout(() => {
+const theme = themes[savedTheme];
+updateButtonColors(theme);
+}, 100);
+
+// Show All Solutions Button
+const showAllBtn = document.getElementById("showAllBtn");
+if (showAllBtn) {
+showAllBtn.addEventListener("click", () => {
+const solutions = document.querySelectorAll(".solution-content");
+const toggles = document.querySelectorAll(".solution-toggle");
+const shouldOpen = showAllBtn.innerText.includes("Show");
+solutions.forEach(sol => {
+sol.classList.toggle("hidden", !shouldOpen);
+sol.classList.toggle("open", shouldOpen);
+});
+toggles.forEach(btn => {
+const text = btn.querySelector(".toggle-text");
+const icon = btn.querySelector(".toggle-icon");
+if (text && icon) {
+text.innerText = shouldOpen ? "Hide Solution" : "Show Solution";
+icon.innerText = shouldOpen ? "▼" : "▶";
+}
+});
+showAllBtn.innerText = shouldOpen ? "Hide All Solutions" : "Show All Solutions";
+if (typeof MathJax !== 'undefined') {
+MathJax.typesetPromise().catch((err) => console.log(err));
+}
+resetInactivityTimer();
+});
+}
+
+// MCQ Event Listeners
+document.querySelectorAll('.mcq-option').forEach(option => {
+option.addEventListener('click', function() {
+const question = this.dataset.question;
+const selected = this.dataset.option;
+checkAnswer(question, selected, this);
+});
+});
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+themeToggle.addEventListener('click', function(e) {
+e.stopPropagation();
+const panel = document.getElementById('themePanel');
+if (panel) {
+panel.classList.toggle('hidden');
+}
+resetInactivityTimer();
+});
+}
+
+// Jump Navigation Toggle
+const jumpToggle = document.getElementById('jumpToggle');
+if (jumpToggle) {
+jumpToggle.addEventListener('click', function(e) {
+e.stopPropagation();
+toggleJumpNav();
+});
+}
+
+// Close Jump Navigation
+const closeJumpBtn = document.querySelector('.jump-nav-close');
+if (closeJumpBtn) {
+closeJumpBtn.addEventListener('click', function(e) {
+e.stopPropagation();
+closeJumpNav();
+});
+}
+
+// Close panels when clicking outside
+document.addEventListener('click', function(e) {
+const panel = document.getElementById('themePanel');
+const toggle = document.getElementById('themeToggle');
+const nav = document.getElementById('jumpToNav');
+const jumpBtn = document.getElementById('jumpToggle');
+if (panel && toggle && !panel.contains(e.target) && !toggle.contains(e.target)) {
+panel.classList.add('hidden');
+}
+if (nav && jumpBtn && !nav.contains(e.target) && !jumpBtn.contains(e.target)) {
+closeJumpNav();
+}
+});
+
+// Jump Navigation Links
+document.querySelectorAll('.jump-nav-link').forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 20,
+behavior: 'smooth'
+});
+closeJumpNav();
+}
+resetInactivityTimer();
+});
+});
+
+// Initialize Back to Top
+handleBackToTop();
+
+// Print handling
+window.addEventListener('beforeprint', function() {
+document.querySelectorAll('.solution-content').forEach(s => {
+s.classList.remove('hidden');
+s.classList.add('open');
+});
+});
+
+// Ensure everything fits on mobile
+function ensureMobileFit() {
+if (window.innerWidth <= 768) {
+// Ensure all elements have proper width constraints
+document.querySelectorAll('.card, .question-item, .mcq-container').forEach(el => {
+el.style.maxWidth = '100%';
+el.style.overflow = 'hidden';
+});
+}
+}
+
+// Call on load and resize
+ensureMobileFit();
+window.addEventListener('resize', ensureMobileFit);
+});
+
+// Prevent default touch behavior that might cause issues
+document.addEventListener('touchstart', function(e) {
+if (e.touches.length > 1) {
+e.preventDefault();
+}
+}, { passive: false });
+</script>
+</body>
+</html>
